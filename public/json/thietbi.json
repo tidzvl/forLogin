@@ -1,0 +1,225 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "name": "Breath Monitor",
+            "product_brand": "BKAV",
+            "period": "1 (year)",
+            "price": "$10000",
+            "status": 1,
+            "position": "H6-701"
+        },
+        {
+            "id": 2,
+            "name": "Health Care",
+            "product_brand": "BKAV",
+            "period": "1 (year)",
+            "price": "$10000",
+            "status": 1,
+            "position": "H6-701"
+        },
+        {
+            "id": 3,
+            "name": "MRI Scanner",
+            "product_brand": "Siemens",
+            "period": "5 (years)",
+            "price": "$500000",
+            "status": 1,
+            "position": "H1-101"
+        },
+        {
+            "id": 4,
+            "name": "X-ray Machine",
+            "product_brand": "GE Healthcare",
+            "period": "3 (years)",
+            "price": "$250000",
+            "status": 1,
+            "position": "H2-202"
+        },
+        {
+            "id": 5,
+            "name": "Ultrasound Machine",
+            "product_brand": "Philips",
+            "period": "4 (years)",
+            "price": "$150000",
+            "status": 1,
+            "position": "H3-303"
+        },{
+            "id": 6,
+            "name": "Breath Monitor",
+            "product_brand": "BKAV",
+            "period": "1 (year)",
+            "price": "$10000",
+            "status": 1,
+            "position": "H6-701"
+        },
+        {
+            "id": 7,
+            "name": "Health Care",
+            "product_brand": "BKAV",
+            "period": "1 (year)",
+            "price": "$10000",
+            "status": 1,
+            "position": "H6-701"
+        },
+        {
+            "id": 8,
+            "name": "MRI Scanner",
+            "product_brand": "Siemens",
+            "period": "5 (years)",
+            "price": "$500000",
+            "status": 1,
+            "position": "H1-101"
+        },
+        {
+            "id": 9,
+            "name": "X-ray Machine",
+            "product_brand": "GE Healthcare",
+            "period": "3 (years)",
+            "price": "$250000",
+            "status": 1,
+            "position": "H2-202"
+        },
+        {
+            "id": 10,
+            "name": "Ultrasound Machine",
+            "product_brand": "Philips",
+            "period": "4 (years)",
+            "price": "$150000",
+            "status": 1,
+            "position": "H3-303"
+        },{
+            "id": 11,
+            "name": "Breath Monitor",
+            "product_brand": "BKAV",
+            "period": "1 (year)",
+            "price": "$10000",
+            "status": 1,
+            "position": "H6-701"
+        },
+        {
+            "id": 12,
+            "name": "Health Care",
+            "product_brand": "BKAV",
+            "period": "1 (year)",
+            "price": "$10000",
+            "status": 1,
+            "position": "H6-701"
+        },
+        {
+            "id": 13,
+            "name": "MRI Scanner",
+            "product_brand": "Siemens",
+            "period": "5 (years)",
+            "price": "$500000",
+            "status": 1,
+            "position": "H1-101"
+        },
+        {
+            "id": 14,
+            "name": "X-ray Machine",
+            "product_brand": "GE Healthcare",
+            "period": "3 (years)",
+            "price": "$250000",
+            "status": 1,
+            "position": "H2-202"
+        },
+        {
+            "id": 15,
+            "name": "Ultrasound Machine",
+            "product_brand": "Philips",
+            "period": "4 (years)",
+            "price": "$150000",
+            "status": 1,
+            "position": "H3-303"
+        },{
+            "id": 16,
+            "name": "Breath Monitor",
+            "product_brand": "BKAV",
+            "period": "1 (year)",
+            "price": "$10000",
+            "status": 1,
+            "position": "H6-701"
+        },
+        {
+            "id": 17,
+            "name": "Health Care",
+            "product_brand": "BKAV",
+            "period": "1 (year)",
+            "price": "$10000",
+            "status": 1,
+            "position": "H6-701"
+        },
+        {
+            "id": 18,
+            "name": "MRI Scanner",
+            "product_brand": "Siemens",
+            "period": "5 (years)",
+            "price": "$500000",
+            "status": 1,
+            "position": "H1-101"
+        },
+        {
+            "id": 19,
+            "name": "X-ray Machine",
+            "product_brand": "GE Healthcare",
+            "period": "3 (years)",
+            "price": "$250000",
+            "status": 1,
+            "position": "H2-202"
+        },
+        {
+            "id": 20,
+            "name": "Ultrasound Machine",
+            "product_brand": "Philips",
+            "period": "4 (years)",
+            "price": "$150000",
+            "status": 1,
+            "position": "H3-303"
+        },{
+            "id": 21,
+            "name": "Breath Monitor",
+            "product_brand": "BKAV",
+            "period": "1 (year)",
+            "price": "$10000",
+            "status": 1,
+            "position": "H6-701"
+        },
+        {
+            "id": 22,
+            "name": "Health Care",
+            "product_brand": "BKAV",
+            "period": "1 (year)",
+            "price": "$10000",
+            "status": 1,
+            "position": "H6-701"
+        },
+        {
+            "id": 23,
+            "name": "MRI Scanner",
+            "product_brand": "Siemens",
+            "period": "5 (years)",
+            "price": "$500000",
+            "status": 1,
+            "position": "H1-101"
+        },
+        {
+            "id": 24,
+            "name": "X-ray Machine",
+            "product_brand": "GE Healthcare",
+            "period": "3 (years)",
+            "price": "$250000",
+            "status": 1,
+            "position": "H2-202"
+        },
+        {
+            "id": 25,
+            "name": "Ultrasound Machine",
+            "product_brand": "Philips",
+            "period": "4 (years)",
+            "price": "$150000",
+            "status": 1,
+            "position": "H3-303"
+        }
+    ]
+}

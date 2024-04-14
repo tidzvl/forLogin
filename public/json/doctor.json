@@ -1,0 +1,131 @@
+{"data": [
+  {
+    "degree": "PhD",
+    "department": "Department Of Anthropology",
+    "email": "Demiurge@gmail.com",
+    "firstName": "Demiurge",
+    "graduationYear": "1999",
+    "lastName": "Demiurge",
+    "role": "Doctor",
+    "patientList": [
+      {
+        "age": "21",
+        "name": "Jack"
+      },
+      {
+        "age": "20",
+        "name": "John"
+      }
+    ],
+    "userId": "08ca1f42-617f-4dd8-8326-cec5d8f0d27f",
+    "workTime": [
+      {
+        "DoW:": "Monday",
+        "endTime": "21:00",
+        "startTime": "10:00"
+      },
+      {
+        "DoW:": "Friday",
+        "endTime": "12:00",
+        "startTime": "05:00"
+      }
+    ]
+  },
+  {
+    "degree": "Bachelor's degree",
+    "department": "Department Of Interventional Cardiolog",
+    "email": "ShalltearBloodfallen@gmail.com",
+    "firstName": "Shalltear",
+    "graduationYear": "1999",
+    "role": "Doctor",
+    "lastName": "Bloodfallen",
+    "patientList": [
+      {
+        "age": "21",
+        "name": "Jack"
+      },
+      {
+        "age": "20",
+        "name": "John"
+      }
+    ],
+    "userId": "95986900-c736-4518-a3ee-9118fba89f1d",
+    "workTime": [
+      {
+        "DoW:": "Monday",
+        "endTime": "21:00",
+        "startTime": "10:00"
+      },
+      {
+        "DoW:": "Friday",
+        "endTime": "12:00",
+        "startTime": "05:00"
+      }
+    ]
+  },
+  {
+    "degree": "Bachelor's degree",
+    "department": "Department Of Gynecology",
+    "email": "Albedo@gmail.com",
+    "firstName": "Albedo",
+    "graduationYear": "1999",
+    "role": "Doctor",
+    "lastName": "Albedo",
+    "patientList": [
+      {
+        "age": "21",
+        "name": "Jack"
+      },
+      {
+        "age": "20",
+        "name": "John"
+      }
+    ],
+    "userId": "a655da4f-083a-479b-b9cf-55466175171b",
+    "workTime": [
+      {
+        "DoW:": "Monday",
+        "endTime": "21:00",
+        "startTime": "10:00"
+      },
+      {
+        "DoW:": "Friday",
+        "endTime": "12:00",
+        "startTime": "05:00"
+      }
+    ]
+  },
+  {
+    "degree": "Bachelor's degree",
+    "department": "Department Of Gynecology",
+    "email": "Albedo@gmail.com",
+    "firstName": "Albedo",
+    "role": "Doctor",
+    "graduationYear": "1999",
+    "lastName": "Albedo",
+    "patientList": [
+      {
+        "age": "21",
+        "name": "Jack"
+      },
+      {
+        "age": "20",
+        "name": "John"
+      }
+    ],
+    "userId": "e907854a-59fb-4489-87d2-707a24655faa",
+    "workTime": [
+      {
+        "DoW:": "Monday",
+        "endTime": "21:00",
+        "startTime": "10:00"
+      },
+      {
+        "DoW:": "Friday",
+        "endTime": "12:00",
+        "startTime": "05:00"
+      }
+    ]
+  }
+]
+}

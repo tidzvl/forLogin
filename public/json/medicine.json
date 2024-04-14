@@ -1,0 +1,274 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "name": "Paracetamol Tablets",
+            "category": 0,
+            "price": "$5.99",
+            "qty": 500,
+            "status": 1,
+            "product_brand": "Generic Pharma Co."
+        },
+        {
+            "id": 2,
+            "name": "Amoxicillin Capsules",
+            "category": 1,
+            "price": "$8.49",
+            "qty": 400,
+            "status": 2,
+            "product_brand": "Healthcare Pharmaceuticals"
+        },
+        {
+            "id": 3,
+            "name": "Loratadine Tablets",
+            "category": 2,
+            "price": "$4.75",
+            "qty": 600,
+            "status": 3,
+            "product_brand": "Relief Pharmaceuticals"
+        },
+        {
+            "id": 4,
+            "name": "Omeprazole Capsules",
+            "category": 3,
+            "price": "$12.99",
+            "qty": 350,
+            "status": 1,
+            "product_brand": "Digestive Health Inc."
+        },
+        {
+            "id": 5,
+            "name": "Aspirin Tablets",
+            "category": 0,
+            "price": "$3.49",
+            "qty": 1000,
+            "status": 1,
+            "product_brand": "Pain Relief Inc."
+        },
+        {
+            "id": 6,
+            "name": "Ibuprofen Capsules",
+            "category": 4,
+            "price": "$7.99",
+            "qty": 800,
+            "status": 3,
+            "product_brand": "Healthcare Pharmaceuticals"
+        },
+        {
+            "id": 7,
+            "name": "Metformin Tablets",
+            "category": 5,
+            "price": "$6.25",
+            "qty": 1200,
+            "status": 1,
+            "product_brand": "Diabetes Care Co."
+        },
+        {
+            "id": 8,
+            "name": "Atorvastatin Tablets",
+            "category": 4,
+            "price": "$15.99",
+            "qty": 500,
+            "status": 1,
+            "product_brand": "Heart Health Pharma"
+        },
+        {
+            "id": 9,
+            "name": "Salbutamol Inhaler",
+            "category": 3,
+            "price": "$20.49",
+            "qty": 300,
+            "status": 1,
+            "product_brand": "Respiratory Relief Ltd."
+        },
+        {
+            "id": 10,
+            "name": "Cetirizine Tablets",
+            "category": 2,
+            "price": "$9.99",
+            "qty": 700,
+            "status": 3,
+            "product_brand": "Allergy Relief Inc."
+        },
+        {
+            "id": 11,
+            "name": "Losartan Tablets",
+            "category": 2,
+            "price": "$11.49",
+            "qty": 400,
+            "status": 1,
+            "product_brand": "Blood Pressure Solutions"
+        },
+        {
+            "id": 12,
+            "name": "Simvastatin Tablets",
+            "category": 4,
+            "price": "$14.75",
+            "qty": 500,
+            "status": 1,
+            "product_brand": "Heart Health Pharma"
+        },
+        {
+            "id": 13,
+            "name": "Warfarin Tablets",
+            "category": 1,
+            "price": "$8.99",
+            "qty": 600,
+            "status": 1,
+            "product_brand": "Clot Prevention Co."
+        },
+        {
+            "id": 14,
+            "name": "Diazepam Tablets",
+            "category": 2,
+            "price": "$7.49",
+            "qty": 500,
+            "status": 1,
+            "product_brand": "Mental Health Pharmaceuticals"
+        },
+        {
+            "id": 15,
+            "name": "Metoprolol Tablets",
+            "category": 2,
+            "price": "$12.99",
+            "qty": 400,
+            "status": 1,
+            "product_brand": "Heart Health Pharma"
+        },
+        {
+            "id": 16,
+            "name": "Alprazolam Tablets",
+            "category": 2,
+            "price": "$10.49",
+            "qty": 300,
+            "status": 1,
+            "product_brand": "Mental Health Pharmaceuticals"
+        },
+        {
+            "id": 17,
+            "name": "Amlodipine Tablets",
+            "category": 2,
+            "price": "$11.75",
+            "qty": 500,
+            "status": 1,
+            "product_brand": "Blood Pressure Solutions"
+        },
+        {
+            "id": 18,
+            "name": "Ciprofloxacin Tablets",
+            "category": 1,
+            "price": "$9.99",
+            "qty": 700,
+            "status": 1,
+            "product_brand": "Infection Control Co."
+        },
+        {
+            "id": 19,
+            "name": "Esomeprazole Capsules",
+            "category": 3,
+            "price": "$15.49",
+            "qty": 500,
+            "status": 1,
+            "product_brand": "Digestive Health Inc."
+        },
+        {
+            "id": 20,
+            "name": "Morphine Tablets",
+            "category": 0,
+            "price": "$25.99",
+            "qty": 400,
+            "status": 1,
+            "product_brand": "Pain Relief Inc."
+        },
+        {
+            "id": 21,
+            "name": "Levothyroxine Tablets",
+            "category": 3,
+            "price": "$11.75",
+            "qty": 600,
+            "status": 1,
+            "product_brand": "Thyroid Health Co."
+        },
+        {
+            "id": 22,
+            "name": "Metformin Extended-Release Tablets",
+            "category": 5,
+            "price": "$10.99",
+            "qty": 700,
+            "status": 1,
+            "product_brand": "Diabetes Care Co."
+        },
+        {
+            "id": 23,
+            "name": "Warfarin Tablets",
+            "category": 1,
+            "price": "$8.99",
+            "qty": 600,
+            "status": 1,
+            "product_brand": "Clot Prevention Co."
+        },
+        {
+            "id": 24,
+            "name": "Albuterol Inhaler",
+            "category": 3,
+            "price": "$15.49",
+            "qty": 300,
+            "status": 1,
+            "product_brand": "Respiratory Relief Ltd."
+        },
+        {
+            "id": 25,
+            "name": "Ranitidine Tablets",
+            "category": 4,
+            "price": "$7.99",
+            "qty": 450,
+            "status": 1,
+            "product_brand": "Digestive Health Inc."
+        },
+        {
+            "id": 26,
+            "name": "Furosemide Tablets",
+            "category": 5,
+            "price": "$8.75",
+            "qty": 600,
+            "status": 1,
+            "product_brand": "Diuretic Solutions Inc."
+        },
+        {
+            "id": 27,
+            "name": "Metoclopramide Tablets",
+            "category": 3,
+            "price": "$9.49",
+            "qty": 500,
+            "status": 1,
+            "product_brand": "Digestive Health Inc."
+        },
+        {
+            "id": 28,
+            "name": "Doxycycline Capsules",
+            "category": 1,
+            "price": "$12.99",
+            "qty": 600,
+            "status": 1,
+            "product_brand": "Infection Control Co."
+        },
+        {
+            "id": 29,
+            "name": "Escitalopram Tablets",
+            "category": 4,
+            "price": "$11.75",
+            "qty": 450,
+            "status": 1,
+            "product_brand": "Mental Health Pharmaceuticals"
+        },
+        {
+            "id": 30,
+            "name": "Cephalexin Capsules",
+            "category": 1,
+            "price": "$10.99",
+            "qty": 550,
+            "status": 1,
+            "product_brand": "Infection Control Co."
+        }
+    ]
+}
