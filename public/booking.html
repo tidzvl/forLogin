@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html lang="en" class="light-style layout-wide customizer-hide" dir="ltr" data-theme="theme-default"
+  data-assets-path="">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+  <title>Đặt lịch khám bệnh | IT Hospital</title>
+
+  <meta name="description" content="" />
+
+  <link rel="icon" type="image/x-icon" href="../img/main.ico" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="../../css/core.css" class="template-customizer-core-css" />
+  <link rel="stylesheet" href="../../css/theme.css" class="template-customizer-theme-css" />
+  <link rel="stylesheet" href="../../css/page-auth.css" />
+
+  <script src="js/firebase.js" type="module"></script>
+</head>
+
+<body>
+
+  <div class="authentication-wrapper authentication-cover">
+    <div class="authentication-inner row m-0">
+      <div class="d-none d-lg-flex col-lg-4 align-items-center justify-content-end p-5 pe-0">
+        <div class="w-px-400">
+          <img src="img/4.png" class="img-fluid scaleX-n1-rtl" alt="multi-steps" width="600"
+            data-app-light-img="img/4.png" data-app-dark-img="img/4.png" />
+        </div>
+      </div>
+      <!-- /Left Text -->
+
+      <!--  Multi Steps Registration -->
+      <div class="d-flex col-lg-8 authentication-bg p-sm-5 justify-content-center">
+        <div class="d-flex flex-column w-px-700">
+          <div class="app-brand border-bottom mx-3 mb-4">
+            <a href="index.html">
+              <span class="h3 fw-bold">IT Hospital</span>
+            </a>
+          </div>
+          <div class="pt-4">
+            <form id="bookingform" onSubmit="return false">
+              <div id="sickerdetail" class="content">
+                <div class="mb-3">
+                  <h4>Information of benh nhan</h4>
+                  <span>Please type infor of sicker</span>
+                </div>
+                <div class="row g-3">
+                  <div class="col-sm-6">
+                    <label class="form-label" for="fullname">Full name</label>
+                    <input type="text" name="fullname" id="fullname" class="form-control" placeholder="Nguyen Chanh Tin"
+                      required />
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="form-label" for="yearold">Year old</label>
+                    <input type="number" name="yearold" id="yearold" class="form-control" placeholder="22" maxlength="2"
+                      required />
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="form-label" for="sex">Sex</label>
+                    <!-- <input
+                              type="text"
+                              id="sex"
+                              name="sex"
+                              class="form-control"
+                              placeholder="Male/Female" required/> -->
+                    <select id="sex" name="sex" class="form-control">
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="form-label" for="contact">Contact</label>
+                    <input type="text" id="contact" name="contact" class="form-control" placeholder="SDT/Email"
+                      required />
+                  </div>
+                  <div class="col-md-12">
+                    <label class="form-label" for="address">Address</label>
+                    <input type="text" name="address" id="address" class="form-control"
+                      placeholder="69 of Tran Duy Hung" />
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div id="somedetail" class="content">
+                <div class="mb-3">
+                  <h4>Book for kham benh</h4>
+                  <span>Optional</span>
+                </div>
+                <div class="row g-3">
+                  <div class="col-sm-6">
+                    <label class="form-label" for="bhyt">BHYT</label>
+                    <select id="bhyt" name="bhyt" class="form-control">
+                      <option value="Yes">Yes</option>
+                      <option value="No">No</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="form-label" for="numbhyt">BHYT number</label>
+                    <input type="text" id="numbhyt" name="numbhyt" class="form-control"
+                      placeholder="Type if you so free " maxlength="15" />
+                  </div>
+                  <div class="col-md-12">
+                    <label class="form-label" for="des">brief description</label>
+                    <input type="text" id="des" name="des" class="form-control"
+                      placeholder="Tri~ noi^. | tri~ ngoai. | roi loan cd ..." />
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="form-label" for="khoa">Chon khoa kham</label>
+                    <select id="khoa" class=" form-select" data-allow-clear="true">
+                      <option value="">Select</option>
+                      <option value="">Kham thuong</option>
+                      <option value="">Noi tong hop</option>
+                      <option value="">Tim mach</option>
+                      <option value="">Co - xuong - khop</option>
+                      <option value="">Noi tiet</option>
+                      <option value="">Di ung</option>
+                      <option value="">Huyet hoc</option>
+                      <option value="">Than kinh - tam than</option>
+                      <option value="">Nhi</option>
+                      <option value="">Chan thuong chinh hinh</option>
+                      <option value="">Rang - ham - mat</option>
+                      <option value="">Tai - mui - hong</option>
+                      <option value="">Mat</option>
+                    </select>
+                  </div>
+                  <div class="col-12">
+                    <button id="submit" type="submit" class="btn btn-success">Submit</button>
+                  </div>
+                  <div class="col-12">
+                    <button id="test" class="btn btn-success">test</button>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+</body>
+
+</html>
