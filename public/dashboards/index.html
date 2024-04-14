@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+
+<html
+  lang="en"
+  class="light-style layout-navbar-fixed layout-menu-fixed layout-compact"
+  dir="ltr"
+  data-theme="theme-default"
+  data-assets-path=""
+  data-template="vertical-menu-template">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <title>Dashboard | IT HOSPITAL</title>
+
+    <meta name="description" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../img/main.ico" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="../css/boxicons.css" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="../css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="../css/theme.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="../css/demo.css" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="../css/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="../css/apex-charts/apex-charts.css" />
+
+    <!-- Page CSS -->
+
+    <!-- Helpers -->
+    <script src="../js/helpers.js"></script>
+    <script src="../js/config.js"></script>
+  </head>
+
+  <body>
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+      <div class="layout-container">
+        <!-- Menu -->
+
+        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+          <div class="app-brand demo">
+            <a href="../dashboards/" class="app-brand-link">
+              <span class="app-brand-text demo menu-text fw-bold ms-2">IT HOSPITAL</span>
+            </a>
+
+            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
+              <i class="bx menu-toggle-icon d-none d-xl-block fs-4 align-middle"></i>
+              <i class="bx bx-x d-block d-xl-none bx-sm align-middle"></i>
+            </a>
+          </div>
+
+          <ul class="menu-inner py-1">
+            <!-- Dashboards -->
+            <li class="menu-item active open">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Dashboards">Dashboards</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item active">
+                  <a href="../dashboards/" class="menu-link">
+                    <div>Index</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-header small text-uppercase">
+              <span class="menu-header-text">Quan ly of giam doc</span>
+            </li>
+            <!-- Forms -->
+            <li class="menu-item  ">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-detail"></i>
+                <div>Quan ly staff</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item ">
+                  <a href="../admin/quanly-staff/" class="menu-link">
+                    <div>Nhan vien noi bo</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-carousel"></i>
+                <div>Quan ly - Chuc nang</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="../admin/quanly-thuoc/" class="menu-link">
+                    <div>Quan ly thuoc</div>
+                  </a>
+                </li>
+              </ul>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="../admin/quanly-thietbi/" class="menu-link">
+                    <div>Quan ly thiet bi</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            </li>
+            <!-- Charts & Maps -->
+            <li class="menu-header small text-uppercase">
+              <span class="menu-header-text" >Thong ke doanh thu</span>
+            </li>
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-chart"></i>
+                <div>Profit</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="../dashboards/comingsoon.html" class="menu-link">
+                    <div>Profit of Kham'</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="../dashboards/comingsoon.html" class="menu-link">
+                    <div>Profit of Medical</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </aside>
+        <!-- / Menu -->
+
+        <!-- Layout container -->
+        <div class="layout-page">
+          <!-- Navbar -->
+
+          <nav class="layout-navbar navbar navbar-expand-xl align-items-center bg-navbar-theme" id="layout-navbar">
+            <div class="container-xxl">
+              <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+                <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                  <i class="bx bx-menu bx-sm"></i>
+                </a>
+              </div>
+
+              <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+                <ul class="navbar-nav flex-row align-items-center ms-auto">
+                  <!-- User -->
+                  <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                    <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                      <div class="avatar avatar-online">
+                        <img src="../img/user.png" alt class="rounded-circle" />
+                      </div>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                      <li>
+                        <a class="dropdown-item" href="./comingsoon.html">
+                          <div class="d-flex">
+                            <div class="flex-shrink-0 me-3">
+                              <div class="avatar avatar-online">
+                                <img src="../img/user.png" alt class="rounded-circle" />
+                              </div>
+                            </div>
+                            <div class="flex-grow-1">
+                              <span class="fw-medium d-block lh-1">TinDepTrai</span>
+                              <small>Admin</small>
+                            </div>
+                          </div>
+                        </a>
+                      </li>
+                      <li>
+                        <div class="dropdown-divider"></div>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="./comingsoon.html">
+                          <i class="bx bx-user me-2"></i>
+                          <span class="align-middle">My Profile</span>
+                        </a>
+                      </li>
+                      <li>
+                        <div class="dropdown-divider"></div>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="../index.html" target="">
+                          <i class="bx bx-power-off me-2"></i>
+                          <span class="align-middle">Log Out</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <!--/ User -->
+                </ul>
+              </div>
+            </div>
+          </nav>
+
+          <!-- / Navbar -->
+
+          <!-- Content wrapper -->
+          <div class="content-wrapper">
+            <!-- Content -->
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <div class="row">
+                <!-- Referral, conversion, impression & income charts -->
+                <div class="col-lg-6 col-md-12">
+                  <div class="row">
+                    <!-- Growth Chart-->
+                    <div class="col-sm-6 col-12">
+                      <div class="row">
+                        <div class="col-12 mb-4">
+                          <div class="card">
+                            <div class="card-body">
+                              <div class="d-flex justify-content-between">
+                                <div class="d-flex align-items-center gap-3">
+                                  <div class="avatar">
+                                    <span class="avatar-initial bg-label-primary rounded-circle"
+                                      ><i class="bx bx-user fs-4"></i
+                                    ></span>
+                                  </div>
+                                  <div class="card-info">
+                                    <h5 class="card-title mb-0 me-2">$10,0404</h5>
+                                    <small class="text-muted">Examination</small>
+                                  </div>
+                                </div>
+                                <div id="conversationChart"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12 mb-4">
+                          <div class="card">
+                            <div class="card-body">
+                              <div class="d-flex justify-content-between">
+                                <div class="d-flex align-items-center gap-3">
+                                  <div class="avatar">
+                                    <span class="avatar-initial bg-label-warning rounded-circle"
+                                      ><i class="bx bx-dollar fs-4"></i
+                                    ></span>
+                                  </div>
+                                  <div class="card-info">
+                                    <h5 class="card-title mb-0 me-2">$26,1004</h5>
+                                    <small class="text-muted">Medichine</small>
+                                  </div>
+                                </div>
+                                <div id="incomeChart"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--/ Referral, conversion, impression & income charts -->
+
+                <!-- Activity -->
+                <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-3 mb-4">
+                  <div class="card">
+                    <div class="card-header">
+                      <h5 class="card-title mb-0">Activity</h5>
+                    </div>
+                    <div class="card-body">
+                      <ul class="p-0 m-0">
+                        <li class="d-flex mb-4 pb-2">
+                          <div class="avatar avatar-sm flex-shrink-0 me-3">
+                            <span class="avatar-initial rounded-circle bg-label-primary"
+                              ><i class="bx bx-cube"></i
+                            ></span>
+                          </div>
+                          <div class="d-flex flex-column w-100">
+                            <div class="d-flex justify-content-between mb-1">
+                              <span>Total Medichine</span>
+                              <span class="text-muted">$2,459</span>
+                            </div>
+                            <div class="progress" style="height: 6px">
+                              <div
+                                class="progress-bar bg-primary"
+                                style="width: 40%"
+                                role="progressbar"
+                                aria-valuenow="40"
+                                aria-valuemin="0"
+                                aria-valuemax="100"></div>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="d-flex mb-4 pb-2">
+                          <div class="avatar avatar-sm flex-shrink-0 me-3">
+                            <span class="avatar-initial rounded-circle bg-label-success"
+                              ><i class="bx bx-dollar"></i
+                            ></span>
+                          </div>
+                          <div class="d-flex flex-column w-100">
+                            <div class="d-flex justify-content-between mb-1">
+                              <span>Budget</span>
+                              <span class="text-muted">$8,478</span>
+                            </div>
+                            <div class="progress" style="height: 6px">
+                              <div
+                                class="progress-bar bg-success"
+                                style="width: 80%"
+                                role="progressbar"
+                                aria-valuenow="80"
+                                aria-valuemin="0"
+                                aria-valuemax="100"></div>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="d-flex mb-4 pb-2">
+                          <div class="avatar avatar-sm flex-shrink-0 me-3">
+                            <span class="avatar-initial rounded-circle bg-label-warning"
+                              ><i class="bx bx-trending-up"></i
+                            ></span>
+                          </div>
+                          <div class="d-flex flex-column w-100">
+                            <div class="d-flex justify-content-between mb-1">
+                              <span>Costs Incurred</span>
+                              <span class="text-muted">$12,490</span>
+                            </div>
+                            <div class="progress" style="height: 6px">
+                              <div
+                                class="progress-bar bg-warning"
+                                style="width: 80%"
+                                role="progressbar"
+                                aria-valuenow="80"
+                                aria-valuemin="0"
+                                aria-valuemax="100"></div>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="d-flex mb-2">
+                          <div class="avatar avatar-sm flex-shrink-0 me-3">
+                            <span class="avatar-initial rounded-circle bg-label-danger"
+                              ><i class="bx bx-check"></i
+                            ></span>
+                          </div>
+                          <div class="d-flex flex-column w-100">
+                            <div class="d-flex justify-content-between mb-1">
+                              <span>Tax</span>
+                              <span class="text-muted">$184</span>
+                            </div>
+                            <div class="progress" style="height: 6px">
+                              <div
+                                class="progress-bar bg-danger"
+                                style="width: 25%"
+                                role="progressbar"
+                                aria-valuenow="25"
+                                aria-valuemin="0"
+                                aria-valuemax="100"></div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <!--/ Activity -->
+
+                <!-- Profit Report & Registration -->
+                <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-3">
+                  <div class="row">
+                    <div class="col-12 col-sm-6 col-md-12 mb-4">
+                      <div class="card h-100">
+                        <div class="card-header">
+                          <h5 class="card-title mb-0">Profit Report</h5>
+                        </div>
+                        <div class="card-body d-flex align-items-end justify-content-between">
+                          <div class="d-flex justify-content-between align-items-center gap-3 w-100">
+                            <div class="d-flex align-content-center">
+                              <div class="chart-report" data-color="danger" data-series="25"></div>
+                              <div class="chart-info">
+                                <h5 class="mb-0">$10k</h5>
+                                <small class="text-muted">Examination</small>
+                              </div>
+                            </div>
+                            <div class="d-flex align-content-center">
+                              <div class="chart-report" data-color="info" data-series="50"></div>
+                              <div class="chart-info">
+                                <h5 class="mb-0">$60k</h5>
+                                <small class="text-muted">Medichine</small>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--/ Profit Report & Registration -->
+                <!-- Growth Chart-->
+                <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-3 mb-4">
+                  <div class="card">
+                    <div class="card-body text-center">
+                      <div id="growthRadialChart"></div>
+                      <h6 class="mb-0 mt-5">78% Mortality in 2022</h6>
+                    </div>
+                  </div>
+                </div>
+                <!-- Growth Chart-->
+              </div>
+            </div>
+            <!-- / Content -->
+          </div>
+          <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+    </div>
+    <!-- / Layout wrapper -->
+
+    <!-- Core JS -->
+    <!-- build:js assets/vendor/js/core.js -->
+
+    <script src="../js/jquery/jquery.js"></script>
+    <script src="../js/bootstrap/bootstrap.js"></script>
+    <script src="../js/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="../js/menu.js"></script>
+
+    <!-- endbuild -->
+
+    <!-- Vendors JS -->
+    <script src="../js/apex-charts/apexcharts.js"></script>
+
+    <!-- Main JS -->
+    <script src="../js/assets/main.js"></script>
+
+    <!-- Page JS -->
+    <script src="../js/dashboards-analytics.js"></script>
+  </body>
+</html>

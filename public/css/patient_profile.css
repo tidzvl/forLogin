@@ -1,0 +1,142 @@
+body{
+    height: 1000px;
+}
+.information-container{        
+    position: absolute;
+    left: 15px;
+    top: 70px;
+    right: 10px;
+    bottom: 10px;
+    z-index: 1000;
+
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-width:thin;
+}
+.header-self-info,
+.header-contact-info,
+.header-schedule-info{
+    font-size: 20px;
+    font-weight: bold;    
+    background-color: rgb(219, 228, 243);
+    color: rgb(90, 141, 238);
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+/*Thong tin ca nhan*/
+.self-information{
+    /* border: 1px solid lightblue; */
+    position: absolute;
+    left: 10px;
+    right: 10px;    
+    top: 10px;    
+}
+.self-information-container{
+    display: grid;
+    grid-template-columns: 100px 1fr 1fr 1fr;
+}
+
+.info{
+    padding-left: 100px;
+}
+.info1{
+    padding-left: 50px;
+}
+.information .content{
+    /* margin-bottom: 30px; */
+    font-size: 15px;  
+    color: black;
+}
+.information .heading{
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+}
+.heading,
+.content{
+    margin-bottom: 10px;
+}
+
+/*Thong tin lien lac*/
+.contact-information{
+    /* border: 1px solid lightpink; */
+    position: absolute;
+    top: 220px;
+    left: 10px;
+    right: 10px;
+}
+.contact-content{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.contact{
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid red;     */
+}
+.address,
+.sdt,
+.email{
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+}
+.address-contact,
+.number-contact,
+.email-contact{
+    color: black;
+    font-size: 14px;
+}
+.address-content,
+.email-content{
+    padding-left: 15px;
+}
+.number-content{
+    padding-left: 35px;
+}
+/*Thong tin kham benh*/
+.schedule-information{
+    /* border: 1px solid lightcoral; */
+    position: absolute;
+    top: 400px;
+    left: 10px;
+    right: 10px;
+}
+
+.schedule-info{
+    padding-left: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;    
+}
+.schedule-head{
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+}
+.schedule-content{
+    /* border: 1px solid red; */
+    margin-bottom: 10px;
+}
+
+@media (max-width: 954px){
+    .self-information-2{
+        overflow: hidden;
+        overflow-y: scroll;
+    }
+    .self-information-2 .info1{
+        position: absolute;
+        left: 60px;
+        right: 100px;
+    }
+    .self-information-2 .info{
+        position: absolute;
+        left: 60px;
+        right: 100px;
+    }
+    .self-information-2 .info2{
+        position: absolute;
+        left: 400px;
+    }
+}

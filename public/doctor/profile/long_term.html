@@ -1,0 +1,366 @@
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dashboard | IT HOSPITAL</title>
+
+	<meta name="description" content="" />
+
+	<!-- Favicon -->
+	<link rel="icon" type="image/x-icon" href="../../img/main.ico" />
+
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link
+		href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+		rel="stylesheet" />
+
+	<!-- Icons -->
+	<link rel="stylesheet" href="../../css/boxicons.css" />
+
+	<!-- Core CSS -->
+	<link rel="stylesheet" href="../../css/core.css" class="template-customizer-core-css" />
+	<link rel="stylesheet" href="../../css/theme.css" class="template-customizer-theme-css" />
+	<link rel="stylesheet" href="../../css/demo.css" />
+	<link rel="stylesheet" href="../../css/patients_list.css">
+
+	<!-- Vendors CSS -->
+	<link rel="stylesheet" href="../../css/perfect-scrollbar/perfect-scrollbar.css" />
+	<link rel="stylesheet" href="../../css/apex-charts/apex-charts.css" />
+
+	<!-- Page CSS -->
+
+	<!-- Helpers -->
+	<script src="../../js/helpers.js"></script>
+	<script src="../../js/config.js"></script>
+</head>
+
+<body>
+	<div class="layout-wrapper layout-content-navbar">
+		<div class="layout-container">
+			<!-- Menu -->
+
+			<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme hover-menu">
+				<div class="app-brand demo">
+					<a href="../profile/" class="app-brand-link">
+						<span class="app-brand-text demo menu-text fw-bold ms-2">IT HOSPITAL</span>
+					</a>
+
+					<a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
+						<i class="bx menu-toggle-icon d-none d-xl-block fs-4 align-middle"></i>
+						<i class="bx bx-x d-block d-xl-none bx-sm align-middle"></i>
+					</a>
+				</div>
+
+				<ul class="menu-inner py-1">
+					<!-- Dashboards -->
+					<li class="menu-item">
+						<a href="javascript:void(0);" class="menu-link menu-toggle">
+							<i class="menu-icon tf-icons bx bx-home-circle"></i>
+							<div data-i18n="Dashboards">Dashboards</div>
+						</a>
+						<ul class="menu-sub">
+							<li class="menu-item">
+								<a href="../profile/" class="menu-link">
+									<div>Index</div>
+								</a>
+							</li>
+						</ul>
+					</li>
+
+					<ul class="menu-inner py-1">
+						<li class="menu-header small text-uppercase">
+							<span class="menu-header-text">Quan ly of bac si</span>
+						</li>
+						<li class="menu-item">
+							<a href="../kedonthuoc/" class="menu-link">
+								<i class="menu-icon tf-icons bx bx-list-check"></i>
+								<div>Ke don thuoc</div>
+							</a>
+						</li>
+						<li class="menu-item active open">
+							<a href="javascript:void(0);" class="menu-link menu-toggle">
+								<i class="menu-icon tf-icons bx bx-grid"></i>
+								<div>Quan ly benh nhan</div>
+							</a>
+							<ul class="menu-sub">
+								<li class="menu-item">
+									<a href="./patients_list.html" class="menu-link">
+										<div>Danh sach benh nhan</div>
+									</a>
+								</li>
+							</ul>
+							<ul class="menu-sub">
+								<li class="menu-item active">
+									<a href="./long_term.html" class="menu-link">
+										<div>Danh sach dieu tri lau dai</div>
+									</a>
+								</li>
+							</ul>
+					</ul>
+
+
+			</aside>
+			<!-- / Menu -->
+
+			<!-- Layout container -->
+			<div class="layout-browser"></div>
+			<div class="layout-page">
+				<!-- Navbar -->
+				<nav class="layout-navbar navbar navbar-expand-xl align-items-center bg-navbar-theme"
+					id="layout-navbar">
+					<div class="container-xxl">
+						<div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+							<a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+								<i class="bx bx-menu bx-sm"></i>
+							</a>
+						</div>
+
+						<div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+							<ul class="navbar-nav flex-row align-items-center ms-auto">
+								<!-- User -->
+								<li class="nav-item navbar-dropdown dropdown-user dropdown">
+									<a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
+										data-bs-toggle="dropdown">
+										<div class="avatar avatar-online">
+											<img src="../../img/user.png" alt class="rounded-circle" />
+										</div>
+									</a>
+									<ul class="dropdown-menu dropdown-menu-end">
+										<li>
+											<a class="dropdown-item" href="./../comingsoon.html">
+												<div class="d-flex">
+													<div class="flex-shrink-0 me-3">
+														<div class="avatar avatar-online">
+															<img src="../../img/user.png" alt class="rounded-circle" />
+														</div>
+													</div>
+													<div class="flex-grow-1">
+														<span class="fw-medium d-block lh-1">TinDepTrai</span>
+														<small>Admin</small>
+													</div>
+												</div>
+											</a>
+										</li>
+										<li>
+											<div class="dropdown-divider"></div>
+										</li>
+										<li>
+											<a class="dropdown-item" href="./../comingsoon.html">
+												<i class="bx bx-user me-2"></i>
+												<span class="align-middle">My Profile</span>
+											</a>
+										</li>
+										<li>
+											<div class="dropdown-divider"></div>
+										</li>
+										<li>
+											<a class="dropdown-item" href="../../index.html" target="">
+												<i class="bx bx-power-off me-2"></i>
+												<span class="align-middle">Log Out</span>
+											</a>
+										</li>
+									</ul>
+								</li>
+								<!--/ User -->
+							</ul>
+						</div>
+					</div>
+				</nav>
+				<div class="container-xxl flex-grow-1 container-p-y">
+					<h4 class="py-3 breadcrumb-wrapper mb-4"><span class="text-muted fw-light">Quan ly /</span> Dieu tri lau dai</h4>
+				<!--Patients list-->
+				<div class="patients-list">
+					<div class="patients-list-header">
+						<h3 class="header-text">Long-term Patients List</h3>
+						<input placeholder="Search patient..." type="text" class="search-bar" id="mySearch"
+							onkeyup="myFunction()">
+					</div>
+					<table id="myTable" class="myPatient">
+						<tr>
+							<th class="blank"></th>
+							<th class="fullname-content">Full Name</th>
+							<th class="sex-content">Sex</th>
+							<th class="contact-content">Contact</th>
+							<th class="bhyt-content">BHYT</th>
+							<th class="info">Info</th>
+							<th class="remove">Remove</th>
+						</tr>
+						<tr>
+							<td></td>
+							<td class="fullname1"></td>
+							<td class="sex1"></td>
+							<td class="contact1"></td>
+							<td class="bhyt1"></td>
+							<td class="info-button-content">
+								<button id="1" class="info-button1">Info</button>
+							</td>
+							<td class="remove-button-content">
+								<button id="1" class="remove-button1">Remove</button>
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td class="fullname2"></td>
+							<td class="sex2"></td>
+							<td class="contact2"></td>
+							<td class="bhyt2"></td>
+							<td class="info-button-content">
+								<button id="2" class="info-button2">Info</button>
+							</td>
+							<td class="remove-button-content">
+								<button id="2" class="remove-button2">Remove</button>
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td class="fullname3"></td>
+							<td class="sex3"></td>
+							<td class="contact3"></td>
+							<td class="bhyt3"></td>
+							<td class="info-button-content">
+								<button id="3" class="info-button3">Info</button>
+							</td>
+							<td class="remove-button-content">
+								<button id="3" class="remove-button3">Remove</button>
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td class="fullname4"></td>
+							<td class="sex4"></td>
+							<td class="contact4"></td>
+							<td class="bhyt4"></td>
+							<td class="info-button-content">
+								<button id="4" class="info-button4">Info</button>
+							</td>
+							<td class="remove-button-content">
+								<button id="4" class="remove-button4">Remove</button>
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td class="fullname5"></td>
+							<td class="sex5"></td>
+							<td class="contact5"></td>
+							<td class="bhyt5"></td>
+							<td class="info-button-content">
+								<button id="5" class="info-button5">Info</button>
+							</td>
+							<td class="remove-button-content">
+								<button id="5" class="remove-button5">Remove</button>
+							</td>
+						</tr>
+					</table>
+					<div class="button-container">
+						<button class="previous-button">Previous</button>
+						<div class="page-number">1</div>
+						<button class="next-button">Next</button>
+					</div>
+				</div>
+
+				<div class="pop-up-container"></div>
+
+				<div class="long-term-container">
+					<h4>Long-term treatment</h4>
+					<p>Are you sure to move this patient to long-term treatment?</p>
+					<button class="submit-button">Submit</button>
+				</div>
+
+				<div class="remove-patient-container">
+					<h4>Remove patient</h4>
+					<p>Are you sure to remove this patient from the patient list?</p>
+					<button class="remove-patient-button">Remove</button>
+				</div>
+
+				<div class="my-profile">
+					<div class="l1">
+						<div class="l1-child-container">
+							<img src="../../img/user.png">
+							<div class="l1-container">
+								<div>Kien Chan</div>
+								<div>Doctor</div>
+							</div>
+						</div>
+					</div>
+					<div class="l2">
+						<div class="l2-container">
+							<img src="../../img/small_user.png">
+							<div onclick="location.href='../doctor/profile/'">My profile</div>
+						</div>
+					</div>
+					<div class="l3">
+						<div class="l3-container">
+							<img src="../../img/power.png">
+							<div>Log out</div>
+						</div>
+					</div>
+				</div>
+				<!--Patients List-->
+				<!-- / Navbar -->
+			</div>
+			<!-- / Layout page -->
+		</div>
+
+		<!-- Overlay -->
+	</div>
+	<!-- / Layout wrapper -->
+
+
+	</div>
+	<!-- Core JS -->
+	<!-- build:js assets/vendor/js/core.js -->
+	<script src="../../js/jquery/jquery.js"></script>
+	<script src="../../js/bootstrap/bootstrap.js"></script>
+	<script src="../../js/perfect-scrollbar/perfect-scrollbar.js"></script>
+	<script src="../../js/menu.js"></script>
+
+	<!-- endbuild -->
+
+	<!-- Vendors JS -->
+	<script src="../../js/apex-charts/apexcharts.js"></script>
+
+	<!-- Main JS -->
+	<script src="../../js/assets/main.js"></script>
+
+	<!-- Page JS -->
+	<script src="../../js/dashboards-analytics.js"></script>
+	<div class="layout-wrapper layout-content-navbar">
+
+
+		<!-- Overlay -->
+
+		<!-- / Layout wrapper -->
+
+		<!-- Core JS -->
+		<!-- build:js assets/vendor/js/core.js -->
+
+		<script src="../../js/jquery/jquery.js"></script>
+		<script src="../../js/bootstrap/bootstrap.js"></script>
+		<script src="../../js/perfect-scrollbar/perfect-scrollbar.js"></script>
+		<script src="../../js/menu.js"></script>
+
+		<!-- endbuild -->
+
+		<!-- Vendors JS -->
+		<script src="../../js/apex-charts/apexcharts.js"></script>
+
+		<!-- Main JS -->
+		<script src="../../js/assets/main.js"></script>
+
+		<!-- Page JS -->
+		<script src="../../js/dashboards-analytics.js"></script>
+
+		<!--For bac si profile-->
+		<!--For patient list-->
+		<script type="module" src="../../js/long_term.js"></script>
+		<script src="../../js/searchPatient.js"></script>
+		<script type="module" src="../../js/crud_data.js"></script>
+
+		<!--Doctor profile-->
+		<script src="../../js/self_profile.js"></script>
+</body>
+
+</html>

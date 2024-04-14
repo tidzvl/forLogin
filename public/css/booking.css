@@ -1,0 +1,519 @@
+:root{
+    --body-color: rgb(228, 233, 247);
+    --sidebar-color: linear-gradient(0, #1488D8, #ffffff);
+    --primary-color: #1488D8;
+    --primary-color-light: rgb(246, 245, 255);
+    --toggle-color: rgb(221, 221, 221);
+    --text-color: rgb(0, 0, 0);
+    --text-in-menu: white;
+    --hover-color: #030391;
+    --border-color: rgb(214, 218, 231);
+    --background-color: #f3f4f4;
+
+    --tran-02: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.4s ease;
+    --tran-05: all 0.5s ease;
+}
+
+.main-window .bar {
+    margin: 30px 0px 0px 0px;
+    width: 100%;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.main-window .bar .search {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.main-window .bar .search input {
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    height: 30px;
+    width: 300px;
+    margin-left: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: gainsboro;
+    padding: 5px;
+
+}
+
+.main-window .bar .search select {
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    height: 30px;
+    width: 65px;
+    margin-left: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: gainsboro;
+    padding: 5px;
+}
+
+.main-window .bar .search button {
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    height: 30px;
+    width: 70px;
+    margin-left: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: gainsboro;
+    background: var(--primary-color);
+    color: white;
+    padding: 5px;
+}
+
+.main-window .bar .search button:hover {
+    background: var(--hover-color);
+}
+
+
+.main-window .bar .funct {
+    display: flex;
+    flex-direction: row;
+    margin: 5px;
+}
+
+.main-window .bar .funct div {
+    display: inline;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    background-color: var(--primary-color);
+}
+
+
+.main-window .bar .funct .add-booking:hover {
+    transition: var(--tran-05);
+    background-color: var(--hover-color);
+}
+
+.main-window .add {
+    background-color: white;
+    margin-top: 20px;
+    margin-left: 50px;
+    padding: 25px;
+    width: calc(100% - 150px);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-window .add h1{
+    padding-bottom: 20px;
+}
+
+.main-window .add input,
+.main-window .add select {
+    padding: 5px;
+    border: 1px solid var(--border-color); 
+    border-radius: 4px;
+}
+
+.main-window .add button {
+    background-color: var(--body-color);
+    border: none;
+    border-radius: 4px;
+    width: 100px;
+    padding: 5px;
+    text-align: center;
+}
+
+.scroll-part {
+    background-color: var(--background-color);
+    margin: 25px 0px;
+    width: 100%;
+    max-height: 550px;
+    box-shadow: 0 5px 10px gray;
+    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: scroll;
+}
+
+/* table */
+table {
+    background-color: white;
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    text-align: center;
+
+    thead {
+        box-shadow: 0 5px 10px var(--background-color);
+        position: sticky;
+        top: 0;
+    }
+    th {
+        padding: 1rem 1.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1rem;
+        font-size: 10px;
+        font-weight: 900;
+        position: sticky;
+        top: 0;
+    }
+    td {
+        padding: 0.5rem 0.5rem;
+        font-size: 12px;
+    }
+}
+
+table tbody tr:hover {
+    background: var(--background-color);
+}
+
+.patient .add {
+    background-color: red;
+    align-items: center;
+    justify-content: center;
+    height: 5px;
+}
+
+/* popup */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+  
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+  
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* POPUP */
+.popup {
+    position: absolute;
+    top: -150%;
+    left: 55%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.25);
+    width: 370px;
+    height: 600px;
+    padding: 20px 30px;
+    background: #ffffff;
+    box-shadow: 2px 2px 5px 5px gray;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.popup #submit {
+    border: none;
+    padding: 5px;
+}
+
+.popup.active {
+    top:50%;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.main-window.active, .sidebar.active {
+    opacity: 0.3;
+    user-select: none;
+    pointer-events: none;
+}
+
+.popup .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 15px;
+    height: 15px;
+    background: gray;
+    color: white;
+    text-align: center;
+    line-height: 15px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.popup .form h2 {
+    text-align: center;
+    margin: 10px 0px 10px;
+    font-size: 25px;
+}
+
+.popup .form .form-element {
+    margin: 10px 0px;
+}
+
+.popup .form .form-element label {
+    font-size: 14px;
+}
+
+.popup .form .form-element input[type="text"],
+.popup .form .form-element input[type="number"],  
+.popup .form .form-element input[type="date"],
+.popup .form .form-element select {
+    margin-top: 5px;
+    display: block;
+    width: 100%;
+    padding: 7px;
+}
+
+#controlDiv {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#controlDiv button {
+    margin: 5px;
+    padding: 5px;
+    width: 30px;
+    cursor: pointer;
+    border: none;
+    background: var(--background-color);
+}
+
+#controlDiv button:hover {
+    color: white;
+    background: var(--hover-color);
+    transition: var(--tran-04);
+}
+
+/* POPUP CONFIRM */
+.add-confirm {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: #888;
+    cursor: pointer;
+}
+.add-confirm:hover {
+    background-color: whitesmoke;
+    cursor: pointer;
+}
+
+.remove-confirm {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    background-color: #888;
+    cursor: pointer;
+}
+.remove-confirm:hover {
+    background-color: whitesmoke;
+    cursor: pointer;
+}
+
+
+
+/* Confirm add to treatment */
+.popup-confirm-add {
+    position: absolute;
+    top: -150%;
+    left: 56%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1);
+    width: calc(90% - 700px);
+    height: 95%;
+    padding: 20px 30px;
+    background: #ffffff;
+    box-shadow: 2px 2px 5px 5px gray;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.popup-confirm-add #submit {
+    border: none;
+    padding: 5px;
+}
+
+.popup-confirm-add.active {
+    top:50%;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.popup-confirm-add button {
+    margin: 10px 0px 2px;
+}
+
+.popup-confirm-add .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 15px;
+    height: 15px;
+    background: gray;
+    color: white;
+    text-align: center;
+    line-height: 15px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+
+.popup-confirm-add .form h2 {
+    text-align: center;
+    margin: 5px 0px 5px;
+    font-size: 25px;
+}
+
+
+.popup-confirm-addp .form .form-element label {
+    font-size: 14px;
+}
+
+.popup-confirm-add .form .form-element input[type="text"],
+.popup-confirm-add .form .form-element input[type="number"],  
+.popup-confirm-add .form .form-element input[type="date"],
+.popup-confirm-add .form .form-element select {
+    margin-top: 5px;
+    display: block;
+    width: 100%;
+    padding: 7px;
+}
+
+/* REMOVE */
+.popup-confirm-remove {
+    position: absolute;
+    top: -150%;
+    left: 56%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1);
+    width: 300px;
+    height: 220px;
+    padding: 20px 30px;
+    background: #ffffff;
+    box-shadow: 2px 2px 5px 5px gray;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.popup-confirm-remove.active {
+    top:50%;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.popup-confirm-remove .close,
+.popup-confirm-remove .submit {
+    margin: 10px 0px 2px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.popup-confirm-remove .remove-content h2 {
+    margin: 10px 0px;
+    justify-content: center;
+    text-align: center;
+    font-size: 24px;
+}
+
+.popup-confirm-remove .remove-content p {
+    margin: 15px 0px;
+    justify-content: center;
+    text-align: center;
+    font-size: 16px;
+}
+
+.popup-confirm-remove .remove-content .controls {
+    display: flex;
+    justify-content: space-between;
+    width: 175px;
+    margin: 20px 30px 0px;
+}
+
+.popup-confirm-remove .remove-content .controls .close {
+    color: #1488D8;
+    background: transparent;
+}
+
+.popup-confirm-remove .remove-content .controls .close:hover {
+    background: #aaaaaa3f;
+}
+
+.popup-confirm-remove .remove-content .controls .submit:hover {
+    background: #aaaaaa3f;
+}
+
+@media (max-width: 600px) {
+    .sidebar.close ~.main-window {
+        width: 96%;
+        left: 10px;
+    }
+    .main-window .bar {
+        left: 0px;
+        margin-left: 0px;
+        /* background-color: red; */
+    }
+    .main-window .bar .search {
+        /* background-color: #030391; */
+        padding-left: 0px;
+        padding-right: 0px;
+        display: block;
+    }
+    .main-window .bar .search input {
+        width: calc(100% - 30px);
+    }
+    .main-window .bar .search .form-select,
+    .main-window .bar .search .btn,
+    .main-window .bar .search .form-control {
+        margin-top: 5px;
+    }
+    #searchButton {
+        padding-right: 0px;
+        border-right: 0px;
+    }
+    .main-window .bar .funct {
+        font-size: 13px;
+        /* background-color: red; */
+        margin: 0px;
+        border: 0px;
+        margin-right: 10px;
+    }
+    .popup {
+        left: 45%;
+        scale: 0.9;
+    }
+}

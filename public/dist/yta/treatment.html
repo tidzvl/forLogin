@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="../../../img/main.ico" />
+    <meta http-equiv="X-UA-C0mpatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="/dist/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/dist/css/treatment.css">
+    <link rel="stylesheet" type="text/css" href="/dist/css/booking.css">
+    <link rel="stylesheet" type="text/css" href="/dist/css/loading.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet" />
+    <title>IT HOSPITAL</title>
+
+</head>
+<body>
+    <!-- SIDE BAR -->
+    <nav class="sidebar">
+        <header>
+            <div class="image-text">
+                <a href="../yta/">
+                    <span class="image">
+                        <img src="../../img/logo.png" alt="logo">
+                    </span>
+                    <div class="text header-text">
+                        <span class="name">IT HOSPITAL</span>
+                    </div>
+                </a>
+            </div>
+
+            <i class='bx bxs-chevron-left toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+                <!-- <li class="search-box">
+                    <i class='bx bx-search icon'></i>s
+                    <input type="search" placeholder="Search..." >
+                </li> -->
+                <li class="nav-link dashboard">
+                    <a href="../yta/">
+                        <i class='menu-icon tf-icons bx bx-home-circle icon'></i>
+                        <span class="text nav-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="text menu-header small">
+                    <span class="menu-header-text">DANH MỤC QUẢN LÝ</span>
+                </li>
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="booking.html">
+                            <i class='bx bx-user-plus icon'></i>
+                            <span class="text nav-text">Danh sách chờ</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="treatment.html">
+                            <i class='bx bx-first-aid icon'></i>
+                            <span class="text nav-text">Quá trình điều trị</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="bill.html">
+                            <i class='bx bx-money-withdraw icon' ></i>
+                            <span class="text nav-text">Xuất hoá đơn</span>
+                        </a>
+                    </li>     
+                </ul>
+            </div>
+
+            <div class="logout">
+                <li class="">
+                    <a href="">
+                        <i class='bx bx-log-out icon'></i>
+                        <span class="text nav-text">Log out</span>
+                    </a>
+                </li>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- MAIN WINDOW -->
+    <nav class="main-window">
+        <h6>Quá trình điều trị</h6>
+        <form class="bar">
+            <div class="search">
+                <input id="searchBar" type="text" class="form-control" placeholder="Tìm kiếm" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <select class="form-select" id="categorySelected">
+                    <option selected value="1">CCCD</option>
+                    <option value="2">Tên</option>
+                  </select>
+                <button id="searchButton" class="btn btn-outline-secondary" type="button">Tìm kiếm</button>
+            </div>
+        </form>
+
+        <div class="scroll-part">
+            <table class="patient">
+                <thead>
+                    <th>STT</th>
+                    <th>CCCD</th>
+                    <th>Họ và tên</th>
+                    <th>Giới tính</th>
+                    <th>BHYT</th>
+                    <th>Ngày nhập viện</th>
+                    <th>Phòng</th>
+                    <th>Mã hoá đơn</th>
+                </thead>
+                <tbody id="tbody1">
+                    
+                </tbody>
+            </table>
+        </div>
+    </nav>
+
+    <!-- POPUP-->
+    <form class="popup">
+        <div class="close-btn">&times;</div>
+        <div class="form">
+            <h2>Thêm hẹn khám</h2>
+            <div class="form-element">
+                <label for="name">Họ và tên</label>
+                <input 
+                    type="text" 
+                    id="name"
+                    placeholder="Fullname"
+                    required
+                >
+            </div>
+            <div class="form-element">
+                <label for="id">CCCD</label>
+                <input 
+                    type="text" 
+                    id="id"
+                    placeholder="ID"
+                    required
+                >
+            </div>
+            <div class="form-element">
+                <label for="appointment">Ngày hẹn</label>
+                <input 
+                    type="date" 
+                    id="appointment"
+                    required
+                >
+            </div>
+            <div class="form-element">
+                <label for="sex">Giới tính</label>
+                <select name="" id="sex">
+                    <option value="">Giới tính</option>
+                    <option value="Nữ">Nữ</option>
+                    <option value="Nam">Nam</option>
+                    <option value="Hiden">Hiden</option>
+                </select>
+            </div>
+            <div class="form-element">
+                <label for="email">Email</label>
+                <input 
+                    type="text" 
+                    id="email"
+                    required
+                >
+            </div>
+
+            <div class="form-element">
+                <label for="phone">SĐT</label>
+                <input 
+                    type="text" 
+                    id="phone"
+                    required
+                >
+            </div>
+            <button>Thêm</button>
+        </div>
+    </form>
+
+    <!-- CONFIRM REMOVE -->
+    <form class="popup-confirm-remove">
+        <div class="remove-content">
+            <h2>Xác nhận xoá</h2>
+            <p>Sau khi xoá sẽ không thể khôi phục</p>
+            <div class="controls">
+                <div class="close">Huỷ</div>
+                <div class="submit">Xác nhận</div>
+            </div>
+        </div>      
+    </form>
+    
+    <!-- MODYFY -->
+    <form class="modify">
+        <div class="close-btn">&times;</div>
+        <div class="form">
+            <h2>Chỉnh sửa</h2>
+            <div class="form-element">
+                <label for="name">Họ và tên</label>
+                <input 
+                    type="text" 
+                    class="name"
+                    id="named"
+                    placeholder="Fullname"
+                    required
+                >
+            </div>
+            <div class="form-element">
+                <label for="id">CCCD</label>
+                <input 
+                    type="text" 
+                    class="id"
+                    id="idd"
+                    placeholder="ID"
+                    required
+                >
+            </div>
+            <div class="form-element">
+                <label for="sex">Giới tính</label>
+                <select name="" class="sex" id="sexd">
+                    <option value="">Giới tính</option>
+                    <option value="Nữ">Nữ</option>
+                    <option value="Nam">Nam</option>
+                    <option value="Hiden">Ẩn</option>
+                </select>
+            </div>
+            <div class="form-element">
+                <label for="healthInsurance">BHYT</label>
+                <input 
+                    type="text" 
+                    class="healthInsurance"
+                    id="healthInsuranced"
+                    placeholder="Health Insurance Number"
+                    required
+                >
+            </div>
+            <div class="form-element">
+                <label for="admissionDate">Ngày nhập viện</label>
+                <input 
+                    type="date" 
+                    class="admissionDate"
+                    id="admissionDated"
+                    placeholder="Admission Date"
+                    required
+                >
+            </div>
+            <div class="form-element">
+                <label for="room">Phòng</label>
+                <input 
+                    type="text" 
+                    class="room"
+                    id="roomd"
+                    placeholder="Medical History"
+                    required
+                >
+            </div>
+            <button>Sửa</button>
+        </div>
+    </form>
+    <div class="loading">
+        <div class="loading-cat">
+            <div class="body"></div>
+            <div class="head">
+                <div class="face"></div>
+            </div>
+            <div class="foot">
+                <div class="tummy-end"></div>
+                <div class="bottom"></div>
+                <div class="legs left"></div>
+                <div class="legs right"></div>
+            </div>
+            <div class="hands left"></div>
+            <div class="hands right"></div>
+        </div>
+    </div>
+</body>
+
+<script src="/dist/index.bundle.js" type="module"></script>
+<script src="/dist/treatment.bundle.js" type="module"></script>
+
+
+</html>

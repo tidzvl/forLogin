@@ -1,0 +1,234 @@
+/* body{
+    height: 1000px;
+} */
+.information-headding{
+    z-index: 1000;
+    position: absolute;
+    left: 18px;
+    top: 80px;    
+}
+.information-container{        
+    position: absolute;
+    left: 15px;
+    top: 130px;
+    right: 10px;
+    bottom: 10px;
+    z-index: 10;
+
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-width:thin;
+}
+.header-self-info,
+.header-contact-info,
+.header-schedule-info{
+    font-size: 20px;
+    font-weight: bold;    
+    background-color: rgb(219, 228, 243);
+    color: rgb(90, 141, 238);
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+/*Thong tin ca nhan*/
+.self-information{
+    /* border: 1px solid lightblue; */
+    position: absolute;
+    left: 10px;
+    right: 10px;    
+    top: 10px;    
+}
+.self-information-container{
+    display: grid;
+    grid-template-columns: 100px 1fr 1fr 1fr;
+    padding-left: 20px;
+}
+
+.info{
+    padding-left: 100px;
+}
+.info1{
+    padding-left: 50px;
+}
+.information .content{
+    /* margin-bottom: 30px; */
+    font-size: 15px;  
+    color: black;    
+}
+.information .heading{
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+}
+.heading,
+.content{
+    margin-bottom: 10px;
+}
+
+/*Thong tin lien lac*/
+.contact-information{
+    /* border: 1px solid lightpink; */
+    position: absolute;
+    top: 220px;
+    left: 10px;
+    right: 10px;
+}
+.contact-content{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.contact{
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid red;     */
+}
+.zalo,
+.facebook,
+.sdt,
+.email{
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+}
+.zalo-contact,
+.fb-contact,
+.number-contact,
+.email-contact{
+    color: black;
+    font-size: 14px;
+}
+.zalo-content,
+.number-content,
+.email-content,
+.fb-content{
+    padding-left: 20px;
+}
+
+/*Thong tin kham benh*/
+.schedule-information{
+    /* border: 1px solid lightcoral; */
+    position: absolute;
+    top: 400px;
+    left: 10px;
+    right: 10px;
+}
+.schedule-info{
+    padding-left: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;    
+}
+.schedule-head{
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+}
+.schedule-content{
+    /* border: 1px solid red; */
+    margin-bottom: 10px;
+}
+
+/*My profile*/
+.my-profile{    
+    position: absolute;    
+    right: 32px;
+    top: 60px;
+    z-index: 1000;
+    height: 150px;
+    width: 220px;
+    background-color: white;
+    border-radius: 5px;
+    opacity: 0;
+}
+
+.l1{
+    height: 60px;
+}
+.l1 img{
+    height: 40px;
+    margin: 0 10px;
+}
+.l1{
+    display: flex;
+    align-items: center;
+}
+.l1-child-container{
+    height: 50px;
+    width: 100%;    
+    display: flex;
+    align-items: center;
+}
+.l1-child-container:hover{
+    background-color: rgb(244,244,244);
+    cursor: pointer;
+}
+.l2{
+    border-top: 1px solid rgb(212, 216, 221);
+    border-bottom: 1px solid rgb(212, 216, 221);
+}
+.l2,
+.l3{
+    height: 45px;
+}
+.l2-container img,
+.l3-container img{
+    height: 15px;
+    margin-right: 8px;
+    margin-left: 20px;
+}
+.l2-container,
+.l3-container{
+    display: flex;
+    align-items: center;
+    height: 30px;
+    margin-top: 8px;
+}
+.l2-container:hover,
+.l3-container:hover{
+    background-color: rgb(244,244,244);
+    cursor: pointer;
+}
+
+.show{
+    opacity: 1;
+}
+@media (max-width: 814px){
+    .self-information-container{
+        display: grid;
+        grid-template-columns: 80px 1fr 1fr;
+        padding-left: 20px;
+    }
+    .info2{
+        opacity: 0;
+    }
+}
+@media (max-width: 558px){
+    .self-information-container{
+        display: grid;
+        grid-template-columns: 10px 1fr 1fr;
+        padding-left: 20px;
+    }
+}
+@media (max-width: 700px){
+    .schedule-info{
+        padding-left: 20px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .time-treatment{
+        padding-left: 10px;
+    }
+    .patient-birth{
+        opacity: 0;
+        display: none;
+    }
+}
+@media (max-width: 770px){
+    .my-profile{
+        width: 100%;
+        left: 10px;
+    }
+    .information-container{
+        top: 220px;
+    }
+}

@@ -1,0 +1,22 @@
+[
+    {
+        "med_Id" : "001",
+        "med_name" : "bioacimin",
+        "price" : 5000
+    },
+    {
+        "med_Id" : "002",
+        "med_name" : "paracetamol",
+        "price" : 5000
+    },
+    {
+        "med_Id" : "003",
+        "med_name" : "cephalexin",
+        "price" : 5000
+    },
+    {
+        "med_Id" : "004",
+        "med_name" : "efferalgan",
+        "price" : 5000
+    }
+]

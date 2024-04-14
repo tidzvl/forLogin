@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+<html lang="vi" class="light-style layout-navbar-fixed layout-menu-fixed layout-compact" dir="ltr"
+  data-theme="theme-default" data-assets-path="" data-template="vertical-menu-template">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+  <title>Quản lý - Staff | IT HOSPITAL</title>
+
+  <meta name="description" content="" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../../img/main.ico" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="../../css/boxicons.css" />
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="../../css/core.css" class="template-customizer-core-css" />
+  <link rel="stylesheet" href="../../css/theme.css" class="template-customizer-theme-css" />
+  <link rel="stylesheet" href="../../css/demo.css" />
+
+  <!-- Vendors CSS -->
+  <link rel="stylesheet" href="../../css/perfect-scrollbar/perfect-scrollbar.css" />
+  <link rel="stylesheet" href="../../css/bootstrap/datatables.bootstrap5.css" />
+  <link rel="stylesheet" href="../../css/bootstrap/responsive.bootstrap5.css" />
+  <link rel="stylesheet" href="../../css/bootstrap/buttons.bootstrap5.css" />
+
+  <!-- Page CSS -->
+
+  <!-- Helpers -->
+  <script src="../../js/helpers.js"></script>
+  <script src="../../js/config.js"></script>
+</head>
+
+<body>
+  <!-- Layout wrapper -->
+  <div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+
+      <!-- Menu -->
+      <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+        <div class="app-brand demo">
+          <a href="../../dashboards/" class="app-brand-link">
+            <span class="app-brand-text demo menu-text fw-bold ms-2">IT HOSPITAL</span>
+          </a>
+          <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
+            <i class="bx menu-toggle-icon d-none d-xl-block fs-4 align-middle"></i>
+            <i class="bx bx-x d-block d-xl-none bx-sm align-middle"></i>
+          </a>
+        </div>
+
+        <ul class="menu-inner py-1">
+          <!-- Dashboards -->
+          <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+              <i class="menu-icon tf-icons bx bx-home-circle"></i>
+              <div data-i18n="Dashboards">Dashboards</div>
+            </a>
+            <ul class="menu-sub">
+              <li class="menu-item">
+                <a href="../../dashboards/" class="menu-link">
+                  <div>Index</div>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <!-- Forms & Tables -->
+          <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Quan ly of giam doc</span>
+          </li>
+          <!-- Forms -->
+          <li class="menu-item active open">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+              <i class="menu-icon tf-icons bx bx-detail"></i>
+              <div>Quan ly staff</div>
+            </a>
+            <ul class="menu-sub">
+              <li class="menu-item active">
+                <a href="../quanly-staff/" class="menu-link">
+                  <div>Nhan vien noi bo</div>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+              <i class="menu-icon tf-icons bx bx-carousel"></i>
+              <div>Quan ly - Chuc nang</div>
+            </a>
+            <ul class="menu-sub">
+              <li class="menu-item">
+                <a href="../quanly-thuoc/" class="menu-link">
+                  <div>Quan ly thuoc</div>
+                </a>
+              </li>
+            </ul>
+            <ul class="menu-sub">
+              <li class="menu-item">
+                <a href="../quanly-thietbi/" class="menu-link">
+                  <div>Quan ly thiet bi</div>
+                </a>
+              </li>
+            </ul>
+          </li>
+          </li>
+          <!-- Charts & Maps -->
+          <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Thong ke doanh thu</span>
+          </li>
+          <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+              <i class="menu-icon tf-icons bx bx-chart"></i>
+              <div>Profit</div>
+            </a>
+            <ul class="menu-sub">
+              <li class="menu-item">
+                <a href="../../dashboards/comingsoon.html" class="menu-link">
+                  <div>Profit of Kham'</div>
+                </a>
+              </li>
+              <li class="menu-item">
+                <a href="../../dashboards/comingsoon.html" class="menu-link">
+                  <div>Profit of Medical</div>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </aside>
+      <!-- / Menu -->
+
+
+      <!-- Layout container -->
+      <div class="layout-page">
+        <!-- Navbar -->
+        <nav class="layout-navbar navbar navbar-expand-xl align-items-center bg-navbar-theme" id="layout-navbar">
+          <div class="container-xxl">
+            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+              <ul class="navbar-nav flex-row align-items-center ms-auto">
+                <!-- User -->
+                <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                    <div class="avatar avatar-online">
+                      <img src="../../img/user.png" alt class="rounded-circle" />
+                    </div>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                      <a class="dropdown-item" href="../../dashboards/comingsoon.html">
+                        <div class="d-flex">
+                          <div class="flex-shrink-0 me-3">
+                            <div class="avatar avatar-online">
+                              <img src="../../img/user.png" alt class="rounded-circle" />
+                            </div>
+                          </div>
+                          <div class="flex-grow-1">
+                            <span class="fw-medium d-block lh-1">TinDepTrai</span>
+                            <small>Admin</small>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="../../dashboards/comingsoon.html">
+                        <i class="bx bx-user me-2"></i>
+                        <span class="align-middle">My Profile</span>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="../../index.html" target="_blank">
+                        <i class="bx bx-power-off me-2"></i>
+                        <span class="align-middle">Log Out</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <!--/ User -->
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+        <!-- / Navbar -->
+
+        <!-- Content wrapper -->
+        <div class="content-wrapper">
+          <!-- Content -->
+          <div class="container-xxl flex-grow-1 container-p-y">
+            <div class="row g-4 mb-4">
+              <div class="col-sm-6 col-xl-3">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex align-items-start justify-content-between">
+                      <div class="content-left">
+                        <span>Dogtor</span>
+                        <div class="d-flex align-items-end mt-2">
+                          <h4 class="mb-0 me-2" id="count_doctor">...</h4>
+                        </div>
+                        <small>Total Doctors</small>
+                      </div>
+                      <div class="avatar">
+                        <span class="avatar-initial rounded bg-label-primary">
+                          <i class="bx bx-user bx-sm"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xl-3">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex align-items-start justify-content-between">
+                      <div class="content-left">
+                        <span>Nurse</span>
+                        <div class="d-flex align-items-end mt-2">
+                          <h4 class="mb-0 me-2" id="count_nurse">...</h4>
+                        </div>
+                        <small>Total Nurse</small>
+                      </div>
+                      <div class="avatar">
+                        <span class="avatar-initial rounded bg-label-success">
+                          <i class="bx bx-group bx-sm"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Users List Table -->
+            <div class="card">
+              <div class="card-header border-bottom">
+                <h5 class="card-title">Search Filter</h5>
+                <div class="d-flex justify-content-between align-items-center row py-3 gap-3 gap-md-0">
+                  <div class="col-md-4 user_role"></div>
+                  <div class="col-md-4 user_plan"></div>
+                  <div class="col-md-4 user_status"></div>
+                </div>
+              </div>
+              <div class="card-datatable table-responsive">
+                <table class="datatables-users table">
+                  <thead class="border-top">
+                    <tr>
+                      <th></th>
+                      <th>Staff</th>
+                      <th>Role</th>
+                      <th>Degree</th>
+                      <th>Department</th>
+                      <th>Contact</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+              <!-- Offcanvas to add new user -->
+              <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasAddUser"
+                aria-labelledby="offcanvasAddUserLabel">
+                <div class="offcanvas-header border-bottom">
+                  <h6 id="offcanvasAddUserLabel" class="offcanvas-title">Add User</h6>
+                  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body mx-0 flex-grow-0">
+                  <form class="add-new-user pt-0" id="addNewUserForm" onsubmit="return false">
+                    <div class="mb-3">
+                      <label class="form-label" for="add-user-fullname">Full Name</label>
+                      <input type="text" class="form-control" id="add-user-fullname" placeholder="John Doe"
+                        name="userFullname" aria-label="John Doe" />
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label" for="add-user-email">Email</label>
+                      <input type="text" id="add-user-email" class="form-control" placeholder="viet69@example.com"
+                        aria-label="viet69@example.com" name="userEmail" />
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label" for="add-user-contact">Contact</label>
+                      <input type="text" id="add-user-contact" class="form-control phone-mask"
+                        placeholder="+84 353431537" aria-label="viet69@example.com" name="userContact" />
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label" for="add-user-degree">Degree</label>
+                      <input type="text" id="add-user-degree" class="form-control" placeholder="PhD"
+                        aria-label="jdoe1" name="degree" />
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label" for="role">ROLE</label>
+                      <select id="role" class="select2 form-select">
+                        <option value="">Select Role</option>
+                        <option value="doctor">Doctor</option>
+                        <option value="nurse">Nurse</option>
+                        <option value="admin">Admin</option>
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label" for="user-role">Specialist</label>
+                      <select id="user-Specialist" class="form-select">
+                        <option value="" selected>Select</option>
+                        <option value="Noi">Nội</option>
+                        <option value="Ngoai">Ngoại</option>
+                        <option value="Nhi">Nhi</option>
+                        <option value="Da">Da</option>
+                        <option value="Than_kinh">Thần kinh</option>
+                      </select>
+                    </div>
+                    <div class="mb-4">
+                      <label class="form-label" for="user-plan">Department</label>
+                      <select id="user-Department" class="form-select">
+                        <option value="">Select</option>
+                        <option value="Nội tổng hợp (room 1)">Nội tổng hợp (room 1)</option>
+                        <option value="Ngoại tổng hợp (room 2)">Ngoại tổng hợp (room 2)</option>
+                        <option value="Chấn thương chỉnh hình (room 3)">Chấn thương chỉnh hình (room 3)</option>
+                        <option value="Hồi sức cấp cứu (room 4)">Hồi sức cấp cứu (room 4)</option>
+                        <option value="Thẫm mĩ (room 5)">Thẫm mĩ (room 5)</option>
+                        <option value="Phẫu thuật (room 6)">Phẫu thuật (room 6)</option>
+                        <option value="Nhi đa khoa (room 7)">Nhi đa khoa (room 7)</option>
+                        <option value="Nhi trầm cảm (room 8)">Nhi trầm cảm (room 8)</option>
+                        <option value="...">...</option>
+                      </select>
+                    </div>
+                    <button id="submit" type="submit" class="btn btn-primary me-sm-3 me-1 data-submit">Submit</button>
+                    <button type="reset" class="btn btn-label-secondary" data-bs-dismiss="offcanvas">Cancel</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- / Content -->
+        </div>
+        <!-- Content wrapper -->
+      </div>
+      <!-- / Layout page -->
+    </div>
+  </div>
+  <!-- / Layout wrapper -->
+
+  <!-- Core JS -->
+  <!-- build:js assets/vendor/js/core.js -->
+
+  <script src="../../js/jquery/jquery.js"></script>
+  <script src="../../js/bootstrap/bootstrap.js"></script>
+  <script src="../../js/perfect-scrollbar/perfect-scrollbar.js"></script>
+  <script src="../../js/menu.js"></script>
+
+  <!-- endbuild -->
+
+  <!-- Vendors JS -->
+  <script src="../../js/bootstrap/datatables-bootstrap5.js"></script>
+
+  <!-- Main JS -->
+  <script src="../../js/assets/main.js"></script>
+
+  <!-- Page JS -->
+  <script src="../../js/app-user-list.js"></script>
+</body>
+
+</html>

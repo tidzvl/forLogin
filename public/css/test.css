@@ -1,0 +1,100 @@
+.d-flex {
+  display: flex;
+}
+
+.col-lg-8 {
+  flex: 0 0 auto;
+  width: 66.66667%;
+}
+
+.authentication-bg {
+  background-color: #f8f9fa;
+}
+
+.p-sm-5 {
+  padding: 3rem!important;
+}
+
+.justify-content-center {
+  justify-content: center!important;
+}
+
+.flex-column {
+  flex-direction: column!important;
+}
+
+.w-px-700 {
+  width: 700px!important;
+}
+
+.app-brand {
+  position: relative;
+  z-index: 1;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #dee2e6!important;
+}
+
+.mx-3 {
+  margin-left: 1rem!important;
+  margin-right: 1rem!important;
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem!important;
+}
+
+.h3 {
+  font-size: 1.75rem;
+}
+
+.fw-bold {
+  font-weight: 700!important;
+}
+
+.pt-4 {
+  padding-top: 1.5rem!important;
+}
+
+.mb-3 {
+  margin-bottom: 1rem!important;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.g-3 {
+  --bs-gutter-x: 1rem;
+  --bs-gutter-y: 1rem;
+  margin-right: calc(var(--bs-gutter-x) * -1);
+  margin-left: calc(var(--bs-gutter-x) * -1);
+}
+
+.col-sm-6 {
+  flex: 0 0 auto;
+  width: 50%;
+}
+
+.form-label {
+  display: inline-block;
+  margin-bottom: .5rem;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
