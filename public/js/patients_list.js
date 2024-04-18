@@ -132,20 +132,20 @@ function getAllPatients(myPatientList){
                     <div class="self-information-container">
                     <div class="header-information">Thong tin ca nhan</div>
                     <div class="header-container">Name</div>
-                    <div class="information-content">${myPatientList[id_of_patient].fullname}</div>
+                    <div class="information-content">${myPatientList[id_of_patient].name}</div>
                     <div class="header-container">CCCD</div>
-                    <div class="information-content">${myPatientList[id_of_patient].cccd}</div>
-                    <div class="header-container">Birth</div>
-                    <div class="information-content">${myPatientList[id_of_patient].birth}</div>
-                    <div class="header-container">Que quan</div>
-                    <div class="information-content">${myPatientList[id_of_patient].quequan}</div>
+                    <div class="information-content">${myPatientList[id_of_patient].idd}</div>
+                    <div class="header-container">Giới tính</div>
+                    <div class="information-content">${myPatientList[id_of_patient].sex}</div>
+                    <div class="header-container">Room</div>
+                    <div class="information-content">${myPatientList[id_of_patient].room}</div>
                     </div>
                     <div class="contact-information-container">
                         <div class="header-information">Thong tin lien lac</div>
                         <div class="header-container">Address</div>
                         <div class="information-content">${myPatientList[id_of_patient].address}</div>
                         <div class="header-container">Phone number</div>
-                        <div class="information-content">${myPatientList[id_of_patient].contact}</div>
+                        <div class="information-content">${myPatientList[id_of_patient].phone}</div>
                     </div>
                     <div class="treat-information-container">
                         <div class="header-information">Thong tin kham benh</div>
@@ -221,8 +221,8 @@ if (!response.ok) {
 return response.json();
 })
 .then(data => {
-benhnhan_full = data;
-getAllPatients(benhnhan_full)
+initialList = data;
+getAllPatients(initialList)
 
 })
 .catch(error => {
@@ -239,7 +239,7 @@ previousButton.addEventListener('click', () => {
     if(i < 0){
         i = 0 
     }
-    const pageNumber = document.querySelector('.page-number')
+    const pageNumber = document.getElementById("page-number")
 
     pageNumber.innerHTML = i+1
     j = i*5 
@@ -251,10 +251,10 @@ previousButton.addEventListener('click', () => {
         const longTerm = document.querySelector(`.treat-button${k+1}`)
         const info = document.querySelector(`.info-button${k+1}`)
         const remove = document.querySelector(`.remove-button${k+1}`)
-        fullname.innerHTML = initialList[j].fullname
+        fullname.innerHTML = initialList[j].name
         sex.innerHTML = initialList[j].sex
-        contact.innerHTML = initialList[j].contact
-        bhyt.innerHTML = initialList[j].bhyt
+        contact.innerHTML = initialList[j].phone
+        bhyt.innerHTML = initialList[j].healthInsurance
 
         longTerm.innerHTML = `<td class="long-term-content">
         <button id="${k+1}" class="treat-button${k+1}">Treat</button>
@@ -292,29 +292,29 @@ previousButton.addEventListener('click', () => {
             
             myOutput1 += `
             <div class="self-information-container">
-            <div class="header-information">Thong tin ca nhan</div>
-            <div class="header-container">Name</div>
-            <div class="information-content">${initialList[id_of_patient].fullname}</div>
-            <div class="header-container">CCCD</div>
-            <div class="information-content">${initialList[id_of_patient].cccd}</div>
-            <div class="header-container">Birth</div>
-            <div class="information-content">${initialList[id_of_patient].birth}</div>
-            <div class="header-container">Que quan</div>
-            <div class="information-content">${initialList[id_of_patient].quequan}</div>
-            </div>
-            <div class="contact-information-container">
-                <div class="header-information">Thong tin lien lac</div>
-                <div class="header-container">Address</div>
-                <div class="information-content">${initialList[id_of_patient].address}</div>
-                <div class="header-container">Phone number</div>
-                <div class="information-content">${initialList[id_of_patient].contact}</div>
-            </div>
-            <div class="treat-information-container">
-                <div class="header-information">Thong tin kham benh</div>
-                <div class="information-content">Bi so mui, nhuc dau, ho, chong mat, buon non, ...</div>
-            </div>`
-            let res = myOutput + myOutput1
-            infoContainer.innerHTML = res
+                    <div class="header-information">Thong tin ca nhan</div>
+                    <div class="header-container">Name</div>
+                    <div class="information-content">${initialList[id_of_patient].name}</div>
+                    <div class="header-container">CCCD</div>
+                    <div class="information-content">${initialList[id_of_patient].idd}</div>
+                    <div class="header-container">Giới tính</div>
+                    <div class="information-content">${initialList[id_of_patient].sex}</div>
+                    <div class="header-container">Room</div>
+                    <div class="information-content">${initialList[id_of_patient].room}</div>
+                    </div>
+                    <div class="contact-information-container">
+                        <div class="header-information">Thong tin lien lac</div>
+                        <div class="header-container">Address</div>
+                        <div class="information-content">${initialList[id_of_patient].address}</div>
+                        <div class="header-container">Phone number</div>
+                        <div class="information-content">${initialList[id_of_patient].phone}</div>
+                    </div>
+                    <div class="treat-information-container">
+                        <div class="header-information">Thong tin kham benh</div>
+                        <div class="information-content">Bi so mui, nhuc dau, ho, chong mat, buon non, ...</div>
+                    </div>`
+                    let res = myOutput + myOutput1
+                    infoContainer.innerHTML = res
         })
     }
 
@@ -380,7 +380,7 @@ nextButton.addEventListener('click', () => {
         i--
         return 
     }
-    const pageNumber = document.querySelector('.page-number')
+    const pageNumber = document.getElementById("page-number");
     pageNumber.innerHTML = i+1
     while(j < 5*(i+1) && k < 5){
         const fullname = document.querySelector(`.fullname${k+1}`)
@@ -400,10 +400,10 @@ nextButton.addEventListener('click', () => {
             info.innerHTML = ""
             remove.innerHTML = ""
         }else{
-            fullname.innerHTML = initialList[j].fullname
+            fullname.innerHTML = initialList[j].name
             sex.innerHTML = initialList[j].sex
-            contact.innerHTML = initialList[j].contact
-            bhyt.innerHTML = initialList[j].bhyt
+            contact.innerHTML = initialList[j].phone
+            bhyt.innerHTML = initialList[j].healthInsurance
         }
         j++
         ++k
@@ -432,29 +432,29 @@ nextButton.addEventListener('click', () => {
             
             myOutput1 += `
             <div class="self-information-container">
-            <div class="header-information">Thong tin ca nhan</div>
-            <div class="header-container">Name</div>
-            <div class="information-content">${initialList[id_of_patient].fullname}</div>
-            <div class="header-container">CCCD</div>
-            <div class="information-content">${initialList[id_of_patient].cccd}</div>
-            <div class="header-container">Birth</div>
-            <div class="information-content">${initialList[id_of_patient].birth}</div>
-            <div class="header-container">Que quan</div>
-            <div class="information-content">${initialList[id_of_patient].quequan}</div>
-            </div>
-            <div class="contact-information-container">
-                <div class="header-information">Thong tin lien lac</div>
-                <div class="header-container">Address</div>
-                <div class="information-content">${initialList[id_of_patient].address}</div>
-                <div class="header-container">Phone number</div>
-                <div class="information-content">${initialList[id_of_patient].contact}</div>
-            </div>
-            <div class="treat-information-container">
-                <div class="header-information">Thong tin kham benh</div>
-                <div class="information-content">Bi so mui, nhuc dau, ho, chong mat, buon non, ...</div>
-            </div>`
-            let res = myOutput + myOutput1
-            infoContainer.innerHTML = res
+                    <div class="header-information">Thong tin ca nhan</div>
+                    <div class="header-container">Name</div>
+                    <div class="information-content">${initialList[id_of_patient].name}</div>
+                    <div class="header-container">CCCD</div>
+                    <div class="information-content">${initialList[id_of_patient].idd}</div>
+                    <div class="header-container">Giới tính</div>
+                    <div class="information-content">${initialList[id_of_patient].sex}</div>
+                    <div class="header-container">Room</div>
+                    <div class="information-content">${initialList[id_of_patient].room}</div>
+                    </div>
+                    <div class="contact-information-container">
+                        <div class="header-information">Thong tin lien lac</div>
+                        <div class="header-container">Address</div>
+                        <div class="information-content">${initialList[id_of_patient].address}</div>
+                        <div class="header-container">Phone number</div>
+                        <div class="information-content">${initialList[id_of_patient].phone}</div>
+                    </div>
+                    <div class="treat-information-container">
+                        <div class="header-information">Thong tin kham benh</div>
+                        <div class="information-content">Bi so mui, nhuc dau, ho, chong mat, buon non, ...</div>
+                    </div>`
+                    let res = myOutput + myOutput1
+                    infoContainer.innerHTML = res
         })
     }
 
@@ -612,6 +612,12 @@ submitButton.addEventListener('click', () => {
         }
     }
 })
+
+
+
+
+
+
 // function removePatient(){
 //     const removeButton = document.querySelector('.remove-patient-button')
 //     removeButton.addEventListener('click', () => {
