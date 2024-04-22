@@ -130,7 +130,7 @@
 									</a>
 									<ul class="dropdown-menu dropdown-menu-end">
 										<li>
-											<a class="dropdown-item" href="./../comingsoon.html">
+											<a class="dropdown-item" href="../profile/">
 												<div class="d-flex">
 													<div class="flex-shrink-0 me-3">
 														<div class="avatar avatar-online">
@@ -138,8 +138,8 @@
 														</div>
 													</div>
 													<div class="flex-grow-1">
-														<span class="fw-medium d-block lh-1">TinDepTrai</span>
-														<small>Admin</small>
+														<span class="fw-medium d-block lh-1" id=""></span>
+                                				<small>Doctor</small>
 													</div>
 												</div>
 											</a>
@@ -194,7 +194,7 @@
 									<th class="bhyt-content">BHYT</th>
 									<th class="long-term">Long-term</th>
 									<th class="info">Info</th>
-									<th class="remove">Remove</th>
+									<!-- <th class="remove">Remove</th> -->
 								</tr>
 								<tr>
 									<td></td>
@@ -208,9 +208,9 @@
 									<td class="info-button-content">
 										<button id="1" class="info-button1">Info</button>
 									</td>
-									<td class="remove-button-content">
+									<!-- <td class="remove-button-content">
 										<button id="1" class="remove-button1">Remove</button>
-									</td>
+									</td> -->
 								</tr>
 								<tr>
 									<td></td>
@@ -224,9 +224,9 @@
 									<td class="info-button-content">
 										<button id="2" class="info-button2">Info</button>
 									</td>
-									<td class="remove-button-content">
+									<!-- <td class="remove-button-content">
 										<button id="2" class="remove-button2">Remove</button>
-									</td>
+									</td> -->
 								</tr>
 								<tr>
 									<td></td>
@@ -240,9 +240,9 @@
 									<td class="info-button-content">
 										<button id="3" class="info-button3">Info</button>
 									</td>
-									<td class="remove-button-content">
+									<!-- <td class="remove-button-content">
 										<button id="3" class="remove-button3">Remove</button>
-									</td>
+									</td> -->
 								</tr>
 								<tr>
 									<td></td>
@@ -256,9 +256,9 @@
 									<td class="info-button-content">
 										<button id="4" class="info-button4">Info</button>
 									</td>
-									<td class="remove-button-content">
+									<!-- <td class="remove-button-content">
 										<button id="4" class="remove-button4">Remove</button>
-									</td>
+									</td> -->
 								</tr>
 								<tr>
 									<td></td>
@@ -272,9 +272,9 @@
 									<td class="info-button-content">
 										<button id="5" class="info-button5">Info</button>
 									</td>
-									<td class="remove-button-content">
+									<!-- <td class="remove-button-content">
 										<button id="5" class="remove-button5">Remove</button>
-									</td>
+									</td> -->
 								</tr>
 							</table>
 							<div class="button-container">
@@ -300,24 +300,24 @@
 		
 						<div class="my-profile">
 							<div class="l1">
-								<div class="l1-child-container">
+								<div class="l1-child-container" onclick="location.href='../../doctor/profile/'">
 									<img src="../../img/user.png">
 									<div class="l1-container">
-										<div>Kien Chan</div>
-										<div>Doctor</div>
+										<div id="navbar-username">...</div>
+										<div id="role">Doctor</div>
 									</div>
 								</div>
 							</div>
 							<div class="l2">
 								<div class="l2-container">
 									<img src="../../img/small_user.png">
-									<div onclick="location.href='../html/bacsi_profile.html'">My profile</div>
+									<div onclick="location.href='../../doctor/profile/'">My profile</div>
 								</div>
 							</div>
 							<div class="l3">
 								<div class="l3-container">
 									<img src="../../img/power.png">
-									<div>Log out</div>
+									<div onclick="location.href='../../index.html'">Log out</div>
 								</div>
 							</div>
 						</div>
@@ -385,6 +385,10 @@
 
 		<!--Doctor profile-->
 		<script src="../../js/self_profile.js"></script>
+		<!--log-out-->
+		<script type="module" src="../../js/logout.js"></script>
+		<!--get-username-->
+	  <script type="module" src="../../js/getusername.js"></script>
 </body>
 
 </html>

@@ -138,8 +138,8 @@
 														</div>
 													</div>
 													<div class="flex-grow-1">
-														<span class="fw-medium d-block lh-1">TinDepTrai</span>
-														<small>Admin</small>
+														<span class="fw-medium d-block lh-1" id="navbar-username"></span>
+                                <small>Doctor</small>
 													</div>
 												</div>
 											</a>
@@ -277,24 +277,24 @@
 
 				<div class="my-profile">
 					<div class="l1">
-						<div class="l1-child-container">
+						<div class="l1-child-container" onclick="location.href='../../doctor/profile/'">
 							<img src="../../img/user.png">
 							<div class="l1-container">
-								<div>Kien Chan</div>
-								<div>Doctor</div>
+								<div id="aaa">...</div>
+								<div id="role">Doctor</div>
 							</div>
 						</div>
 					</div>
 					<div class="l2">
 						<div class="l2-container">
 							<img src="../../img/small_user.png">
-							<div onclick="location.href='../doctor/profile/'">My profile</div>
+							<div onclick="location.href='../../doctor/profile/'">My profile</div>
 						</div>
 					</div>
 					<div class="l3">
 						<div class="l3-container">
 							<img src="../../img/power.png">
-							<div>Log out</div>
+							<div onclick="location.href='../../index.html'">Log out</div>
 						</div>
 					</div>
 				</div>
@@ -361,6 +361,10 @@
 
 		<!--Doctor profile-->
 		<script src="../../js/self_profile.js"></script>
+		<!--log-out-->
+		<script type="module" src="../../js/logout.js"></script>
+		<!--get-username-->
+	  <script type="module" src="../../js/getusername.js"></script>
 </body>
 
 </html>
