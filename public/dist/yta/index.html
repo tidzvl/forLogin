@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <link rel="icon" type="image/x-icon" href="../../../img/main.ico" />
@@ -11,11 +12,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-      rel="stylesheet" />
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet" />
 
     <title>IT HOSPITAL</title>
 </head>
+
 <body>
     <!-- SIDE BAR -->
     <nav class="sidebar">
@@ -64,10 +66,10 @@
                     </li>
                     <li class="nav-link">
                         <a href="bill.html">
-                            <i class='bx bx-money-withdraw icon' ></i>
+                            <i class='bx bx-money-withdraw icon'></i>
                             <span class="text nav-text">Xuất hoá đơn</span>
                         </a>
-                    </li>     
+                    </li>
                 </ul>
             </div>
 
@@ -75,7 +77,7 @@
                 <li class="">
                     <a href="">
                         <i class='bx bx-log-out icon'></i>
-                        <span class="text nav-text">Đăng xuất</span>
+                        <span class="dropdown-item" href="../../index.html">Đăng xuất</span>
                     </a>
                 </li>
             </div>
@@ -90,40 +92,40 @@
         <div class="wrapper">
             <div class="left">
                 <img src="../../img/huhu.png" alt="user" width="100">
-                <h4>Tiểu Mỹ</h4>
-                <p>Y tá</p>
+                <h4 id="username">...</h4>
+                <p id="navbar-username">...</p>
             </div>
             <div class="right">
                 <div class="info">
                     <h3>Thông tin cá nhân</h3>
                     <div class="info_data">
-                         <div class="data">
+                        <div class="data">
                             <h4>Email</h4>
-                            <p>abc@gmail.com</p>
-                         </div>
-                         <div class="data">
-                           <h4>SĐT</h4>
-                            <p>000000000</p>
-                      </div>
+                            <p id="email">...</p>
+                        </div>
+                        <div class="data">
+                            <h4>SĐT</h4>
+                            <p id="contact">...</p>
+                        </div>
                     </div>
                 </div>
-              
-              <div class="roles">
+
+                <div class="roles">
                     <h3></h3>
                     <div class="users_data">
-                         <div class="data">
+                        <div class="data">
                             <h4>Vị trí</h4>
-                            <p>Intern</p>
-                         </div>
-                         <div class="data">
-                           <h4>Thời gian làm</h4>
-                            <p>Full-time</p>
-                      </div>
+                            <p id="role">...</p>
+                        </div>
+                        <div class="data">
+                            <h4>Chuyên khoa</h4>
+                            <p id="special">...</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        
+
     </nav>
 
     <div class="loading">
@@ -145,5 +147,51 @@
 
 </body>
 <script src="/dist/index.bundle.js" type="module"></script>
+<!--log-out-->
+<script type="module" src="../../js/logout.js"></script>
+<!--get-username-->
+<script type="module" src="../../js/getusername.js"></script>
+<script type="module" src="../../js/renderYta.js"></script>
+
+<script>
+    // var userNamePromise = new Promise(function (resolve, reject) {
+    //     var observer = new MutationObserver(function (mutations, obs) {
+    //         var userNameElement = document.getElementById("navbar-username");
+    //         if (userNameElement && userNameElement.textContent) {
+    //             resolve(userNameElement.textContent);
+    //             obs.disconnect();
+    //         }
+    //     });
+
+    //     observer.observe(document.body, { childList: true, subtree: true });
+    // });
+    // userNamePromise.then(async function (userName) {
+    //     userName = userName.split(", ")[1];
+    //     console.log(userName);
+    //     const dbRef = ref(db);
+    //     var data = await get(child(dbRef, "Doctor")).then((snapshot) => {
+    //         if (snapshot.exists()) {
+    //             // console.log(snapshot.val());
+    //             return snapshot.val().filter((item) => item !== null);
+    //         } else {
+    //             console.log("ID does not exist");
+    //         }
+    //     });
+    //     console.log(data);
+    //     for (var i = 0; i < data.length; i++) {
+    //         console.log(data[i].username);
+    //         if (data[i] && data[i].username === userName) {
+    //             id_doctor = data[i].id;
+    //             document.getElementById("username").textContent = data[i].firstName;
+    //             document.getElementById("role").textContent = data[i].role;
+    //             document.getElementById("email").textContent = data[i].email;
+    //             document.getElementById("contact").textContent = data[i].contact;
+    //             document.getElementById("dep").textContent = data[i].department;
+    //             document.getElementById("special").textContent = data[i].specialist;
+    //             break;
+    //         }
+    //     }
+    // });
+</script>
 
 </html>

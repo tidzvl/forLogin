@@ -10,6 +10,10 @@
     <link rel="stylesheet" type="text/css" href="/dist/css/booking.css">
     <link rel="stylesheet" type="text/css" href="/dist/css/loading.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="../../css/toggle.css">
+    <link rel="stylesheet" href="../../css/spinkit.css" />
+    <!-- <link rel="stylesheet" href="../../css/core.css" class="template-customizer-core-css" /> -->
+    <link rel="stylesheet" href="../../css/theme.css" class="template-customizer-theme-css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -66,10 +70,10 @@
                     </li>
                     <li class="nav-link">
                         <a href="bill.html">
-                            <i class='bx bx-money-withdraw icon' ></i>
+                            <i class='bx bx-money-withdraw icon'></i>
                             <span class="text nav-text">Xuất hoá đơn</span>
                         </a>
-                    </li>     
+                    </li>
                 </ul>
             </div>
 
@@ -89,12 +93,13 @@
         <h6>Danh sách hẹn khám</h6>
         <form class="bar">
             <div class="search">
-                <input id="searchBar" type="text" class="form-control" placeholder="Tìm kiếm" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <input id="searchBar" type="text" class="form-control" placeholder="Tìm kiếm"
+                    aria-label="Recipient's username" aria-describedby="button-addon2">
                 <select class="form-select" id="categorySelected">
                     <option selected value="1">CCCD</option>
                     <option value="2">Tên</option>
                     <option value="3">SĐT</option>
-                  </select>
+                </select>
                 <button id="searchButton" class="btn btn-outline-secondary" type="button">Tìm kiếm</button>
             </div>
             <div class="funct">
@@ -129,29 +134,15 @@
             <h2>Thêm hẹn khám</h2>
             <div class="form-element">
                 <label for="name">Họ và tên</label>
-                <input 
-                    type="text" 
-                    id="name"
-                    placeholder="Fullname"
-                    required
-                >
+                <input type="text" id="name" placeholder="Fullname" required>
             </div>
             <div class="form-element">
                 <label for="id">CCCD</label>
-                <input 
-                    type="text" 
-                    id="id"
-                    placeholder="ID"
-                    required
-                >
+                <input type="text" id="id" placeholder="ID" required>
             </div>
             <div class="form-element">
                 <label for="appointment">Hẹn khám</label>
-                <input 
-                    type="date" 
-                    id="appointment"
-                    required
-                >
+                <input type="date" id="appointment" required>
             </div>
             <div class="form-element">
                 <label for="sex">Giới tính</label>
@@ -164,20 +155,12 @@
             </div>
             <div class="form-element">
                 <label for="email">Email</label>
-                <input 
-                    type="text" 
-                    id="email"
-                    required
-                >
+                <input type="text" id="email" required>
             </div>
 
             <div class="form-element">
                 <label for="phone">SĐT</label>
-                <input 
-                    type="text" 
-                    id="phone"
-                    required
-                >
+                <input type="text" id="phone" required>
             </div>
             <button>Add</button>
         </div>
@@ -199,27 +182,16 @@
     <form class="popup-confirm-add">
         <div class="close-btn">&times;</div>
         <div class="form">
-            <center><h6>Chuyển sang danh sách điều trị</h6></center>
+                <h6>Chuyển sang danh sách điều trị</h6>
+            </center>
             <h2>Xác nhận thông tin</h2>
             <div class="form-element">
                 <label for="name">Họ và tên</label>
-                <input 
-                    type="text" 
-                    class="name"
-                    id="named"
-                    placeholder="Fullname"
-                    required
-                >
+                <input type="text" class="name" id="named" placeholder="Fullname" required>
             </div>
             <div class="form-element">
                 <label for="id">CCCD</label>
-                <input 
-                    type="text" 
-                    class="id"
-                    id="idd"
-                    placeholder="ID"
-                    required
-                >
+                <input type="text" class="id" id="idd" placeholder="ID" required>
             </div>
             <div class="form-element">
                 <label for="sex">Giới tính</label>
@@ -268,12 +240,28 @@
             </div>
             <div class="form-element">
                 <label for="admissionDate">Ngày nhập viện</label>
-                <input 
-                    type="date" 
-                    class="admissionDate"
-                    id="admissionDated"
-                    required
-                >
+                <input type="date" class="admissionDate" id="admissionDated" required>
+            </div>
+			<div class="form-element">
+                <label for="info_sick">Mô tả tình trạng</label>
+                <input type="text" class="info_sick" id="info_sick" required>
+            </div>
+            <div class="form-element">
+                <label for="AI">Sử dụng AI? (Beta) <div class="spin"></div></label>
+                <div class="col-3 text-end">
+                    <label class="switch me-0">
+                        <input type="checkbox" class="switch-input" />
+                        <span class="switch-toggle-slider">
+                            <span class="switch-on">
+                                <i class="bx bx-check"></i>
+                            </span>
+                            <span class="switch-off">
+                                <i class="bx bx-x"></i>
+                            </span>
+                        </span>
+                        <span class="switch-label"></span>
+                    </label>
+                </div>
             </div>
             <button class="confirm">Xác nhận</button>
         </div>
@@ -297,8 +285,11 @@
     </div>
 </body>
 
-<script src="/dist/index.bundle.js" type="module"></script>
-<script src="/dist/booking.bundle.js" type="module"></script>
-
-
+<script src="../index.bundle.js" type="module"></script>
+<script src="../booking.bundle.js" type="module"></script>
+<!--log-out-->
+<script type="module" src="../../js/logout.js"></script>
+<!--get-username-->
+<script type="module" src="../../js/getusername.js"></script>
+<script src="../Assistant.js" type="module"></script>
 </html>

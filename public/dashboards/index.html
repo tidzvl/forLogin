@@ -117,28 +117,6 @@
               </ul>
             </li>
             </li>
-            <!-- Charts & Maps -->
-            <li class="menu-header small text-uppercase">
-              <span class="menu-header-text" >Thong ke doanh thu</span>
-            </li>
-            <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-chart"></i>
-                <div>Profit</div>
-              </a>
-              <ul class="menu-sub">
-                <li class="menu-item">
-                  <a href="../dashboards/comingsoon.html" class="menu-link">
-                    <div>Profit of Kham'</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="../dashboards/comingsoon.html" class="menu-link">
-                    <div>Profit of Medical</div>
-                  </a>
-                </li>
-              </ul>
-            </li>
           </ul>
         </aside>
         <!-- / Menu -->
@@ -161,20 +139,20 @@
                   <li class="nav-item navbar-dropdown dropdown-user dropdown">
                     <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                       <div class="avatar avatar-online">
-                        <img src="../img/user.png" alt class="rounded-circle" />
+                        <img src="../../img/user.png" alt class="rounded-circle" />
                       </div>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
                       <li>
-                        <a class="dropdown-item" href="./comingsoon.html">
+                        <a class="dropdown-item" href="">
                           <div class="d-flex">
                             <div class="flex-shrink-0 me-3">
                               <div class="avatar avatar-online">
-                                <img src="../img/user.png" alt class="rounded-circle" />
+                                <img src="../../img/user.png" alt class="rounded-circle" />
                               </div>
                             </div>
                             <div class="flex-grow-1">
-                              <span class="fw-medium d-block lh-1">TinDepTrai</span>
+                              <span class="fw-medium d-block lh-1" id="navbar-username"></span>
                               <small>Admin</small>
                             </div>
                           </div>
@@ -184,16 +162,7 @@
                         <div class="dropdown-divider"></div>
                       </li>
                       <li>
-                        <a class="dropdown-item" href="./comingsoon.html">
-                          <i class="bx bx-user me-2"></i>
-                          <span class="align-middle">My Profile</span>
-                        </a>
-                      </li>
-                      <li>
-                        <div class="dropdown-divider"></div>
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="../index.html" target="">
+                        <a class="dropdown-item" href="../../index.html" target="">
                           <i class="bx bx-power-off me-2"></i>
                           <span class="align-middle">Log Out</span>
                         </a>
@@ -231,7 +200,7 @@
                                     ></span>
                                   </div>
                                   <div class="card-info">
-                                    <h5 class="card-title mb-0 me-2">$10,0404</h5>
+                                    <h5 class="card-title mb-0 me-2" id="tienkham">$10,0404</h5>
                                     <small class="text-muted">Examination</small>
                                   </div>
                                 </div>
@@ -251,7 +220,7 @@
                                     ></span>
                                   </div>
                                   <div class="card-info">
-                                    <h5 class="card-title mb-0 me-2">$26,1004</h5>
+                                    <h5 class="card-title mb-0 me-2" id="tienthuoc">$26,1004</h5>
                                     <small class="text-muted">Medichine</small>
                                   </div>
                                 </div>
@@ -282,13 +251,13 @@
                           </div>
                           <div class="d-flex flex-column w-100">
                             <div class="d-flex justify-content-between mb-1">
-                              <span>Total Medichine</span>
-                              <span class="text-muted">$2,459</span>
+                              <span>Total Bills</span>
+                              <span class="text-muted" id="luotkham">...</span>
                             </div>
                             <div class="progress" style="height: 6px">
                               <div
                                 class="progress-bar bg-primary"
-                                style="width: 40%"
+                                style="width: 100%"
                                 role="progressbar"
                                 aria-valuenow="40"
                                 aria-valuemin="0"
@@ -304,13 +273,13 @@
                           </div>
                           <div class="d-flex flex-column w-100">
                             <div class="d-flex justify-content-between mb-1">
-                              <span>Budget</span>
-                              <span class="text-muted">$8,478</span>
+                              <span>Total profit</span>
+                              <span class="text-muted" id="total_profit">$8,478</span>
                             </div>
                             <div class="progress" style="height: 6px">
                               <div
                                 class="progress-bar bg-success"
-                                style="width: 80%"
+                                style="width: 100%"
                                 role="progressbar"
                                 aria-valuenow="80"
                                 aria-valuemin="0"
@@ -327,10 +296,11 @@
                           <div class="d-flex flex-column w-100">
                             <div class="d-flex justify-content-between mb-1">
                               <span>Costs Incurred</span>
-                              <span class="text-muted">$12,490</span>
+                              <span class="text-muted" id="cost">$12,490</span>
                             </div>
                             <div class="progress" style="height: 6px">
                               <div
+								id="cost_run"
                                 class="progress-bar bg-warning"
                                 style="width: 80%"
                                 role="progressbar"
@@ -349,11 +319,12 @@
                           <div class="d-flex flex-column w-100">
                             <div class="d-flex justify-content-between mb-1">
                               <span>Tax</span>
-                              <span class="text-muted">$184</span>
+                              <span class="text-muted" id="tax">$184</span>
                             </div>
                             <div class="progress" style="height: 6px">
                               <div
-                                class="progress-bar bg-danger"
+											id="tax_run"
+								class="progress-bar bg-danger"
                                 style="width: 25%"
                                 role="progressbar"
                                 aria-valuenow="25"
@@ -379,16 +350,16 @@
                         <div class="card-body d-flex align-items-end justify-content-between">
                           <div class="d-flex justify-content-between align-items-center gap-3 w-100">
                             <div class="d-flex align-content-center">
-                              <div class="chart-report" data-color="danger" data-series="25"></div>
+                              <div class="chart-report" data-color="danger" data-series="25" id="profit_kham_run"></div>
                               <div class="chart-info">
-                                <h5 class="mb-0">$10k</h5>
-                                <small class="text-muted">Examination</small>
+                                <h5 class="mb-0" id="profit_kham">...</h5>
+                                <small class="text-muted">Exam</small>
                               </div>
                             </div>
                             <div class="d-flex align-content-center">
-                              <div class="chart-report" data-color="info" data-series="50"></div>
+                              <div class="chart-report" data-color="info" data-series="50" id="profit_thuoc_run"></div>
                               <div class="chart-info">
-                                <h5 class="mb-0">$60k</h5>
+                                <h5 class="mb-0" id="profit_thuoc">...</h5>
                                 <small class="text-muted">Medichine</small>
                               </div>
                             </div>
@@ -404,11 +375,25 @@
                   <div class="card">
                     <div class="card-body text-center">
                       <div id="growthRadialChart"></div>
-                      <h6 class="mb-0 mt-5">78% Mortality in 2022</h6>
+                      <h6 class="mb-0 mt-5" id="HI">...</h6>
                     </div>
                   </div>
                 </div>
                 <!-- Growth Chart-->
+				<div class="col-xl-6 col-12">
+                  <div class="card">
+                    <div class="card-header header-elements">
+                      <div class="d-flex flex-column">
+                        <p class="card-subtitle text-muted mb-1">Balance</p>
+                        <h5 class="card-title mb-0" id="balance">...</h5>
+                      </div>
+                      
+                    </div>
+                    <div class="card-body">
+                      <canvas id="horizontalBarChart" class="chartjs" data-height="400"></canvas>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <!-- / Content -->
@@ -434,11 +419,16 @@
 
     <!-- Vendors JS -->
     <script src="../js/apex-charts/apexcharts.js"></script>
-
+	<script src="../js/chartjs.js"></script>
     <!-- Main JS -->
     <script src="../js/assets/main.js"></script>
 
     <!-- Page JS -->
     <script src="../js/dashboards-analytics.js"></script>
+    <!--log-out-->
+	<script src="../js/charts-chartjs.js"></script>
+  <script type="module" src="../js/logout.js"></script>
+    <!--get-username-->
+  <script type="module" src="../../js/getusername.js"></script>
   </body>
 </html>
