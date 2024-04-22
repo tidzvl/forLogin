@@ -220,7 +220,6 @@ document.addEventListener('click', (e) => {
         var sex = row.querySelector('.sex').innerHTML;
         var email = row.querySelector('.email').innerHTML;
         var phone = row.querySelector('.phone').innerHTML;
-        
             // Fill in form
         form.querySelector('.name').value = name;
         form.querySelector('.id').value = idd;
@@ -228,7 +227,19 @@ document.addEventListener('click', (e) => {
         form.querySelector('.email').value = email;
         form.querySelector('.phone').value = phone;
 
+
             // Find room
+        // const khoa = [
+        //     '404',
+        //     'Nội tổng hợp', room 1
+        //     'Ngoại tổng hợp', 2
+        //     'Chấn thương chỉnh hình', 3
+        //     'Hồi sức cấp cứu', 4
+        //     'Thẫm mĩ', 5
+        //     'Phẫu thuật', 6
+        //     'Nhi đa khoa', 7
+        //     'Nhi trầm cảm', 8
+        // ];
         const data = ref(db, 'Room/');
         let room;
         let index = 1;
@@ -251,7 +262,7 @@ document.addEventListener('click', (e) => {
         form.querySelector('.confirm').onclick = function(e) {
             
             e.preventDefault();
-            
+            console.log(e.info_sick.value)
             addDoc(colRefTreatment, {
         
                 name: name,
@@ -261,7 +272,8 @@ document.addEventListener('click', (e) => {
                 phone: phone,
                 healthInsurance: form.healthInsuranced.value,
                 room: room,
-                admissionDate: new Date(form.admissionDated.value).toDateString()
+                admissionDate: new Date(form.admissionDated.value).toDateString(),
+                info: form.info_sick.value
             })
             .then(() => {
         

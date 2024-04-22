@@ -1,9 +1,8 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -20,6 +19,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+// const id_doctor = "0";
 
 import {
   getDatabase,
@@ -188,6 +188,81 @@ function findPatientList(id_of_doctor) {
     });
 }
 
+document.getElementById("submit_change_info").addEventListener("click", async () => {
+  var id_doctor;
+  var un = document.getElementById("navbar-username").textContent;
+  const dbRef = ref(db);
+  un = un.split(", ")[1];
+  var data = await get(child(dbRef, "Doctor")).then((snapshot) => {
+    if (snapshot.exists()) {
+      // console.log(snapshot.val());
+      return snapshot.val().filter((item) => item !== null);
+    } else {
+      console.log("ID does not exist");
+    }
+  });
+  console.log(data);
+  for (var i = 0; i < data.length; i++) {
+    console.log(data[i].username);
+    if (data[i] && data[i].username === un) {
+      id_doctor = data[i].id;
+      break;
+    }
+  }
+  const firstName = document.getElementById("modalEditUserFirstName").value;
+  const lastName = document.getElementById("modalEditUserLastName").value;
+  const userName = document.getElementById("modalEditUserName").value;
+  const email = document.getElementById("modalEditUserEmail").value;
+  const degree = document.getElementById("modalEditUserDegree").value;
+  const graduationYear = document.getElementById("modalEditYear").value;
+  const contact = document.getElementById("modalEditUserPhone").value;
+  const specialist = document.getElementById("modalEditUserSpecialist").value;
+  const department = document.getElementById("modalEditUserDepartment").value;
+  const dataToUpdate = {
+    firstName: firstName,
+    lastName: lastName,
+    username: userName,
+    email: email,
+    degree: degree,
+    graduationYear: graduationYear,
+    contact: contact,
+    specialist: specialist,
+    department: department,
+  };
+
+  const filteredData = {};
+  Object.keys(dataToUpdate).forEach((key) => {
+    if (dataToUpdate[key] !== "") {
+      filteredData[key] = dataToUpdate[key];
+    }
+  });
+  console.log(filteredData);
+  if (Object.keys(filteredData).length > 0) {
+    update(ref(db, "Doctor/" + id_doctor), filteredData);
+    console.log("Doctor has been edited!");
+    Swal.fire({
+      title: "Changed successfully!",
+      text: "Thông tin đã được cập nhật!",
+      icon: "success",
+      customClass: {
+        confirmButton: "btn btn-primary",
+      },
+      buttonsStyling: false,
+    });
+  } else {
+    console.log("No data to update!");
+    Swal.fire({
+      title: "Error!",
+      text: "Có lỗi xảy ra, vui lòng kiểm tra!",
+      icon: "error",
+      customClass: {
+        confirmButton: "btn btn-primary",
+      },
+      buttonsStyling: false,
+    });
+  }
+});
+
 $(function () {
   "use strict";
   function renderInfo(id_of_doctor, callback) {
@@ -231,103 +306,140 @@ $(function () {
         console.log(err.message);
       });
   }
-  let benhnhan;
-  let benhnhan_full;
-  fetch("/api/treatment")
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
+
+  var userNamePromise = new Promise(function (resolve, reject) {
+    var observer = new MutationObserver(function (mutations, obs) {
+      var userNameElement = document.getElementById("navbar-username");
+      if (userNameElement && userNameElement.textContent) {
+        resolve(userNameElement.textContent); 
+        obs.disconnect(); 
       }
-      return response.json();
-    })
-    .then((data) => {
-      let patient_of_doctor;
-      benhnhan_full = data;
-      benhnhan = data.map((item) => item.name);
-      let filteredItems;
-      renderInfo("8", function (patient_list) {
-        renderWorkTime("8");
-        console.log(benhnhan_full);
-        console.log(patient_list);
-        filteredItems = benhnhan_full.filter((item1) => {
-          return patient_list.some((item2) => item1.name === item2.name);
-        });
-        console.log(filteredItems);
-        // Variable declaration for table
-        var dt_project_table = $(".datatable-project"),
-          dt_invoice_table = $(".datatable-invoice");
+    });
 
-        // Project datatable
-        // --------------------------------------------------------------------
-        if (dt_project_table.length) {
-          var dt_project = dt_project_table.DataTable({
-            data: filteredItems, // JSON file to add data
-            columns: [
-              // columns according to JSON
-              { data: "name" },
-              { data: "healthInsurance" },
-              { data: "phone" },
-              { data: "room" },
-            ],
-            displayLength: 7,
-            lengthMenu: [7, 10, 25, 50, 75, 100],
-            language: {
-              sLengthMenu: "Show _MENU_",
-              // search: '',
-              searchPlaceholder: "Search Patient",
-            },
-            // For responsive popup
-            responsive: {
-              details: {
-                display: $.fn.dataTable.Responsive.display.modal({
-                  header: function (row) {
-                    var data = row.data();
-                    return "Details of " + data["full_name"];
+    observer.observe(document.body, { childList: true, subtree: true });
+  });
+  userNamePromise.then( async function (userName) {
+    userName = userName.split(", ")[1];
+    var id_doctor;
+    console.log(userName);
+    const dbRef = ref(db);
+    var data = await get(child(dbRef, "Doctor")).then((snapshot) => {
+      if (snapshot.exists()) {
+        // console.log(snapshot.val());
+        return snapshot.val().filter((item) => item !== null);
+      } else {
+        console.log("ID does not exist");
+      }
+    });
+    console.log(data)
+    for (var i = 0; i < data.length; i++) {
+      console.log(data[i].username)
+      if (data[i] && data[i].username === userName) {
+        id_doctor = data[i].id;
+        break;
+      }
+    }
+
+    let benhnhan;
+    let benhnhan_full;
+    fetch("/api/treatment")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        let patient_of_doctor;
+        benhnhan_full = data;
+        benhnhan = data.map((item) => item.idd);
+        let filteredItems;
+        renderInfo(id_doctor, function (patient_list) {
+          renderWorkTime(id_doctor);
+          console.log(benhnhan_full);
+          console.log(patient_list);
+          filteredItems = benhnhan_full.filter((item1) => {
+            return patient_list.some((item2) => item1.idd === item2.idd);
+          });
+          console.log(filteredItems);
+          // Variable declaration for table
+          var dt_project_table = $(".datatable-project"),
+            dt_invoice_table = $(".datatable-invoice");
+
+          // Project datatable
+          // --------------------------------------------------------------------
+          if (dt_project_table.length) {
+            var dt_project = dt_project_table.DataTable({
+              data: filteredItems, // JSON file to add data
+              columns: [
+                // columns according to JSON
+                { data: "name" },
+                { data: "healthInsurance" },
+                { data: "phone" },
+                { data: "room" },
+              ],
+              displayLength: 7,
+              lengthMenu: [7, 10, 25, 50, 75, 100],
+              language: {
+                sLengthMenu: "Show _MENU_",
+                // search: '',
+                searchPlaceholder: "Search Patient",
+              },
+              // For responsive popup
+              responsive: {
+                details: {
+                  display: $.fn.dataTable.Responsive.display.modal({
+                    header: function (row) {
+                      var data = row.data();
+                      return "Details of " + data["full_name"];
+                    },
+                  }),
+                  type: "column",
+                  renderer: function (api, rowIdx, columns) {
+                    var data = $.map(columns, function (col, i) {
+                      return col.title !== "" // ? Do not show row in modal popup if title is blank (for check box)
+                        ? '<tr data-dt-row="' +
+                            col.rowIndex +
+                            '" data-dt-column="' +
+                            col.columnIndex +
+                            '">' +
+                            "<td>" +
+                            col.title +
+                            ":" +
+                            "</td> " +
+                            "<td>" +
+                            col.data +
+                            "</td>" +
+                            "</tr>"
+                        : "";
+                    }).join("");
+
+                    return data
+                      ? $('<table class="table"/><tbody />').append(data)
+                      : false;
                   },
-                }),
-                type: "column",
-                renderer: function (api, rowIdx, columns) {
-                  var data = $.map(columns, function (col, i) {
-                    return col.title !== "" // ? Do not show row in modal popup if title is blank (for check box)
-                      ? '<tr data-dt-row="' +
-                          col.rowIndex +
-                          '" data-dt-column="' +
-                          col.columnIndex +
-                          '">' +
-                          "<td>" +
-                          col.title +
-                          ":" +
-                          "</td> " +
-                          "<td>" +
-                          col.data +
-                          "</td>" +
-                          "</tr>"
-                      : "";
-                  }).join("");
-
-                  return data
-                    ? $('<table class="table"/><tbody />').append(data)
-                    : false;
                 },
               },
-            },
-          });
-        }
-        // On each datatable draw, initialize tooltip
-        dt_invoice_table.on("draw.dt", function () {
-          var tooltipTriggerList = [].slice.call(
-            document.querySelectorAll('[data-bs-toggle="tooltip"]')
-          );
-          var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-            return new bootstrap.Tooltip(tooltipTriggerEl, {
-              boundary: document.body,
+            });
+          }
+          // On each datatable draw, initialize tooltip
+          dt_invoice_table.on("draw.dt", function () {
+            var tooltipTriggerList = [].slice.call(
+              document.querySelectorAll('[data-bs-toggle="tooltip"]')
+            );
+            var tooltipList = tooltipTriggerList.map(function (
+              tooltipTriggerEl
+            ) {
+              return new bootstrap.Tooltip(tooltipTriggerEl, {
+                boundary: document.body,
+              });
             });
           });
+        }).catch((error) => {
+          console.error("There was a problem with the fetch operation:", error);
         });
-      }).catch((error) => {
-        console.error("There was a problem with the fetch operation:", error);
       });
-    });
+  });
   // Filter form control to default size
   // ? setTimeout used for multilingual table initialization
   setTimeout(() => {

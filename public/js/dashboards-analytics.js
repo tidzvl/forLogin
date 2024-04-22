@@ -3,7 +3,206 @@
  */
 
 'use strict';
+
 (function () {
+  fetch('/api/bill')
+  .then(response => {
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log(data);
+    let totalSubtotal = 0;
+    let totalTax = 0;
+    let roomTotals = {};
+    var bhytCount = data.filter(function(record) {
+      return record.bhyt !== "";
+    }).length;
+    var totalCount = data.length;
+    var tile_bhyt = (bhytCount / totalCount) * 100;
+
+    data.forEach(item => {
+        // const { money, precription, room } = item;
+        // console.log(item.precription);
+        const subtotal = parseFloat(item.money.subtotal);
+        const tax = parseFloat(item.money.tax.replace('$', ''));
+
+        totalSubtotal += subtotal;
+        totalTax += tax;
+
+        if (item.precription && item.precription.length >= 2) {
+          const roomPrefix = item.precription.substring(0, 2);
+          // Tạo hoặc cập nhật tổng của phòng
+          roomTotals[roomPrefix] = (roomTotals[roomPrefix] || 0) + subtotal;
+        } 
+    });
+    var all_room = 0;
+    for (var roomPrefix in roomTotals) {if (roomTotals.hasOwnProperty(roomPrefix)) { all_room += roomTotals[roomPrefix];}}
+    document.getElementById("balance").textContent = "$"+all_room.toFixed(2);
+    const horizontalBarChart = document.getElementById('horizontalBarChart');
+    if (horizontalBarChart) {
+      const horizontalBarChartVar = new Chart(horizontalBarChart, {
+        type: 'bar',
+        data: {
+          labels: ['NO', 'NG', 'CH ', 'HO', 'TH', 'PH', 'NH'],
+          datasets: [
+            {
+              data: [roomTotals["No"], roomTotals["Ng"], roomTotals["Ch"], roomTotals["Ho"], roomTotals["Th"], roomTotals["Ph"], roomTotals["Nh"]],
+              backgroundColor: config.colors.info,
+              borderColor: 'transparent',
+              maxBarThickness: 15
+            }
+          ]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          animation: {
+            duration: 500
+          },
+          elements: {
+            bar: {
+              borderRadius: {
+                topRight: 15,
+                bottomRight: 15
+              }
+            }
+          },
+          plugins: {
+            tooltip: {
+              rtl: isRtl,
+              backgroundColor: cardColor,
+              titleColor: headingColor,
+              bodyColor: legendColor,
+              borderWidth: 1,
+              borderColor: borderColor
+            },
+            legend: {
+              display: false
+            }
+          },
+          scales: {
+            x: {
+              min: 0,
+              grid: {
+                color: borderColor,
+                borderColor: borderColor
+              },
+              ticks: {
+                color: labelColor
+              }
+            },
+            y: {
+              grid: {
+                borderColor: borderColor,
+                display: false,
+                drawBorder: false
+              },
+              ticks: {
+                color: labelColor
+              }
+            }
+          }
+        }
+      });
+    }
+    document.getElementById("tienkham").textContent = "$"+ parseFloat(data.length*100).toFixed(2);
+    document.getElementById("tienthuoc").textContent = "$"+ totalSubtotal.toFixed(2);
+    
+    document.getElementById("luotkham").textContent = data.length;
+    document.getElementById("total_profit").textContent = "$"+(parseFloat(data.length*100)+totalSubtotal).toFixed(2);
+    document.getElementById("cost").textContent = "$"+parseFloat(0.1*(totalSubtotal-totalTax)).toFixed(2);
+    document.getElementById("cost_run").style.width = (parseInt(0.1*(totalSubtotal-totalTax))/(parseInt(data.length*100)+totalSubtotal))*100+"%";
+    document.getElementById("tax").textContent = "$"+totalTax.toFixed(2);
+    document.getElementById("tax_run").style.width = (parseInt(totalTax)/(parseInt(data.length*100)+totalSubtotal))*100+"%";
+
+    //loi nhuan tien thuoc vao tui 
+    const total_profit_vippro = totalSubtotal-totalTax.toFixed(2)-parseFloat(0.1*(totalSubtotal-totalTax)).toFixed(2) - parseFloat(data.length*100).toFixed(2);
+    document.getElementById("profit_thuoc").textContent = "$"+total_profit_vippro.toFixed(0);
+    document.getElementById("profit_kham").textContent = "$"+(parseFloat(data.length*100)*0.9).toFixed(0);
+    // document.querySelector(".chart-report").setAttribute("data-series", "100");
+
+
+    //ti le co bhyt
+    const growthRadialChartEl = document.querySelector('#growthRadialChart'),
+    growthRadialChartConfig = {
+      chart: {
+        height: 230,
+        fontFamily: 'IBM Plex Sans',
+        type: 'radialBar',
+        sparkline: {
+          show: true
+        }
+      },
+      grid: {
+        show: false,
+        padding: {
+          top: -25
+        }
+      },
+      plotOptions: {
+        radialBar: {
+          size: 100,
+          startAngle: -135,
+          endAngle: 135,
+          offsetY: 10,
+          hollow: {
+            size: '55%'
+          },
+          track: {
+            strokeWidth: '50%',
+            background: cardColor
+          },
+          dataLabels: {
+            value: {
+              offsetY: -15,
+              color: headingColor,
+              fontFamily: 'Rubik',
+              fontWeight: 500,
+              fontSize: '26px'
+            },
+            name: {
+              fontSize: '15px',
+              color: legendColor,
+              offsetY: 24
+            }
+          }
+        }
+      },
+      colors: [config.colors.danger],
+      fill: {
+        type: 'gradient',
+        gradient: {
+          shade: 'dark',
+          type: 'horizontal',
+          shadeIntensity: 0.5,
+          gradientToColors: [config.colors.primary],
+          inverseColors: true,
+          opacityFrom: 1,
+          opacityTo: 1,
+          stops: [0, 100]
+        }
+      },
+      stroke: {
+        dashArray: 3
+      },
+      series: [tile_bhyt.toFixed(0)],
+      labels: ['H. Insurance']
+    };
+  document.getElementById("HI").textContent = tile_bhyt.toFixed(2) + "% have H. Insurance";
+  if (typeof growthRadialChartEl !== undefined && growthRadialChartEl !== null) {
+    const growthRadialChart = new ApexCharts(growthRadialChartEl, growthRadialChartConfig);
+    growthRadialChart.render();
+  }
+
+  })
+  .catch(error => {
+      console.error('There was a problem with the fetch operation:', error);
+  });
+
   let cardColor, headingColor, labelColor, legendColor, borderColor, shadeColor;
 
   if (isDarkStyle) {
@@ -376,7 +575,7 @@
     conversationChartConfig = {
       series: [
         {
-          data: [50, 100, 0, 60, 20, 30]
+          data: [10, 100, 0, 60, 20, 30]
         }
       ],
       chart: {
@@ -715,74 +914,74 @@
 
   // Growth - Radial Bar Chart
   // --------------------------------------------------------------------
-  const growthRadialChartEl = document.querySelector('#growthRadialChart'),
-    growthRadialChartConfig = {
-      chart: {
-        height: 230,
-        fontFamily: 'IBM Plex Sans',
-        type: 'radialBar',
-        sparkline: {
-          show: true
-        }
-      },
-      grid: {
-        show: false,
-        padding: {
-          top: -25
-        }
-      },
-      plotOptions: {
-        radialBar: {
-          size: 100,
-          startAngle: -135,
-          endAngle: 135,
-          offsetY: 10,
-          hollow: {
-            size: '55%'
-          },
-          track: {
-            strokeWidth: '50%',
-            background: cardColor
-          },
-          dataLabels: {
-            value: {
-              offsetY: -15,
-              color: headingColor,
-              fontFamily: 'Rubik',
-              fontWeight: 500,
-              fontSize: '26px'
-            },
-            name: {
-              fontSize: '15px',
-              color: legendColor,
-              offsetY: 24
-            }
-          }
-        }
-      },
-      colors: [config.colors.danger],
-      fill: {
-        type: 'gradient',
-        gradient: {
-          shade: 'dark',
-          type: 'horizontal',
-          shadeIntensity: 0.5,
-          gradientToColors: [config.colors.primary],
-          inverseColors: true,
-          opacityFrom: 1,
-          opacityTo: 1,
-          stops: [0, 100]
-        }
-      },
-      stroke: {
-        dashArray: 3
-      },
-      series: [78],
-      labels: ['Mortality']
-    };
+  // const growthRadialChartEl = document.querySelector('#growthRadialChart'),
+  //   growthRadialChartConfig = {
+  //     chart: {
+  //       height: 230,
+  //       fontFamily: 'IBM Plex Sans',
+  //       type: 'radialBar',
+  //       sparkline: {
+  //         show: true
+  //       }
+  //     },
+  //     grid: {
+  //       show: false,
+  //       padding: {
+  //         top: -25
+  //       }
+  //     },
+  //     plotOptions: {
+  //       radialBar: {
+  //         size: 100,
+  //         startAngle: -135,
+  //         endAngle: 135,
+  //         offsetY: 10,
+  //         hollow: {
+  //           size: '55%'
+  //         },
+  //         track: {
+  //           strokeWidth: '50%',
+  //           background: cardColor
+  //         },
+  //         dataLabels: {
+  //           value: {
+  //             offsetY: -15,
+  //             color: headingColor,
+  //             fontFamily: 'Rubik',
+  //             fontWeight: 500,
+  //             fontSize: '26px'
+  //           },
+  //           name: {
+  //             fontSize: '15px',
+  //             color: legendColor,
+  //             offsetY: 24
+  //           }
+  //         }
+  //       }
+  //     },
+  //     colors: [config.colors.danger],
+  //     fill: {
+  //       type: 'gradient',
+  //       gradient: {
+  //         shade: 'dark',
+  //         type: 'horizontal',
+  //         shadeIntensity: 0.5,
+  //         gradientToColors: [config.colors.primary],
+  //         inverseColors: true,
+  //         opacityFrom: 1,
+  //         opacityTo: 1,
+  //         stops: [0, 100]
+  //       }
+  //     },
+  //     stroke: {
+  //       dashArray: 3
+  //     },
+  //     series: [78],
+  //     labels: ['Mortality']
+  //   };
 
-  if (typeof growthRadialChartEl !== undefined && growthRadialChartEl !== null) {
-    const growthRadialChart = new ApexCharts(growthRadialChartEl, growthRadialChartConfig);
-    growthRadialChart.render();
-  }
+  // if (typeof growthRadialChartEl !== undefined && growthRadialChartEl !== null) {
+  //   const growthRadialChart = new ApexCharts(growthRadialChartEl, growthRadialChartConfig);
+  //   growthRadialChart.render();
+  // }
 })();

@@ -4,50 +4,68 @@
 
 "use strict";
 
+// const id_doctor = "9";
 // Datatable (jquery)
 $(function () {
 
+  // (async () => {
+  //   try {
+  //     const responsePost = await fetch("../../api/getInfo/", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({ id_doctor }),
+  //     });
+
+  //     if (!responsePost.ok) {
+  //       throw new Error("Network response for POST was not ok");
+  //     }
+  //     const dataPost = await responsePost.json();
+  //     const { firstName, role } = dataPost.info;
+  //     document.getElementById("username").textContent = firstName;
+  //     document.getElementById("role").textContent = role;
+  //   } catch (error) {
+  //     console.error("There was a problem with the fetch operation:", error);
+  //   }
+  // })();
   //render some info
   let doctorCount = 0;
   let nurseCount = 0;
   let adminCount = 0;
-  fetch('/api/getDoctor')
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.json();
-  })
-  .then(data => {
-    data.forEach(person => {
-      let roleLowerCase = person.role.toLowerCase();
-      switch (roleLowerCase) {
-          case 'doctor':
-              doctorCount++;
-              break;
-          case 'nurse':
-              nurseCount++;
-              break;
-          case 'admin':
-              adminCount++;
-              break;
-          default:
-              break;
+  fetch("/api/getDoctor")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
       }
+      return response.json();
+    })
+    .then((data) => {
+      // data = data.filter(item => item !== null);
+      data.forEach((person) => {
+        let roleLowerCase = person.role.toLowerCase();
+        switch (roleLowerCase) {
+          case "doctor":
+            doctorCount++;
+            break;
+          case "nurse":
+            nurseCount++;
+            break;
+          case "admin":
+            adminCount++;
+            break;
+          default:
+            break;
+        }
+      });
+      document.getElementById("count_doctor").textContent = doctorCount;
+      document.getElementById("count_nurse").textContent = nurseCount;
+    })
+    .catch((error) => {
+      console.error("There was a problem with the fetch operation:", error);
     });
-    document.getElementById('count_doctor').textContent = doctorCount;
-    document.getElementById('count_nurse').textContent = nurseCount;
-    
-  })
-  .catch(error => {
-    console.error('There was a problem with the fetch operation:', error);
-  });
 
   //end
-
-
-
-
 
   let borderColor, bodyBg, headingColor;
 
@@ -64,7 +82,6 @@ $(function () {
   // Variable declaration for table
   var dt_user_table = $(".datatables-users"),
     select2 = $(".select2"),
-    userView = "app-user-view-account.html",
     statusObj = {
       1: { title: "Pending", class: "bg-label-warning" },
       2: { title: "Active", class: "bg-label-success" },
@@ -110,14 +127,10 @@ $(function () {
           render: function (data, type, full, meta) {
             return (
               '<div class="d-inline-block text-nowrap">' +
-              '<button class="btn btn-sm btn-icon"><i class="bx bx-edit"></i></button>' +
               '<button class="btn btn-sm btn-icon delete-record"><i class="bx bx-trash"></i></button>' +
               '<button class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded me-2"></i></button>' +
-              '<div class="dropdown-menu dropdown-menu-end m-0">' +
-              '<a href="' +
-              userView +
-              '" class="dropdown-item">View</a>' +
-              '<a href="javascript:;" class="dropdown-item">Suspend</a>' +
+              '<div class="dropdown-menu dropdown-menu-end m-0 view-record">' +
+              '<a class="dropdown-item">View</a>' +
               "</div>" +
               "</div>"
             );
@@ -388,47 +401,176 @@ $(function () {
       },
     });
   }
+  //view record
+  $(".datatables-users tbody").on("click", ".view-record", async function () {
+    var foundId = null;
+    var tempDiv = document.createElement("div");
+    tempDiv.innerHTML = $(this).parents("tr")[0].innerHTML;
+    var productNameToFind = $(this).parents("tr")[0].children[1].textContent;
+    console.log(productNameToFind);
+    fetch("/api/getDoctor")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        var list2 = {};
+        for (var i = 0; i < data.length; i++) {
+          if (data[i].firstName === productNameToFind) {
+            list2 = data[i];
+            break;
+          }
+        }
+        console.log(list2);
+        Swal.fire({
+          title: "User Information",
+          // input: 'text',
+          html: `<div class="modal-body">
+            <form id="editUserForm" class="row g-3" onsubmit="return false">
+              <div class="col-12 col-md-6">
+                <label class="form-label" for="modalEditUserFirstName">First Name</label>
+                <span
+                  type="text"
+                  id="modalEditUserFirstName"
+                  name="modalEditUserFirstName"
+                  class="form-control"
+                  placeholder=""> ${list2.firstName} </span>
+              </div>
+              <div class="col-12 col-md-6">
+                <label class="form-label" for="modalEditUserLastName">Last Name</label>
+                <span
+                  type="text"
+                  id="modalEditUserLastName"
+                  name="modalEditUserLastName"
+                  class="form-control"
+                  placeholder=""> ${list2.lastName} </span>
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="modalEditUserName">Username</label>
+                <span
+                  type="text"
+                  id="modalEditUserName"
+                  name="modalEditUserName"
+                  class="form-control"
+                  placeholder="" >${list2.userId}</span>
+              </div>
+              <div class="col-12 col-md-6">
+                <label class="form-label" for="modalEditUserEmail">Email</label>
+                <span
+                  type="text"
+                  id="modalEditUserEmail"
+                  name="modalEditUserEmail"
+                  class="form-control"
+                  placeholder="">${list2.email} </span>
+              </div>
+              <div class="col-12 col-md-6">
+                <label class="form-label" for="modalEditUserDegree">Degree</label>
+                <span
+                  type="text"
+                  id="modalEditUserDegree"
+                  name="modalEditUserDegree"
+                  class="form-control"
+                  placeholder="PhD" >${list2.degree}</span>
+              </div>
+              <div class="col-12 col-md-6">
+                <label class="form-label" for="modalEditYear">Graduation Year</label>
+                <span
+                  type="text"
+                  id="modalEditYear"
+                  name="modalEditYear"
+                  class="form-control"
+                  placeholder="2010">${list2.graduationYear}</span>
+              </div>
+              <div class="col-12 col-md-6">
+                <label class="form-label" for="modalEditUserPhone">Phone Number</label>
+                <div class="input-group input-group-merge">
+                  <span class="input-group-text">+84</span>
+                  <span
+                    type="text"
+                    id="modalEditUserPhone"
+                    name="modalEditUserPhone"
+                    class="form-control phone-number-mask"
+                    placeholder="202 555 0111" > ${list2.contact}</span>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <label class="form-label" for="modalEditUserSpecialist">Specialist</label>
+                <span
+                  id="modalEditUserSpecialist"
+                  name="modalEditUserSpecialist"
+                  class=" form-control"> ${list2.specialist}</span>
+              </div>
+              <div class="col-12 col-md-6">
+                <label class="form-label" for="modalEditUserDepartment">Department</label>
+                <span
+                  id="modalEditUserDepartment"
+                  name="modalEditUserDepartment"
+                  class=" form-control"
+                  data-allow-clear="true">
+                  ${list2.department}
+                </span>
+              </div>
+            </form>
+          </div>
+            `,
+          inputAttributes: {
+            autocapitalize: "off",
+          },
+          confirmButtonText: "Close",
+          showLoaderOnConfirm: true,
+          customClass: {
+            confirmButton: "btn btn-primary me-3",
+            cancelButton: "btn btn-label-danger",
+          },
+          backdrop: true,
+        });
+      });
+  });
+
   // Delete Record
   $(".datatables-users tbody").on("click", ".delete-record", async function () {
     var foundId = null;
-      var tempDiv = document.createElement("div");
-      tempDiv.innerHTML = $(this).parents("tr")[0].innerHTML;
-      var productNameToFind = $(this).parents("tr")[0].children[1].textContent;
-      console.log(productNameToFind)
-      $.ajax({
-        url: "/api/getDoctor",
-        dataType: "json",
-        success: function (jsonData) {
-          var cleanedData = jsonData.filter(function (item) {
-            return item !== null;
-          });
-          for (var i = 0; i < cleanedData.length; i++) {
-            if (cleanedData[i].firstName === productNameToFind) {
-              foundId = cleanedData[i].id;
-              break;
-            }
-          }
-          console.log(
-            "ID của sản phẩm '" + productNameToFind + "' là: " + foundId
-          );
-          performDeleteRequest(foundId);
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-          console.log("Lỗi khi tải JSON: " + textStatus + ": " + errorThrown);
-        },
-      });
-      async function performDeleteRequest(foundId) {
-        const response = await fetch("../../api/remove-doctor/", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            id: parseInt(foundId) - 1,
-          }),
+    var tempDiv = document.createElement("div");
+    tempDiv.innerHTML = $(this).parents("tr")[0].innerHTML;
+    var productNameToFind = $(this).parents("tr")[0].children[1].textContent;
+    console.log(productNameToFind);
+    $.ajax({
+      url: "/api/getDoctor",
+      dataType: "json",
+      success: function (jsonData) {
+        var cleanedData = jsonData.filter(function (item) {
+          return item !== null;
         });
-      }
-      dt_user.row($(this).parents("tr")).remove().draw();
+        for (var i = 0; i < cleanedData.length; i++) {
+          if (cleanedData[i].firstName === productNameToFind) {
+            foundId = cleanedData[i].id;
+            break;
+          }
+        }
+        console.log(
+          "ID của sản phẩm '" + productNameToFind + "' là: " + foundId
+        );
+        performDeleteRequest(foundId);
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        console.log("Lỗi khi tải JSON: " + textStatus + ": " + errorThrown);
+      },
+    });
+    async function performDeleteRequest(foundId) {
+      const response = await fetch("../../api/remove-doctor/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: parseInt(foundId) - 1,
+        }),
+      });
+    }
+    dt_user.row($(this).parents("tr")).remove().draw();
   });
   document.getElementById("submit").addEventListener(
     "click",
@@ -460,6 +602,15 @@ $(function () {
             role: role.value,
           }),
         });
+        Swal.fire({
+          title: "Added successfully!",
+          text: "Đã thêm thông tin bác sĩ!",
+          icon: "success",
+          customClass: {
+            confirmButton: "btn btn-primary",
+          },
+          buttonsStyling: false,
+        });
         if (response.ok) {
           dt_user.ajax.reload();
 
@@ -475,11 +626,20 @@ $(function () {
         return false;
       } catch (error) {
         console.error("Error adding medicine:", error);
+        Swal.fire({
+          title: "Error!",
+          text: "Có lỗi xảy ra, vui lòng kiểm tra lại!",
+          icon: "error",
+          customClass: {
+            confirmButton: "btn btn-primary",
+          },
+          buttonsStyling: false,
+        });
       }
     },
     true
   );
-  
+
   // Filter form control to default size
   // ? setTimeout used for multilingual table initialization
   setTimeout(() => {

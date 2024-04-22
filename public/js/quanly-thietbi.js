@@ -3,9 +3,32 @@
  */
 
 "use strict";
-
+const id_doctor = "9";
 // Datatable (jquery)
 $(function () {
+
+  (async () => {
+    try {
+      const responsePost = await fetch("../../api/getInfo/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id_doctor }),
+      });
+
+      if (!responsePost.ok) {
+        throw new Error("Network response for POST was not ok");
+      }
+      const dataPost = await responsePost.json();
+      const { firstName, role } = dataPost.info;
+      document.getElementById("username").textContent = firstName;
+      document.getElementById("role").textContent = role;
+    } catch (error) {
+      console.error("There was a problem with the fetch operation:", error);
+    }
+  })();
+
   let borderColor, bodyBg, headingColor;
   // Variable declaration for table
   var dt_product_table = $(".datatables-products"),
@@ -187,10 +210,6 @@ $(function () {
               '<div class="d-inline-block text-nowrap">' +
               '<button class="btn btn-sm btn-icon edit-record"><i class="bx bx-edit"></i></button>' +
               '<button class="btn btn-sm btn-icon delete-record"><i class="bx bx-trash"></i></button>' +
-              '<button class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded me-2"></i></button>' +
-              '<div class="dropdown-menu dropdown-menu-end m-0">' +
-              '<a href="javascript:0;" class="dropdown-item">View</a>' +
-              '<a href="javascript:0;" class="dropdown-item">Suspend</a>' +
               "</div>" +
               "</div>"
             );
@@ -542,7 +561,118 @@ $(function () {
           .querySelector("h6.text-body")
           ?.textContent?.trim();
         console.log(productNameToFind);
-        
+        fetch("/api/getAllMachine")
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          var list2 = {};
+          for (var i = 0; i < data.length; i++) {
+            if (data[i].name === productNameToFind) {
+              list2 = data[i];
+              break;
+            }
+          }
+          console.log(list2);
+          Swal.fire({
+            title: 'Edit machine',
+            // input: 'text',
+            html: `
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <div class="row">
+                    <div class="col mb-3">
+                      <label for="nameBasic" class="form-label">Product Name</label>
+                      <input type="text" id="nameEdit" class="form-control" placeholder="Name" value="${list2.name}"/>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col mb-3">
+                      <label for="brandBasic" class="form-label">Product Brand</label>
+                      <input type="text" id="brandEdit" class="form-control" placeholder="Brand" value="${list2.product_brand}"/>
+                    </div>
+                  </div>
+                  <div class="row g-2">
+                    <div class="col mb-3">
+                      <label class="form-label" for="ecommerce-product-price">Base Price</label>
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="priceEdit"
+                        placeholder="Price"
+                        name="productPrice"
+                        aria-label="Product price" value="${list2.price.replace("$", "")}"/>
+                    </div>
+                    <div class="col mb-3">
+                      <label class="form-label" for="Position">Position</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="posEdit"
+                        placeholder="Position of product"
+                        name="Position"
+                        aria-label="Position" value="${list2.position}"/>
+                    </div>
+                  </div>
+                  <div class="mb-3 col ecommerce-select2-dropdown">
+                    <label
+                      class="form-label mb-1 d-flex justify-content-between align-items-center"
+                      for="periof-org">
+                      <span>Period</span>
+                  </label>
+                      <input type="text" id="periodEdit" class="form-control" placeholder="Period" value="${list2.period}"/>
+                    
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            `,
+            inputAttributes: {
+              autocapitalize: 'off'
+            },
+            showCancelButton: true,
+            confirmButtonText: 'Submit',
+            showLoaderOnConfirm: true,
+            customClass: {
+              confirmButton: 'btn btn-primary me-3',
+              cancelButton: 'btn btn-label-danger'
+            },
+            preConfirm: async s => {
+              await fetch("../../api/edit-machine/", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  id: list2.id-1, 
+                  period: document.getElementById("periodEdit").value,
+                  name: document.getElementById("nameEdit").value, 
+                  price: document.getElementById("priceEdit").value, 
+                  brand: document.getElementById("brandEdit").value, 
+                  position: document.getElementById("posEdit").value, 
+                }),
+              });
+            },
+            backdrop: true,
+            allowOutsideClick: () => !Swal.isLoading()
+          }).then(result => {
+            if (result.isConfirmed) {
+              Swal.fire({
+                title: "Changed Successfully!",
+                customClass: {
+                  confirmButtonText: 'Close me!',
+                  confirmButton: 'btn btn-primary'
+                }
+              });
+              dt_products.ajax.reload();
+            }
+          });
+        });
       }
     );
 

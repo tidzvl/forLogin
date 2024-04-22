@@ -52,14 +52,15 @@
   });
 
   const khoa = [
-    'Tim mạch',
-    'Da liễu',
-    'Nội tiết',
-    'Tiêu hóa',
-    'Huyết học',
-    'Miễn dịch học',
-    'Thần kinh học',
-    // Các chuyên khoa khác...
+    '404',
+    'Nội tổng hợp',
+    'Ngoại tổng hợp',
+    'Chấn thương chỉnh hình',
+    'Hồi sức cấp cứu',
+    'Thẫm mĩ',
+    'Phẫu thuật',
+    'Nhi đa khoa',
+    'Nhi trầm cảm',
 ];
   //choose khoa
   let choose_khoa_list = new Tagify(choose_khoa, {
@@ -159,34 +160,48 @@
     var med = [];
     var subtotal = 0;
     $(".repeater-wrapper").each(function() {
-        var form = $(this);
-        var item = form.find("#choose_thuoc").val();
-        var price = form.find("#thuoc-price").val();
-        var qty = form.find("#qty").val();
-        var total_price = form.find("#total_price").text();
-        subtotal += parseFloat(total_price.replace('$',''));
-        var thuoc_info = form.find("#thuoc-info").val();
-        var formData = {
-            "item": item.match(/"value":"([^"]+)"/)[1],
-            "price": price,
-            "qty": qty,
-            "total_price": total_price,
-            "thuoc_info": thuoc_info
-        };
-
-        med.push(formData);
+        if($(this).find("#choose_thuoc").val() != "") {
+          var form = $(this);
+          var item = form.find("#choose_thuoc").val();
+          var price = form.find("#thuoc-price").val();
+          var qty = form.find("#qty").val();
+          var total_price = form.find("#total_price").text();
+          subtotal += parseFloat(total_price.replace('$',''));
+          var thuoc_info = form.find("#thuoc-info").val();
+          var formData = {
+              "item": item.match(/"value":"([^"]+)"/)[1],
+              "price": price,
+              "qty": qty,
+              "total_price": total_price,
+              "thuoc_info": thuoc_info
+          };
+          med.push(formData);
+        }
     });
+    var formData = {
+        "item": "Service charge",
+        "price": "$100.00",
+        "qty": "1",
+        "total_price": "$100.00",
+        "thuoc_info": ""
+    };
+    med.push(formData);
+    document.getElementById("service_charge").textContent = "$100.00";
+    document.getElementById("subtotal").textContent = "$"+subtotal.toFixed(2);
     var money = {
-      "subtotal": document.getElementById("subtotal").textContent = "$"+subtotal.toFixed(2),
+      "subtotal": subtotal += 100.00,
       "tax": document.getElementById("tax").textContent = "$"+(subtotal*10/100).toFixed(2),
-      "total": document.getElementById("total").textContent = "$"+(subtotal.toFixed(2)+subtotal.toFixed(2)*10/100).toFixed(2)
+      "total": document.getElementById("total").textContent = "$"+(subtotal+(subtotal*10/100)).toFixed(2)
     }
+    console.log(money)
     const precription = khoa[parseInt(document.getElementById("bill_room").textContent.match(/\d+/)[0])].normalize("NFD").replace(/[\u0300-\u036f]/g, "").slice(0, 2) + new Date().getTime();
     document.getElementById("precription_num").value = precription;
+    var bhytMatch = document.getElementById("bill_bhyt").textContent.match(/\d+/);
+    var bhytValue = bhytMatch ? bhytMatch[0] : "";
     bill_data = {
       "patient": document.getElementById("bill_name").textContent,
       "room": document.getElementById("bill_room").textContent.match(/\d+/)[0],
-      "bhyt": document.getElementById("bill_bhyt").textContent.match(/\d+/)[0],
+      "bhyt": bhytValue,
       "contact": document.getElementById("bill_contact").textContent.match(/\d+/)[0],
       "precription": precription,
       "medications": med,
@@ -207,7 +222,15 @@
       },
       body: JSON.stringify(bill_data),
     });
-
+    Swal.fire({
+      title: 'Submitted successfully!',
+      text: 'Hóa đơn đã được gửi đến y tá!',
+      icon: 'success',
+      customClass: {
+        confirmButton: 'btn btn-primary'
+      },
+      buttonsStyling: false
+    });
   });
 
   document.getElementById("choose_patient").addEventListener("change", function() {

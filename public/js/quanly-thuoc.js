@@ -4,8 +4,33 @@
 
 "use strict";
 
+// const id_doctor = "9";
+
 // Datatable (jquery)
 $(function () {
+
+  // (async () => {
+  //   try {
+  //     const responsePost = await fetch("../../api/getInfo/", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({ id_doctor }),
+  //     });
+
+  //     if (!responsePost.ok) {
+  //       throw new Error("Network response for POST was not ok");
+  //     }
+  //     const dataPost = await responsePost.json();
+  //     const { firstName, role } = dataPost.info;
+  //     document.getElementById("username").textContent = firstName;
+  //     document.getElementById("role").textContent = role;
+  //   } catch (error) {
+  //     console.error("There was a problem with the fetch operation:", error);
+  //   }
+  // })();
+
   let borderColor, bodyBg, headingColor;
   // Variable declaration for table
   var dt_product_table = $(".datatables-products"),
@@ -91,17 +116,25 @@ $(function () {
             } else {
               // For Product badge
               // var stateNum = Math.floor(Math.random() * 6);
-              var stateNum = full["status"] + 1;
+              var $stateNum;
+              var $qty = parseInt(full["qty"]);
+              if($qty <= 150 && $qty > 0) {
+                $stateNum = 1;
+              }else if($qty <= 0) {
+                $stateNum = 3;
+              }else{
+                $stateNum = 2;
+              }
               var states = [
+                "info",
+                "warning",
                 "success",
                 "danger",
-                "warning",
-                "info",
                 "danger",
                 "primary",
                 "secondary",
               ];
-              var $state = states[stateNum],
+              var $state = states[$stateNum],
                 $name = full["product_brand"];
               var $initials = [];
               if ($name) {
@@ -189,7 +222,14 @@ $(function () {
           targets: -2,
           render: function (data, type, full, meta) {
             var $status = full["status"];
-
+            var $qty = parseInt(full["qty"]);
+            if($qty <= 150 && $qty > 0) {
+              $status = 1;
+            }else if($qty <= 0) {
+              $status = 3;
+            }else{
+              $status = 2;
+            }
             return (
               '<span class="badge ' +
               statusObj[$status].class +
@@ -210,10 +250,10 @@ $(function () {
               '<div class="d-inline-block text-nowrap">' +
               '<button class="btn btn-sm btn-icon edit-record"><i class="bx bx-edit"></i></button>' +
               '<button class="btn btn-sm btn-icon delete-record"><i class="bx bx-trash"></i></button>' +
-              '<button class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded me-2"></i></button>' +
-              '<div class="dropdown-menu dropdown-menu-end m-0">' +
-              '<a href="javascript:0;" class="dropdown-item">View</a>' +
-              '<a href="javascript:0;" class="dropdown-item">Suspend</a>' +
+              // '<button class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded me-2"></i></button>' +
+              // '<div class="dropdown-menu dropdown-menu-end m-0">' +
+              // '<a href="javascript:0;" class="dropdown-item">View</a>' +
+              // '<a href="javascript:0;" class="dropdown-item">Suspend</a>' +
               "</div>" +
               "</div>"
             );
@@ -508,18 +548,14 @@ $(function () {
               qty_cr: parseInt(rowData.qty) + parseInt(qty.value),
             };
             console.log(current);
-            const response = await fetch("../../api/add-medicine/", {
+            const response = await fetch("../../api/update-medicine/", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
               },
               body: JSON.stringify({
                 id_cr: parseInt(current["id_cr"]),
-                product_name: rowData.name,
-                product_brand: rowData.product_brand,
-                price: rowData.price,
                 qty: parseInt(current["qty_cr"]),
-                category: parseInt(rowData.category),
               }),
             });
             if (response.ok) {
@@ -580,23 +616,120 @@ $(function () {
     true
   );
 
-
-    //edit record
-    $(".datatables-products tbody").on(
-      "click",
-      ".edit-record",
-      async function() {
-        var foundId = null;
-        var tempDiv = document.createElement("div");
-        tempDiv.innerHTML = $(this).parents("tr")[0].innerHTML;
-        var productNameToFind = tempDiv
-          .querySelector("h6.text-body")
-          ?.textContent?.trim();
-        console.log(productNameToFind);
-        
+  //edit record
+  $(".datatables-products tbody").on(
+    "click",
+    ".edit-record",
+    async function () {
+      var foundId = null;
+      var tempDiv = document.createElement("div");
+      tempDiv.innerHTML = $(this).parents("tr")[0].innerHTML;
+      var productNameToFind = tempDiv
+        .querySelector("h6.text-body")
+        ?.textContent?.trim();
+      console.log(productNameToFind);
+      fetch("/api/getAllMedicine")
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          var list2 = {};
+          for (var i = 0; i < data.length; i++) {
+            if (data[i].name === productNameToFind) {
+              list2 = data[i];
+              break;
+            }
+          }
+          console.log(list2);
+          Swal.fire({
+            title: 'Edit product',
+            // input: 'text',
+            html: `
+            <div class="modal-body">
+          <div class="row">
+            <div class="col mb-3">
+              <label for="nameBasic" class="form-label">Product Name</label>
+              <input type="text" id="nameEdit" class="form-control" placeholder="Name" value="${list2.name}" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col mb-3">
+              <label for="brandBasic" class="form-label">Product Brand</label>
+              <input type="text" id="brandEdit" class="form-control" placeholder="Brand" value="${list2.product_brand}"/>
+            </div>
+          </div>
+          <div class="row g-2">
+            <div class="col mb-3">
+              <label class="form-label" for="ecommerce-product-price">Base Price</label>
+              <input type="number" class="form-control" value="${list2.price.replace("$", "")}" id="priceEdit" placeholder="Price" name="productPrice" aria-label="Product price" />
+            </div>
+            <div class="col mb-3">
+              <label class="form-label" for="quantity">Quantity</label>
+              <input type="number" class="form-control" value="${list2.qty}" id="quantityEdit" placeholder="Quantity of product" name="quantity" aria-label="quantity" />
+            </div>
+          </div>
+          <div class="mb-3 col ecommerce-select2-dropdown">
+            <label class="form-label mb-1 d-flex justify-content-between align-items-center" for="category-org">
+              <span>Category</span>
+            </label>
+            <select id="categoryEdit" class="select2 form-select" data-placeholder="${list2.category}" value="${list2.category}">
+              <option>Select Category</option>
+              <option value=0>Analgesic</option>
+              <option value=1>Làm đẹp</option>
+              <option value=2>Inflammatory</option>
+              <option value=3>Antibiotic</option>
+              <option value=4>Poison</option>
+              <option value=5>Other</option>
+            </select>
+          </div>
+        </div>
+            `,
+            inputAttributes: {
+              autocapitalize: 'off'
+            },
+            showCancelButton: true,
+            confirmButtonText: 'Submit',
+            showLoaderOnConfirm: true,
+            customClass: {
+              confirmButton: 'btn btn-primary me-3',
+              cancelButton: 'btn btn-label-danger'
+            },
+            preConfirm: async s => {
+              await fetch("../../api/edit-medicine/", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  id: list2.id-1, 
+                  product_name: document.getElementById("nameEdit").value, 
+                  product_brand: document.getElementById("brandEdit").value, 
+                  price: document.getElementById("priceEdit").value, 
+                  qty: document.getElementById("quantityEdit").value, 
+                  category: document.getElementById("categoryEdit").value
+                }),
+              });
+            },
+            backdrop: true,
+            allowOutsideClick: () => !Swal.isLoading()
+          }).then(result => {
+            if (result.isConfirmed) {
+              Swal.fire({
+                title: "Changed Successfully!",
+                customClass: {
+                  confirmButtonText: 'Close me!',
+                  confirmButton: 'btn btn-primary'
+                }
+              });
+              dt_products.ajax.reload();
+            }
+          });
+        });
       }
-    );
-
+  );
   // Delete Record
   $(".datatables-products tbody").on(
     "click",
@@ -610,7 +743,7 @@ $(function () {
         ?.textContent?.trim();
       console.log(productNameToFind);
       $.ajax({
-        url: "https://ithopital-default-rtdb.firebaseio.com/admin/medicine/data.json",
+        url: "../../api/getAllMedicine",
         dataType: "json",
         success: function (jsonData) {
           var cleanedData = jsonData.filter(function (item) {
