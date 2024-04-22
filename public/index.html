@@ -1,133 +1,733 @@
 <!DOCTYPE html>
 
-<html
-  lang="en"
-  class="light-style layout-navbar-fixed layout-wide"
-  dir="ltr"
-  data-template="front-pages-no-customizer">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+<html lang="en" class="light-style layout-navbar-fixed layout-wide" dir="ltr" data-theme="theme-default"
+  data-assets-path="../../assets/" data-template="front-pages">
 
-    <title>IT HOSPITAL</title>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <meta name="description" content="" />
-    <link rel="icon" type="image/x-icon" href="../img/main.ico" />
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-      rel="stylesheet" />
+  <title>Landing Page - Front Pages | Frest - Bootstrap Admin Template</title>
 
+  <meta name="description" content="" />
 
-    <!-- Core CSS -->
-    <link rel="stylesheet" href="css/core.css" />
-    <link rel="stylesheet" href="css/theme.css" />
-    <link rel="stylesheet" href="css/front-page.css" />
-    <!-- Page CSS -->
-    <link rel="stylesheet" href="css/landing-page.css" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="img/main.ico" />
 
-    <!-- Module -->
-    <script src="js/firebase.js" type = "module"></script>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet" />
 
+  <link rel="stylesheet" href="css/boxicons.css" />
 
-  </head>
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="css/core.css" class="template-customizer-core-css" />
+  <link rel="stylesheet" href="css/theme.css" class="template-customizer-theme-css" />
+  <link rel="stylesheet" href="css/demo.css" />
+  <link rel="stylesheet" href="css/front-page.css" />
+  <!-- Vendors CSS -->
 
-  <body>
+  <link rel="stylesheet" href="css/nouislider.css" />
+  <link rel="stylesheet" href="css/swiper.css" />
 
-    <nav class="layout-navbar">
-      <div class="container">
-        <div class="navbar navbar-expand-lg landing-navbar px-3">
-          <!-- Menu logo wrapper: Start -->
-          <div class="navbar-brand">
-            <a href="index.html" class="app-brand-link">
-              <span class="app-brand-text demo menu-text fw-bold ms-2 ps-1">IT HOSPITAL</span>
-            </a>
-          </div>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav">
-              <li>
-                <a class="nav-link fw-medium" aria-current="page" href="index.html#landingHero">Home</a>
-              </li>
-              <li>
-                <!-- <a class="nav-link fw-medium" href="index.html#landingFeatures">About me</a> -->
-                <a class="nav-link fw-medium" href="index.html#landingFeatures">About me</a>
-              </li>
-            </ul>
-          </div>
-          <div class="landing-menu-overlay d-lg-none"></div>
-          <ul class="navbar-nav flex-row align-items-center ms-auto">
-            <li>
-              <a href="log.html" class="btn btn-primary" target=""
-                ><span class="tf-icons bx bx-user me-md-1"></span
-                >
-                <span class="d-none d-md-block" href="log.html">Login</span>
-              </a>
+  <!-- Page CSS -->
+
+  <link rel="stylesheet" href="css/landing-page.css" />
+
+  <!-- Helpers -->
+  <script src="js/helpers.js"></script>
+  <script src="js/config.js"></script>
+</head>
+
+<body>
+  <script src="js/dropdown-hover.js"></script>
+  <script src="js/mega-dropdown.js"></script>
+
+  <!-- Navbar: Start -->
+  <nav class="layout-navbar shadow-none py-0">
+    <div class="container">
+      <div class="navbar navbar-expand-lg landing-navbar px-3 px-md-4">
+        <!-- Menu logo wrapper: Start -->
+        <div class="navbar-brand app-brand demo d-flex py-0 me-4">
+          <!-- Mobile menu toggle: Start-->
+          <button class="navbar-toggler border-0 px-0 me-2" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <i class="tf-icons bx bx-menu bx-sm align-middle"></i>
+          </button>
+          <!-- Mobile menu toggle: End-->
+          <a href="index.html" class="app-brand-link">
+            <span class="app-brand-text demo menu-text fw-bold ms-2 ps-1">IT Hospital</span>
+          </a>
+        </div>
+        <!-- Menu logo wrapper: End -->
+        <!-- Menu wrapper: Start -->
+        <div class="collapse navbar-collapse landing-nav-menu" id="navbarSupportedContent">
+          <button class="navbar-toggler border-0 text-heading position-absolute end-0 top-0 scaleX-n1-rtl" type="button"
+            data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <i class="tf-icons bx bx-x bx-sm"></i>
+          </button>
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link fw-medium" aria-current="page" href="index.html#landingHero">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-medium" href="index.html#landingFeatures">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-medium" href="index.html#landingTeam">Team</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-medium" href="index.html#landingFAQ">FAQ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-medium" href="index.html#landingContact">Contact us</a>
             </li>
           </ul>
         </div>
+        <div class="landing-menu-overlay d-lg-none"></div>
+        <!-- Menu wrapper: End -->
+        <li>
+          <a href="log.html" class="btn btn-primary"><span class="tf-icons bx bx-user me-md-1"></span><span
+              class="d-none d-md-block">Login/Staff</span></a>
+        </li>
       </div>
-    </nav>
+    </div>
+  </nav>
+  <!-- Navbar: End -->
 
+  <!-- Sections:Start -->
 
-    <div data-bs-spy="scroll" class="scrollspy-example">
-      <!-- Hero: Start -->
-      <section id="hero-animation">
-        <div id="landingHero" class="section-py landing-hero position-relative">
-          <div class="container">
-            <div class="hero-text-box text-center">
-              <h1 class="text-primary hero-title display-4 fw-bold">Nhan chua benh tu dau toi chan</h1>
-              <h2 class="hero-sub-title h6 mb-4 pb-1">
-                If you have any sick patients, please contact us<br class="d-none d-lg-block" />
-                for improve my profit ^^ ty.
-              </h2>
-              <div class="landing-hero-btn d-inline-block position-relative">
-                <a id="book" href="booking.html" class="btn btn-primary" >Đặt lịch khám bệnh</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section id="landingFeatures" class="section-py landing-features">
+  <div data-bs-spy="scroll" class="scrollspy-example">
+    <!-- Hero: Start -->
+    <section id="hero-animation">
+      <div id="landingHero" class="section-py landing-hero position-relative">
         <div class="container">
-          <div class="text-center mb-3 pb-1">
-            <span class="badge bg-label-primary">About me</span>
+          <div class="hero-text-box text-center">
+            <h1 class="text-primary hero-title display-4 fw-bold">IF YOU SICK, <br>IT ME CARE</h1>
+            <h2 class="hero-sub-title h6 mb-4 pb-1">
+              If you have any sick patients, please contact us<br class="d-none d-lg-block" />
+              for improve my profit ^^ ty.
+            </h2>
+            <div class="landing-hero-btn d-inline-block position-relative">
+              <span class="hero-btn-item position-absolute d-none d-md-flex text-heading">Come with me
+                <img src="img/come.png" alt="Join community arrow" class="scaleX-n1-rtl" /></span>
+              <a href="booking.html" class="btn btn-primary">Đặt lịch khám bệnh</a>
+            </div>
           </div>
-          <h3 class="text-center mb-1">
-            <span class="section-title">Everything you need</span> to end of the sick
-          </h3>
-          <p class="text-center mb-3 mb-md-5 pb-3">
-            Not just med, but if you don't have money, you die!
-          </p>
-          <div class="features-icon-wrapper row gx-0 gy-4 g-sm-5">
-            <div class="col-lg-4 col-sm-6 text-center features-icon-box">
-              <div class="text-center mb-3">
-                <img src="img/check.png" alt="3d select solid" />
+          <hr>
+          <div id="heroDashboardAnimation" class="hero-animation-img">
+            <a href="" target="">
+              <div id="heroAnimationImg" class="position-relative hero-dashboard-img">
+                <img src="img/logo.png" alt="hero dashboard" class="animation-img" />
               </div>
-              <h5 class="mb-3">Practicing Certificate</h5>
-              <p class="features-icon-description">
-                Currently there isn't, but there will definitely be.
-              </p>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="landing-hero-blank"></div>
+    </section>
+    <!-- Hero: End -->
+
+    <!-- Useful features: Start -->
+    <section id="landingFeatures" class="section-py landing-features">
+      <div class="container">
+        <div class="text-center mb-3 pb-1">
+          <span class="badge bg-label-primary">About me</span>
+        </div>
+        <h3 class="text-center mb-1">
+          <span class="section-title">Everything you need</span> to end of the sick
+        </h3>
+        <p class="text-center mb-3 mb-md-5 pb-3">
+          Not just med, but if you don't have money, you die!
+        </p>
+        <div class="features-icon-wrapper row gx-0 gy-4 g-sm-5">
+          <div class="col-lg-4 col-sm-6 text-center features-icon-box">
+            <div class="text-center mb-3">
+              <img src="img/check.png" alt="laptop charging" />
             </div>
-            <div class="col-lg-4 col-sm-6 text-center features-icon-box">
-              <div class="text-center mb-3">
-                <img src="img/user.png" alt="lifebelt" />
-              </div>
-              <h5 class="mb-3">Doctor</h5>
-              <p class="features-icon-description">It is not certain that the disease can be cured, but it will definitely collect money.</p>
+            <h5 class="mb-3">Practicing Certificate</h5>
+            <p class="features-icon-description">
+              Currently there isn't, but there will definitely be.
+            </p>
+          </div>
+          <div class="col-lg-4 col-sm-6 text-center features-icon-box">
+            <div class="text-center mb-3">
+              <img src="img/user.png" alt="transition up" />
             </div>
-            <div class="col-lg-4 col-sm-6 text-center features-icon-box">
-              <div class="text-center mb-3">
-                <img src="img/keyboard.png" alt="google docs" />
+            <h5 class="mb-3">Doctor</h5>
+            <p class="features-icon-description">
+              It is not certain that the disease can be cured, but it will definitely collect money.
+            </p>
+          </div>
+          <div class="col-lg-4 col-sm-6 text-center features-icon-box">
+            <div class="text-center mb-3">
+              <img src="img/diamond-info.png" alt="edit" />
+            </div>
+            <h5 class="mb-3">Service</h5>
+            <p class="features-icon-description">
+              We do not guarantee that the illness will be cured on time, but we do guarantee that we will collect money
+              on time.
+            </p>
+          </div>
+          <div class="col-lg-4 col-sm-6 text-center features-icon-box">
+            <div class="text-center mb-3">
+              <img src="img/rocket.png" alt="3d select solid" />
+            </div>
+            <h5 class="mb-3">Back end</h5>
+            <p class="features-icon-description">
+              The site uses all the latest APIs or at least we think so.
+            </p>
+          </div>
+          <div class="col-lg-4 col-sm-6 text-center features-icon-box">
+            <div class="text-center mb-3">
+              <img src="img/keyboard.png" alt="lifebelt" />
+            </div>
+            <h5 class="mb-3">Front end</h5>
+            <p class="features-icon-description">Contains up to 3 different user interfaces, allowing staff to
+              experience freely!</p>
+          </div>
+          <div class="col-lg-4 col-sm-6 text-center features-icon-box">
+            <div class="text-center mb-3">
+              <img src="img/huhu.png" width="20%" alt="google docs" />
+            </div>
+            <h5 class="mb-3">AI Asistant (Beta)</h5>
+            <p class="features-icon-description">Integrating AI virtual assistants helps support effective disease
+              classification.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Useful features: End -->
+
+    <!-- Real customers reviews: Start -->
+    <section id="landingReviews" class="section-py bg-body landing-reviews pb-0">
+      <!-- What people say slider: Start -->
+      <div class="container">
+        <div class="row align-items-center gx-0 gy-4 g-lg-5">
+          <div class="col-md-6 col-lg-5 col-xl-3">
+            <div class="mb-3 pb-1">
+              <span class="badge bg-label-primary">Real Customers Reviews</span>
+            </div>
+            <h3 class="mb-1"><span class="section-title">What people say</span></h3>
+            <p class="mb-3 mb-md-5">
+              See what our customers have to<br class="d-none d-xl-block" />
+              say about their experience.
+            </p>
+            <div class="landing-reviews-btns d-flex align-items-center gap-3">
+              <button id="reviews-previous-btn" class="btn btn-label-primary reviews-btn" type="button">
+                <i class="bx bx-chevron-left bx-sm"></i>
+              </button>
+              <button id="reviews-next-btn" class="btn btn-label-primary reviews-btn" type="button">
+                <i class="bx bx-chevron-right bx-sm"></i>
+              </button>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-7 col-xl-9">
+            <div class="swiper-reviews-carousel overflow-hidden mb-5 pb-md-2 pb-md-3">
+              <div class="swiper" id="swiper-reviews">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <div class="card h-100">
+                      <div class="card-body text-body d-flex flex-column justify-content-between h-100">
+                        <div class="mb-3">
+                          <img src="img/logo-1.png" alt="client logo" class="client-logo img-fluid" />
+                        </div>
+                        <p>
+                          “IT Hospital is the place with the best air conditioning service I have ever used. I had a
+                          fever of 40°C and when I got here I was still 17°C, great!”
+                        </p>
+                        <div class="text-warning mb-3">
+                          <i class="bx bxs-star bx-sm"></i>
+                          <i class="bx bxs-star bx-sm"></i>
+                          <i class="bx bxs-star bx-sm"></i>
+                          <i class="bx bxs-star bx-sm"></i>
+                          <i class="bx bxs-star bx-sm"></i>
+                        </div>
+                        <div class="d-flex align-items-center">
+                          <div class="avatar me-2 avatar-sm">
+                            <img src="img/1.png" alt="Avatar" class="rounded-circle" />
+                          </div>
+                          <div>
+                            <h6 class="mb-0">Cecilia Payne</h6>
+                            <p class="small text-muted mb-0">Not CEO of Airbnb</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="card h-100">
+                      <div class="card-body text-body d-flex flex-column justify-content-between h-100">
+                        <div class="mb-3">
+                          <img src="img/logo-2.png" alt="client logo" class="client-logo img-fluid" />
+                        </div>
+                        <p>
+                          “If you want to appreciate the money you make, come here!”
+                        </p>
+                        <div class="text-warning mb-3">
+                          <i class="bx bxs-star bx-sm"></i>
+                          <i class="bx bxs-star bx-sm"></i>
+                          <i class="bx bxs-star bx-sm"></i>
+                          <i class="bx bxs-star bx-sm"></i>
+                          <i class="bx bxs-star bx-sm"></i>
+                        </div>
+                        <div class="d-flex align-items-center">
+                          <div class="avatar me-2 avatar-sm">
+                            <img src="img/2.png" alt="Avatar" class="rounded-circle" />
+                          </div>
+                          <div>
+                            <h6 class="mb-0">Eugenia Moore</h6>
+                            <p class="small text-muted mb-0">Not Founder of Hubspot</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="card h-100">
+                      <div class="card-body text-body d-flex flex-column justify-content-between h-100">
+                        <div class="mb-3">
+                          <img src="img/logo-3.png" alt="client logo" class="client-logo img-fluid" />
+                        </div>
+                        <p>
+                          "After being examined here, I have never been sick again. Every time something unusual
+                          happens, I will say to myself: "That's 1 month's salary..."!"
+                        </p>
+                        <div class="text-warning mb-3">
+                          <i class="bx bxs-star bx-sm"></i>
+                          <i class="bx bxs-star bx-sm"></i>
+                          <i class="bx bxs-star bx-sm"></i>
+                          <i class="bx bxs-star bx-sm"></i>
+                          <i class="bx bxs-star bx-sm"></i>
+                        </div>
+                        <div class="d-flex align-items-center">
+                          <div class="avatar me-2 avatar-sm">
+                            <img src="img/3.png" alt="Avatar" class="rounded-circle" />
+                          </div>
+                          <div>
+                            <h6 class="mb-0">Curtis Fletcher</h6>
+                            <p class="small text-muted mb-0">Not Design Lead at Dribbble</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="card h-100">
+                      <div class="card-body text-body d-flex flex-column justify-content-between h-100">
+                        <div class="mb-3">
+                          <img src="img/logo-4.png" alt="client logo" class="client-logo img-fluid" />
+                        </div>
+                        <p>
+                          "I can confidently state that NetFlix's annual revenue is not equal to IT Hospital's one
+                          quarter's revenue!"
+                        </p>
+                        <div class="text-warning mb-3">
+                          <i class="bx bxs-star bx-sm"></i>
+                          <i class="bx bxs-star bx-sm"></i>
+                          <i class="bx bxs-star bx-sm"></i>
+                          <i class="bx bxs-star bx-sm"></i>
+                          <i class="bx bx-star bx-sm"></i>
+                        </div>
+                        <div class="d-flex align-items-center">
+                          <div class="avatar me-2 avatar-sm">
+                            <img src="img/4.png" alt="Avatar" class="rounded-circle" />
+                          </div>
+                          <div>
+                            <h6 class="mb-0">Sara Smith</h6>
+                            <p class="small text-muted mb-0">Not Founder of Continental</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="card h-100">
+                      <div class="card-body text-body d-flex flex-column justify-content-between h-100">
+                        <div class="mb-3">
+                          <img src="img/logo-5.png" alt="client logo" class="client-logo img-fluid" />
+                        </div>
+                        <p>
+                          “I didn't believe what people said until I experienced the service here.”
+                        </p>
+                        <div class="text-warning mb-3">
+                          <i class="bx bxs-star bx-sm"></i>
+                          <i class="bx bxs-star bx-sm"></i>
+                          <i class="bx bxs-star bx-sm"></i>
+                          <i class="bx bxs-star bx-sm"></i>
+                          <i class="bx bxs-star bx-sm"></i>
+                        </div>
+                        <div class="d-flex align-items-center">
+                          <div class="avatar me-2 avatar-sm">
+                            <img src="img/5.png" alt="Avatar" class="rounded-circle" />
+                          </div>
+                          <div>
+                            <h6 class="mb-0">Eugenia Moore</h6>
+                            <p class="small text-muted mb-0">Not Founder of Hubspot</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="card h-100">
+                      <div class="card-body text-body d-flex flex-column justify-content-between h-100">
+                        <div class="mb-3">
+                          <img src="img/power.png" alt="client logo" class="client-logo img-fluid" />
+                        </div>
+                        <p>
+                          "We treat you in a way that will make you afraid and not dare to get sick again, dear!"
+                        </p>
+                        <div class="text-warning mb-3">
+                          <i class="bx bxs-star bx-sm"></i>
+                          <i class="bx bxs-star bx-sm"></i>
+                          <i class="bx bxs-star bx-sm"></i>
+                          <i class="bx bxs-star bx-sm"></i>
+                          <i class="bx bxs-star bx-sm"></i>
+                        </div>
+                        <div class="d-flex align-items-center">
+                          <div class="avatar me-2 avatar-sm">
+                            <img src="img/1.png" alt="Avatar" class="rounded-circle" />
+                          </div>
+                          <div>
+                            <h6 class="mb-0">Tín Dep Trai</h6>
+                            <p class="small text-muted mb-0">CEO of IT Hospital</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
               </div>
-              <h5 class="mb-3">Service</h5>
-              <p class="features-icon-description">We do not guarantee that the illness will be cured on time, but we do guarantee that we will collect money on time.</p>
             </div>
           </div>
         </div>
-      </section>
-  </body>
+      </div>
+      <!-- What people say slider: End -->
+      <hr class="m-0" />
+    </section>
+    <!-- Real customers reviews: End -->
+
+    <!-- Our great team: Start -->
+    <section id="landingTeam" class="section-py landing-team">
+      <div class="container">
+        <div class="text-center mb-3 pb-1">
+          <span class="badge bg-label-primary">Our Great Team</span>
+        </div>
+        <h3 class="text-center mb-1"><span class="section-title">Study A Second Time</span> Team</h3>
+        <p class="text-center mb-md-5 pb-3">Doctors specializing in Computer Science</p>
+        <div class="row gy-5 mt-2">
+          <div class="col-lg-3 col-sm-6">
+            <div class="card mt-3 mt-lg-0 shadow-none">
+              <div class="bg-label-primary position-relative team-image-box">
+                <img src="img/product-19.png"
+                  class="position-absolute card-img-position bottom-0 start-50 scaleX-n1-rtl img-fluid"
+                  alt="human image" />
+              </div>
+              <div class="card-body border border-label-primary border-top-0 text-center">
+                <h5 class="card-title mb-0">Trung Kien Tran</h5>
+                <p class="text-muted mb-0">Doctor's role Designer</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="card mt-3 mt-lg-0 shadow-none">
+              <div class="bg-label-info position-relative team-image-box">
+                <img src="img/product-12.png"
+                  class="position-absolute card-img-position bottom-0 start-50 scaleX-n1-rtl img-fluid"
+                  alt="human image" />
+              </div>
+              <div class="card-body border border-label-info border-top-0 text-center">
+                <h5 class="card-title mb-0">Dang Khoa</h5>
+                <p class="text-muted mb-0">Doctor's role Designer</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="card mt-3 mt-lg-0 shadow-none">
+              <div class="bg-label-danger position-relative team-image-box">
+                <img src="img/huhu.png"
+                  class="position-absolute card-img-position bottom-0 start-50 scaleX-n1-rtl img-fluid"
+                  alt="human image" />
+              </div>
+              <div class="card-body border border-label-danger border-top-0 text-center">
+                <h5 class="card-title mb-0">Ha Nguyen</h5>
+                <p class="text-muted mb-0">Nurse's UI Designer</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="card mt-3 mt-lg-0 shadow-none">
+              <div class="bg-label-success position-relative team-image-box">
+                <img src="img/product-25.png"
+                  class="position-absolute card-img-position bottom-0 start-50 scaleX-n1-rtl img-fluid"
+                  alt="human image" />
+              </div>
+              <div class="card-body border border-label-success border-top-0 text-center">
+                <h5 class="card-title mb-0">Phat</h5>
+                <p class="text-muted mb-0">Nurse's BE Programer</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row gy-5 mt-2">
+          <div class="col-lg-3 col-sm-6"></div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="card mt-3 mt-lg-0 shadow-none">
+              <div class="bg-label-primary position-relative team-image-box">
+                <img src="img/product-24.png"
+                  class="position-absolute card-img-position bottom-0 start-50 scaleX-n1-rtl img-fluid"
+                  alt="human image" />
+              </div>
+              <div class="card-body border border-label-primary border-top-0 text-center">
+                <h5 class="card-title mb-0">Thuong Ha</h5>
+                <p class="text-muted mb-0">Login and Permissions Programer</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="card mt-3 mt-lg-0 shadow-none">
+              <div class="bg-label-info position-relative team-image-box">
+                <img src="img/product-12.png"
+                  class="position-absolute card-img-position bottom-0 start-50 scaleX-n1-rtl img-fluid"
+                  alt="human image" />
+              </div>
+              <div class="card-body border border-label-info border-top-0 text-center">
+                <h5 class="card-title mb-0">Chanh Tin Nguyen</h5>
+                <p class="text-muted mb-0">Admin's role Programer</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Our great team: End -->
+
+    <!-- FAQ: Start -->
+    <section id="landingFAQ" class="section-py bg-body landing-faq">
+      <div class="container">
+        <div class="text-center mb-3 pb-1">
+          <span class="badge bg-label-primary">FAQ</span>
+        </div>
+        <h3 class="text-center mb-1">Frequently asked <span class="section-title">questions</span></h3>
+        <p class="text-center mb-5 pb-3">We only answer questions here, if you want to ask more, just Google!</p>
+        <div class="row gy-5">
+          <div class="col-lg-5">
+            <div class="text-center">
+              <img src="img/faq-boy-with-logos.png" alt="faq boy with logos" class="faq-image" />
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <div class="accordion accordion-header-primary" id="accordionExample">
+              <div class="card accordion-item active">
+                <h2 class="accordion-header" id="headingOne">
+                  <button type="button" class="accordion-button" data-bs-toggle="collapse"
+                    data-bs-target="#accordionOne" aria-expanded="true" aria-controls="accordionOne">
+                    Reason for choosing the topic?
+                  </button>
+                </h2>
+
+                <div id="accordionOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    Trong thời đại khoa học công nghệ phát triển mạnh mẽ, ngành y tế nói riêng và mọi ngành nghề nói chung cũng bị ảnh hưởng ít nhiều bởi sự phát triển đó. Đối với riêng ngành y tế, nhu cầu quản lý và vận hành hiệu quả các nguồn lực y tế, từ trang thiết bị đến nhân lực y bác sĩ và quản lý bệnh nhân được đặt lên hàng đầu. Vì vậy việc ứng dụng công nghệ thông tin sẽ là một giải pháp hiệu quả cho nhu cầu đó. Nhóm xin được vận dụng những kiến thức đã được học để lên ý tưởng, thiết kế và hiện thực một website đơn giản để giải quyết nhu cầu đó.
+                  </div>
+                </div>
+              </div>
+              <div class="card accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                  <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                    data-bs-target="#accordionTwo" aria-expanded="false" aria-controls="accordionTwo">
+                    Research subjects?
+                  </button>
+                </h2>
+                <div id="accordionTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                  data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    Hệ thống quản lý sẽ là nền tảng cho đề tài quản lý bệnh viện. Với các chức
+năng cơ bản của một hệ thống quản lý như thêm, sửa, xoá các dữ liệu trong
+cơ sở dữ liệu, nhóm nghiên cứu thêm về các chức năng phù hợp với nhu cầu
+cụ thể của đề tài và các công cụ hỗ trợ về giao diện, cơ sở dữ liệu, các giải
+thuật tối ưu quản lý
+                  </div>
+                </div>
+              </div>
+              <div class="card accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                  <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                    data-bs-target="#accordionThree" aria-expanded="false" aria-controls="accordionThree">
+                    Limits and scope of research?
+                  </button>
+                </h2>
+                <div id="accordionThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                  data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    Trong khuôn khổ bộ môn Lập trình nâng cao với nội dung học chính là Lập
+trình hướng đối tượng (OOP), nhóm vận dụng kiến thức đã được học vào giải
+quyết đề tài. Ngoài ra, để đáp ứng được các chức năng và hướng giải quyết,
+nhóm sử dụng dịch vụ Goolge Firebase (https://firebase.google.com/) cho
+phần BackEnd để lưu trữ dữ liệu hệ thống, JavaScript và NodeJS để xử lý
+các chức năng của hệ thống, CSS và ReactJS cho giao diện của hệ thống
+dưới dạng Webapp
+                  </div>
+                </div>
+              </div>
+              <div class="card accordion-item">
+                <h2 class="accordion-header" id="headingFour">
+                  <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                    data-bs-target="#accordionFour" aria-expanded="false" aria-controls="accordionFour">
+                    Objectives of the study?
+                  </button>
+                </h2>
+                <div id="accordionFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                  data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    Hệ thống quản lý bệnh viện này được thiết kế với mục tiêu không chỉ là
+công cụ để theo dõi và quản lý thông tin bệnh nhân và nhân viên y tế mà
+còn là giải pháp giúp tối ưu hoá quá trình làm việc, đảm bảo chăm sóc bệnh
+nhân một cách tốt nhất và hiệu quả nhất. Hệ thống sẽ cung cấp cho quản
+lý một cái nhìn tổng quan và chi tiết về hầu hết các khía cạnh trong hoạt
+động của bệnh viện như trạng thái bệnh nhân, lịch trình nhân viên, trình
+trạng trang thiết bị.
+                  </div>
+                </div>
+              </div>
+              <div class="card accordion-item">
+                <h2 class="accordion-header" id="headingFive">
+                  <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                    data-bs-target="#accordionFive" aria-expanded="false" aria-controls="accordionFive">
+                    How does it work?
+                  </button>
+                </h2>
+                <div id="accordionFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                  data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    Oke let's go!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- FAQ: End -->
+
+    <!-- Contact Us: Start -->
+    <section id="landingContact" class="section-py bg-body landing-contact">
+      <div class="container">
+        <div class="text-center mb-3 pb-1">
+          <span class="badge bg-label-primary">Contact US</span>
+        </div>
+        <h3 class="text-center mb-1"><span class="section-title">Let's work</span> together</h3>
+        <p class="text-center mb-4 mb-lg-5 pb-md-3">440/40 Thong Nhat Street, 16 Ward, Go Vap District, HCMC</p>
+        <div class="row gy-4">
+          <div class="col-lg-5">
+            <div class="contact-img-box position-relative border p-2 h-100">
+              <img src="img/thump.png" alt="contact customer service"
+                class="contact-img w-100 scaleX-n1-rtl img-fluid" />
+              <div class="pt-3 px-4 pb-1">
+                <div class="row gy-3 gx-md-4">
+                  <div class="col-md-6 col-lg-12 col-xl-6">
+                    <div class="d-flex align-items-center">
+                      <div class="badge bg-label-primary rounded p-2 me-2"><i class="bx bx-envelope bx-sm"></i></div>
+                      <div>
+                        <p class="mb-0">Email</p>
+                        <h5 class="mb-0">
+                          <a href="mailto:example@gmail.com"
+                            class="text-heading">tin.nguyentidz1476<br>@hcmut.edu.vn</a>
+                        </h5>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-lg-12 col-xl-6">
+                    <div class="d-flex align-items-center">
+                      <div class="badge bg-label-success rounded p-2 me-2">
+                        <i class="bx bx-phone-call bx-sm"></i>
+                      </div>
+                      <div>
+                        <p class="mb-0">Phone</p>
+                        <h5 class="mb-0"><a href="tel:+1234-568-963" class="text-heading">+84 35 3431 537</a></h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="mb-1">Here is thank you</h4>
+                <p class="mb-4">
+                  Ở đây dùng để viết<br
+                    class="d-none d-lg-block" />
+                  những lời cảm ơn chân thành
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Contact Us: End -->
+  </div>
+
+  <!-- / Sections:End -->
+
+  <!-- Footer: Start -->
+  <footer class="landing-footer bg-body footer-text">
+
+
+    <div class="footer-bottom py-3">
+      <div class="container d-flex flex-wrap justify-content-between flex-md-row flex-column text-center text-md-start">
+        <div class="mb-2 mb-md-0">
+          <span class="footer-text">©
+            <script>
+              document.write(new Date().getFullYear());
+            </script>
+          </span>
+          <a href="https://pixinvent.com" target="_blank" class="fw-medium text-white footer-link">IT Hospital,</a>
+          <span class="footer-text"> Made with ❤️ for a better web.</span>
+        </div>
+        <div>
+          <a href="https://github.com/tidzvl" class="footer-link me-3" target="_blank">
+            <img src="img/github-light.png" alt="github icon"
+              />GitHub
+          </a>
+          <a href="https://www.facebook.com/Wall.Bat.Baiz/" class="footer-link me-3" target="_blank">
+            <img src="img/facebook-light.png" alt="facebook icon"
+              />Facebook
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Footer: End -->
+
+  <!-- Core JS -->
+  <!-- build:js assets/vendor/js/core.js -->
+  <script src="js/popper/popper.js"></script>
+  <script src="js/bootstrap/bootstrap.js"></script>
+
+  <!-- endbuild -->
+
+  <!-- Vendors JS -->
+  <script src="js/nouislider.js"></script>
+  <script src="js/swiper.js"></script>
+  <script src="js/leaflet.js"></script>
+  <!-- Main JS -->
+  <script src="js/front-main.js"></script>
+
+  <!-- Page JS -->
+  <script src="js/front-page-landing.js"></script>
+</body>
+
 </html>

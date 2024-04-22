@@ -5,11 +5,11 @@ const nurse = document.getElementById('nurse');
 const doctor = document.getElementById('doctor');
 
 nurse.onclick = function(){
-    window.location.href = '/dist/yta/';
+    window.location.href = '/login-signup/';
 }
 doctor.onclick = function(){
-    window.location.href = '/doctor/profile/';
+    window.location.href = '/login-signup/';
 }
 admin.onclick = function(){
-    window.location.href = '/dashboards/';
+    window.location.href = '/login-signup/';
 }

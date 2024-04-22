@@ -2,22 +2,19 @@
 
 <html
   lang="en"
-  class="light-style layout-menu-fixed layout-compact"
+  class="light-style layout-navbar-fixed layout-wide"
   dir="ltr"
-  data-theme="theme-default"
-  data-assets-path=""
-  data-template="horizontal-menu-template-no-customizer-starter">
+  data-template="front-pages-no-customizer">
   <head>
     <meta charset="utf-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Page 1 | IT Hospital</title>
+    <title>IT HOSPITAL</title>
 
     <meta name="description" content="" />
-
-
+    <link rel="icon" type="image/x-icon" href="../img/main.ico" />
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,74 +22,112 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
       rel="stylesheet" />
 
-    <link rel="stylesheet" href="css/boxicons.css" />
-    <!-- Core CSS -->
-    <link rel="stylesheet" href="css/core.css" /> 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="css/core.css" />
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/front-page.css" />
+    <!-- Page CSS -->
+    <link rel="stylesheet" href="css/landing-page.css" />
+
+    <!-- Module -->
+    <script src="js/firebase.js" type = "module"></script>
+
 
   </head>
 
   <body>
-    <div class="container-fluid">
-        <div class="row">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light col-12">
-                <a class="navbar-brand" href="#">IT Hospital</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Page 1</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Page 2</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+
+    <nav class="layout-navbar">
+      <div class="container">
+        <div class="navbar navbar-expand-lg landing-navbar px-3">
+          <!-- Menu logo wrapper: Start -->
+          <div class="navbar-brand">
+            <a href="index.html" class="app-brand-link">
+              <span class="app-brand-text demo menu-text fw-bold ms-2 ps-1">IT HOSPITAL</span>
+            </a>
+          </div>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+              <li>
+                <a class="nav-link fw-medium" aria-current="page" href="index.html#landingHero">Home</a>
+              </li>
+              <li>
+                <!-- <a class="nav-link fw-medium" href="index.html#landingFeatures">About me</a> -->
+                <a class="nav-link fw-medium" href="index.html#landingFeatures">About me</a>
+              </li>
+            </ul>
+          </div>
+          <div class="landing-menu-overlay d-lg-none"></div>
+          <ul class="navbar-nav flex-row align-items-center ms-auto">
+            <li>
+              <a href="log.html" class="btn btn-primary" target=""
+                ><span class="tf-icons bx bx-user me-md-1"></span
+                >
+                <span class="d-none d-md-block" href="log.html">Login</span>
+              </a>
+            </li>
+          </ul>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <h4>Page 1</h4>
-                <p>Sample page.</p>
+      </div>
+    </nav>
+
+
+    <div data-bs-spy="scroll" class="scrollspy-example">
+      <!-- Hero: Start -->
+      <section id="hero-animation">
+        <div id="landingHero" class="section-py landing-hero position-relative">
+          <div class="container">
+            <div class="hero-text-box text-center">
+              <h1 class="text-primary hero-title display-4 fw-bold">Nhan chua benh tu dau toi chan</h1>
+              <h2 class="hero-sub-title h6 mb-4 pb-1">
+                If you have any sick patients, please contact us<br class="d-none d-lg-block" />
+                for improve my profit ^^ ty.
+              </h2>
+              <div class="landing-hero-btn d-inline-block position-relative">
+                <a id="book" href="booking.html" class="btn btn-primary" >Đặt lịch khám bệnh</a>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-
-    <!-- Overlay -->
-    <!-- <div class="layout-overlay layout-menu-toggle"></div> -->
-
-    <!-- Drag Target Area To SlideIn Menu On Small Screens -->
-    <!-- <div class="drag-target"></div> -->
-
-    <!--/ Layout wrapper -->
-
-    <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
-
-    <!-- <script src="../../assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="../../assets/vendor/libs/popper/popper.js"></script>
-    <script src="../../assets/vendor/js/bootstrap.js"></script>
-    <script src="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="../../assets/vendor/libs/hammer/hammer.js"></script>
-
-    <script src="../../assets/vendor/js/menu.js"></script> -->
-
-    <!-- endbuild -->
-
-    <!-- Vendors JS -->
-
-    <!-- Main JS -->
-    <!-- <script src="../../assets/js/main.js"></script> -->
-
-    <!-- Page JS -->
+      </section>
+      <section id="landingFeatures" class="section-py landing-features">
+        <div class="container">
+          <div class="text-center mb-3 pb-1">
+            <span class="badge bg-label-primary">About me</span>
+          </div>
+          <h3 class="text-center mb-1">
+            <span class="section-title">Everything you need</span> to end of the sick
+          </h3>
+          <p class="text-center mb-3 mb-md-5 pb-3">
+            Not just med, but if you don't have money, you die!
+          </p>
+          <div class="features-icon-wrapper row gx-0 gy-4 g-sm-5">
+            <div class="col-lg-4 col-sm-6 text-center features-icon-box">
+              <div class="text-center mb-3">
+                <img src="img/check.png" alt="3d select solid" />
+              </div>
+              <h5 class="mb-3">Practicing Certificate</h5>
+              <p class="features-icon-description">
+                Currently there isn't, but there will definitely be.
+              </p>
+            </div>
+            <div class="col-lg-4 col-sm-6 text-center features-icon-box">
+              <div class="text-center mb-3">
+                <img src="img/user.png" alt="lifebelt" />
+              </div>
+              <h5 class="mb-3">Doctor</h5>
+              <p class="features-icon-description">It is not certain that the disease can be cured, but it will definitely collect money.</p>
+            </div>
+            <div class="col-lg-4 col-sm-6 text-center features-icon-box">
+              <div class="text-center mb-3">
+                <img src="img/keyboard.png" alt="google docs" />
+              </div>
+              <h5 class="mb-3">Service</h5>
+              <p class="features-icon-description">We do not guarantee that the illness will be cured on time, but we do guarantee that we will collect money on time.</p>
+            </div>
+          </div>
+        </div>
+      </section>
   </body>
 </html>
