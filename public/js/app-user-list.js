@@ -566,7 +566,7 @@ $(function () {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          id: parseInt(foundId) - 1,
+          id: parseInt(foundId),
         }),
       });
     }
