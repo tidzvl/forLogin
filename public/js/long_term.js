@@ -93,49 +93,51 @@ userNamePromise.then(async function (userName) {
           });
           // console.log(patient_info);
           initialList = patient_info;
-          getAllPatients(patient_info);
+          getAllPatients(initialList);
         }
       });
     });
 });
 
 function getAllPatients(myPatientList) {
-  const dbRef = ref(db, "Doctor/" + id_doctor + "/patientList/");
-  console.log(myPatientList);
+  const dbRef = ref(db, "Doctor/" + id_doctor + "/patientList/");  
   onValue(dbRef, (snapshot) => {
     snapshot.forEach((childSnapshot) => {
       myPatientList.push(childSnapshot.val());
-    });
-
-    if (i === 0) {
+    });    
+    if (i === 0) {      
       let j,
         k = 0;
       const pageNumber = document.querySelector(".page-number");
       pageNumber.innerHTML = i + 1;
-      j = i * 5;
+      j = i * 5;      
       while (j < 5 * (i + 1) && k < 5) {
         const fullname = document.querySelector(`.fullname${k + 1}`);
         const sex = document.querySelector(`.sex${k + 1}`);
         const contact = document.querySelector(`.contact${k + 1}`);
-        const bhyt = document.querySelector(`.bhyt${k + 1}`);
-        const remove = document.querySelector(`.remove-button${k + 1}`);
-
-        if (j >= myPatientList.length) {
-          const info = document.querySelector(`.info-button${k + 1}`);
-          const remove = document.querySelector(`.remove-button${k + 1}`);
+        const bhyt = document.querySelector(`.bhyt${k + 1}`);        
+        const info = document.querySelector(`.info-button${k + 1}`);
+        const remove = document.querySelector(`.remove-button${k + 1}`);        
+        if (myPatientList.length === 0 || j >= myPatientList.length) {          
           fullname.innerHTML = "";
           sex.innerHTML = "";
           contact.innerHTML = "";
           bhyt.innerHTML = "";
           info.innerHTML = "";
-          remove.innerHTML = "";
-        } else {
+          remove.innerHTML = "";          
+        } else {          
           if (myPatientList[j].name != undefined) {
             fullname.innerHTML = myPatientList[j].name;
             sex.innerHTML = myPatientList[j].sex;
             contact.innerHTML = myPatientList[j].phone;
-            bhyt.innerHTML = myPatientList[j].healthInsurance;
-            remove.classList.add(myPatientList[j].patientId);
+            bhyt.innerHTML = myPatientList[j].healthInsurance;            
+          }else{
+            fullname.innerHTML = "";
+            sex.innerHTML = "";
+            contact.innerHTML = "";
+            bhyt.innerHTML = "";
+            info.innerHTML = "";
+            remove.innerHTML = "";  
           }
         }
         ++j;
@@ -143,7 +145,7 @@ function getAllPatients(myPatientList) {
       }
 
       for (let l = 1; l <= 5; l++) {
-        if (l > myPatientList.length) {
+        if (l >= myPatientList.length) {
           //neu so luong benh nhan nhieu hon so hang trong table thi break
           break;
         }
@@ -193,22 +195,18 @@ function getAllPatients(myPatientList) {
           infoContainer.innerHTML = res;
         });
       }
-
+      
+      //xử lí remove button
       for (let l = 1; l <= 5; l++) {
-        if (l > myPatientList.length) {
-          //neu so luong benh nhan nhieu hon so hang trong table thi break
-          break;
-        }
         let removeButton = document.querySelector(`.remove-button${l}`);
         removeButton.addEventListener("click", () => {
-          //them class vao nut mau do
-          let id_of_patient = removeButton.id - 1 + 5 * i;
-          console.log(id_of_patient);
-          const removePatient = document.querySelector(
-            ".remove-patient-button"
-          );
+          let id_of_patient = `${myPatientList[5*i+l-1].idd}`;
+          const removePatient = document.querySelector(".remove-patient-button");
+          if (removePatient.classList.contains(removePatient.classList[1])) {
+            removePatient.classList.remove(removePatient.classList[1]);
+          }
           removePatient.classList.add(id_of_patient);
-
+  
           const remove = document.querySelector(".remove-patient-container");
           const layout = document.querySelector(".layout-browser");
           const patientList = document.querySelector(".patients-list");
@@ -227,7 +225,6 @@ function getAllPatients(myPatientList) {
   });
 }
 
-// getAllPatients(initialList)
 const nextButton = document.querySelector(".next-button");
 const previousButton = document.querySelector(".previous-button");
 
@@ -238,6 +235,8 @@ previousButton.addEventListener("click", () => {
   if (i < 0) {
     i = 0;
   }
+  console.log(initialList)
+  console.log(initialList.length)
   const pageNumber = document.querySelector(".page-number");
 
   pageNumber.innerHTML = i + 1;
@@ -248,11 +247,8 @@ previousButton.addEventListener("click", () => {
     const contact = document.querySelector(`.contact${k + 1}`);
     const bhyt = document.querySelector(`.bhyt${k + 1}`);
     const info = document.querySelector(`.info-button${k + 1}`);
-    const remove = document.querySelector(`.remove-button${k + 1}`);
-
-    if (j >= initialList.length) {
-      const info = document.querySelector(`.info-button${k + 1}`);
-      const remove = document.querySelector(`.remove-button${k + 1}`);
+    const remove = document.querySelector(`.remove-button${k + 1}`);    
+    if (j >= initialList.length || initialList.length === 0) {      
       fullname.innerHTML = "";
       sex.innerHTML = "";
       contact.innerHTML = "";
@@ -264,19 +260,16 @@ previousButton.addEventListener("click", () => {
         fullname.innerHTML = initialList[j].name;
         sex.innerHTML = initialList[j].sex;
         contact.innerHTML = initialList[j].phone;
-        bhyt.innerHTML = initialList[j].healthInsurance;
-        remove.classList.add(initialList[j].patientId);
+        bhyt.innerHTML = initialList[j].healthInsurance;        
+      }else{
+        fullname.innerHTML = "";
+          sex.innerHTML = "";
+          contact.innerHTML = "";
+          bhyt.innerHTML = "";
+          info.innerHTML = "";
+          remove.innerHTML = "";  
       }
-    }
-
-    info.innerHTML = `<td class="info-button-content">
-        <button id="${k + 1}" class="info-button${k + 1}">Info</button>
-        </td>`;
-    remove.innerHTML = `<td class="remove-button-content">
-        <button id="${k + 1}" class="remove-button${k + 1} ${
-      initialList[j].patientId
-    }">Remove</button>
-        </td>`;
+    }    
     ++j;
     ++k;
   }
@@ -331,17 +324,18 @@ previousButton.addEventListener("click", () => {
       let res = myOutput + myOutput1;
       infoContainer.innerHTML = res;
     });
-  }
+  } 
 
+  //xử lí remove button
   for (let l = 1; l <= 5; l++) {
-    if (l > initialList.length) {
-      //neu so luong benh nhan nhieu hon so hang trong table thi break
-      break;
-    }
     let removeButton = document.querySelector(`.remove-button${l}`);
     removeButton.addEventListener("click", () => {
-      let id_of_patient = `${removeButton.classList[1]}`;
+      let index = 5*i+l-1
+      let id_of_patient = `${initialList[index].idd}`;
       const removePatient = document.querySelector(".remove-patient-button");
+      if (removePatient.classList.contains(removePatient.classList[1])) {
+        removePatient.classList.remove(removePatient.classList[1]);
+      }
       removePatient.classList.add(id_of_patient);
 
       const remove = document.querySelector(".remove-patient-container");
@@ -372,14 +366,14 @@ nextButton.addEventListener("click", () => {
   }
   const pageNumber = document.querySelector(".page-number");
   pageNumber.innerHTML = i + 1;
-  while (j < 5 * (i + 1) && k < 5 && k < initialList.length) {
+  while (j < 5 * (i + 1) && k < 5) {
     const fullname = document.querySelector(`.fullname${k + 1}`);
     const sex = document.querySelector(`.sex${k + 1}`);
     const contact = document.querySelector(`.contact${k + 1}`);
     const bhyt = document.querySelector(`.bhyt${k + 1}`);
     const remove = document.querySelector(`.remove-button${k + 1}`);
 
-    if (j >= initialList.length) {
+    if (myPatientList.length === 0 || j >= initialList.length) {
       const info = document.querySelector(`.info-button${k + 1}`);
       const remove = document.querySelector(`.remove-button${k + 1}`);
       fullname.innerHTML = "";
@@ -393,8 +387,14 @@ nextButton.addEventListener("click", () => {
         fullname.innerHTML = initialList[j].name;
         sex.innerHTML = initialList[j].sex;
         contact.innerHTML = initialList[j].phone;
-        bhyt.innerHTML = initialList[j].healthInsurance;
-        remove.classList.add(initialList[j].patientId);
+        bhyt.innerHTML = initialList[j].healthInsurance;        
+      }else{
+        fullname.innerHTML = "";
+          sex.innerHTML = "";
+          contact.innerHTML = "";
+          bhyt.innerHTML = "";
+          info.innerHTML = "";
+          remove.innerHTML = "";  
       }
     }
     j++;
@@ -453,18 +453,18 @@ nextButton.addEventListener("click", () => {
       infoContainer.innerHTML = res;
     });
   }
-
+  //xu li remove button
   for (let l = 1; l <= 5; l++) {
-    if (l > initialList.length) {
-      //neu so luong benh nhan nhieu hon so hang trong table thi break
-      break;
-    }
     let removeButton = document.querySelector(`.remove-button${l}`);
     removeButton.addEventListener("click", () => {
-      //them class vao nut remove mau đỏ
-      let id_of_patient = `${removeButton.classList[1]}`;
+      //them class idd vao nut mau do
+      let index = 5*i+l-1
+      let id_of_patient = `${initialList[index].idd}`;
       const removePatient = document.querySelector(".remove-patient-button");
-      removePatient.classList.add(id_of_patient);
+      if (removePatient.classList.contains(removePatient.classList[1])) {
+        removePatient.classList.remove(removePatient.classList[1]);
+      }      
+      removePatient.classList.add(id_of_patient)
 
       const remove = document.querySelector(".remove-patient-container");
       const layout = document.querySelector(".layout-browser");
@@ -543,6 +543,10 @@ layout.addEventListener("click", () => {
   if (treat.classList.contains(treat.classList[1])) {
     treat.classList.remove(treat.classList[1]);
   }
+  const remove = document.querySelector(".remove-patient-button");
+  if(remove.classList.contains(remove.classList[1])){
+    remove.classList.remove(remove.classList[1]);
+  }
 });
 
 function removePatient(id_of_patient) {
@@ -580,22 +584,3 @@ submitButton.addEventListener("click", () => {
     }
   }
 });
-// function removePatient(){
-//     const removeButton = document.querySelector('.remove-patient-button')
-//     removeButton.addEventListener('click', () => {
-//         const remove = document.querySelector('.remove-patient-container')
-//         const layoutBrowser = document.querySelector('.layout-browser')
-//         const patientList = document.querySelector('.patients-list')
-//         if(remove.classList.contains('active')){
-//             remove.classList.remove('active')
-//             remove.classList.add('active0')
-//             if(layoutBrowser.classList.contains('active1')){
-//                 layoutBrowser.classList.remove('active1')
-//                 layoutBrowser.classList.add('active10')
-//             }
-//             if(patientList.classList.contains('active2')){
-//                 patientList.classList.remove('active2')
-//             }
-//         }
-//     })
-// }

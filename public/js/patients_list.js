@@ -33,67 +33,10 @@ import {
 
 const db = getDatabase();
 
-// let myPatientList = [
-//     {
-//         name: "Tran Trung Kien",
-//         sex: "male",
-//         contact: "0948837138",
-//         bhyt: "yes",
-//         cccd: "0100010001000100",
-//         birth: "04/09/2004",
-//         quequan: "Thanh pho Ho Chi Minh",
-//         sdt: "0948837138",
-//         address: "246 Tran Duy Hung",
-//         id_of_patient: "Kine"
-//     },
-//     {
-//         name: "Tran Tung Khoi",
-//         sex: "male",
-//         contact: "0948837132",
-//         bhyt: "yes",
-//         cccd: "0100010001000101",
-//         birth: "09/04/2004",
-//         quequan: "Thanh pho Ho Chi Minh",
-//         sdt: "0948837139",
-//         address: "Cong vien Phu Lam",
-//         id_of_patient: "ihKoi"
-//     },
-//     {
-//         name: "Tran Trung Truc",
-//         sex: "male",
-//         contact: "0948837131",
-//         bhyt: "yes",
-//         cccd: "0100010001000102",
-//         birth: "05/04/2004",
-//         quequan: "Thanh pho Ho Chi Minh",
-//         sdt: "0948837140",
-//         address: "248 Tran Duy Hung",
-//         id_of_patient: "Crtu"
-//     },
-//     {
-//         name: "Nguyen Quoc Trung",
-//         sex: "male",
-//         contact: "0948837132",
-//         bhyt: "yes",
-//         cccd: "0100010001000189",
-//         birth: "06/07/2004",
-//         quequan: "Thanh pho Ho Chi Minh",
-//         sdt: "0948837138",
-//         address: "250 Tran Duy Hung",
-//         id_of_patient: "Tgrun"
-//     }
-// ]
 
 let i = 0;
 let initialList = [];
 function getAllPatients(myPatientList) {
-  // const dbRef = ref(db, "booking")
-
-  // onValue(dbRef, (snapshot) => {
-  //     snapshot.forEach(childSnapshot => {
-  //         myPatientList.push(childSnapshot.val())
-  //     });
-  console.log(myPatientList);
   if (i === 0) {
     let j,
       k = 0;
@@ -105,11 +48,29 @@ function getAllPatients(myPatientList) {
       const sex = document.querySelector(`.sex${k + 1}`);
       const contact = document.querySelector(`.contact${k + 1}`);
       const bhyt = document.querySelector(`.bhyt${k + 1}`);
+      const longTerm = document.querySelector(`.treat-button${k + 1}`);
+      const info = document.querySelector(`.info-button${k + 1}`);
 
-      fullname.innerHTML = myPatientList[j].name;
-      sex.innerHTML = myPatientList[j].sex;
-      contact.innerHTML = myPatientList[j].phone;
-      bhyt.innerHTML = myPatientList[j].healthInsurance;
+      if(initialList.length === 0 || j >= initialList.length){
+        fullname.innerHTML = "";
+        sex.innerHTML = "";
+        contact.innerHTML = "";
+        bhyt.innerHTML = "";
+        longTerm.innerHTML = "";
+        info.innerHTML = "";
+      }else{
+        fullname.innerHTML = initialList[j].name;
+        sex.innerHTML = initialList[j].sex;
+        contact.innerHTML = initialList[j].phone;
+        bhyt.innerHTML = initialList[j].healthInsurance;    
+
+        longTerm.innerHTML = `<td class="long-term-content">
+          <button id="${k+1}" class="treat-button${k+1}">Treat</button>
+          </td>`
+          info.innerHTML = `<td class="info-button-content">
+          <button id="${k+1}" class="info-button${k+1}">Info</button>
+          </td>`
+      }
       ++j;
       ++k;
     }
@@ -117,8 +78,7 @@ function getAllPatients(myPatientList) {
     for (let l = 1; l <= 5; l++) {
       let infoButton = document.querySelector(`.info-button${l}`);
       infoButton.addEventListener("click", () => {
-        const id_of_patient = infoButton.id - 1 + 5 * i;
-        console.log(infoButton.id);
+        const id_of_patient = infoButton.id - 1 + 5 * i;        
         const infoContainer = document.querySelector(".pop-up-container");
         const layout = document.querySelector(".layout-browser");
         const patientList = document.querySelector(".patients-list");
@@ -184,34 +144,8 @@ function getAllPatients(myPatientList) {
         layout.classList.add("active1");
         patientList.classList.add("active2");
       });
-    }
-
-    for (let l = 1; l <= 5; l++) {
-      let removeButton = document.querySelector(`.remove-button${l}`);
-      removeButton.addEventListener("click", () => {
-        let id_of_patient = `${removeButton.id}-${i}`;
-        const removePatient = document.querySelector(".remove-patient-button");
-        if (removePatient.classList.contains(removePatient.classList[1])) {
-          removePatient.classList.remove(removePatient.classList[1]);
-        }
-        removePatient.classList.add(id_of_patient);
-
-        const remove = document.querySelector(".remove-patient-container");
-        const layout = document.querySelector(".layout-browser");
-        const patientList = document.querySelector(".patients-list");
-        if (remove.classList.contains("active0")) {
-          remove.classList.remove("active0");
-        }
-        if (layout.classList.contains("active10")) {
-          layout.classList.remove("active10");
-        }
-        remove.classList.add("active");
-        layout.classList.add("active1");
-        patientList.classList.add("active2");
-      });
-    }
+    }    
   }
-  // })
 }
 
 var userNamePromise = new Promise(function (resolve, reject) {
@@ -268,41 +202,46 @@ const nextButton = document.querySelector(".next-button");
 const previousButton = document.querySelector(".previous-button");
 
 previousButton.addEventListener("click", () => {
-  let j;
-  let k = 0;
-  i--;
-  if (i < 0) {
-    i = 0;
-  }
+  let j  
+  i--
+  if (i <= 0) {
+    i = 0
+  }    
   const pageNumber = document.getElementById("page-number");
 
   pageNumber.innerHTML = i + 1;
   j = i * 5;
-  while (j < initialList.length && j < 5 * (i + 1) && k < 5) {
+  let k = 0
+  for(let f = j; f < 5 *(i + 1); f++){
     const fullname = document.querySelector(`.fullname${k + 1}`);
     const sex = document.querySelector(`.sex${k + 1}`);
     const contact = document.querySelector(`.contact${k + 1}`);
     const bhyt = document.querySelector(`.bhyt${k + 1}`);
     const longTerm = document.querySelector(`.treat-button${k + 1}`);
     const info = document.querySelector(`.info-button${k + 1}`);
-    const remove = document.querySelector(`.remove-button${k + 1}`);
-    fullname.innerHTML = initialList[j].name;
-    sex.innerHTML = initialList[j].sex;
-    contact.innerHTML = initialList[j].phone;
-    bhyt.innerHTML = initialList[j].healthInsurance;
+    
+    if(initialList.length === 0 || f >= initialList.length){
+      fullname.innerHTML = "";
+      sex.innerHTML = "";
+      contact.innerHTML = "";
+      bhyt.innerHTML = "";
+      longTerm.innerHTML = "";
+      info.innerHTML = "";
+    }else{
+      fullname.innerHTML = initialList[f].name;
+      sex.innerHTML = initialList[f].sex;
+      contact.innerHTML = initialList[f].phone;
+      bhyt.innerHTML = initialList[f].healthInsurance;    
 
-    longTerm.innerHTML = `<td class="long-term-content">
-        <button id="${k + 1}" class="treat-button${k + 1}">Treat</button>
-        </td>`;
-    info.innerHTML = `<td class="info-button-content">
-        <button id="${k + 1}" class="info-button${k + 1}">Info</button>
-        </td>`;
-    remove.innerHTML = `<td class="remove-button-content">
-        <button id="${k + 1}" class="remove-button${k + 1}">Remove</button>
-        </td>`;
-    ++j;
-    ++k;
-  }
+      longTerm.innerHTML = `<td class="long-term-content">
+        <button id="${k+1}" class="treat-button${k+1}">Treat</button>
+        </td>`
+        info.innerHTML = `<td class="info-button-content">
+        <button id="${k+1}" class="info-button${k+1}">Info</button>
+        </td>`
+    }    
+    k++;
+  }  
 
   for (let l = 1; l <= 5; l++) {
     let infoButton = document.querySelector(`.info-button${l}`);
@@ -419,11 +358,11 @@ nextButton.addEventListener("click", () => {
     const sex = document.querySelector(`.sex${k + 1}`);
     const contact = document.querySelector(`.contact${k + 1}`);
     const bhyt = document.querySelector(`.bhyt${k + 1}`);
-
-    if (j >= initialList.length) {
-      const longTerm = document.querySelector(`.treat-button${k + 1}`);
-      const info = document.querySelector(`.info-button${k + 1}`);
-      const remove = document.querySelector(`.remove-button${k + 1}`);
+    const longTerm = document.querySelector(`.treat-button${k + 1}`);
+    const info = document.querySelector(`.info-button${k + 1}`);
+    const remove = document.querySelector(`.remove-button${k + 1}`);
+    if (initialList.length === 0 || j >= initialList.length) {
+      
       fullname.innerHTML = "";
       sex.innerHTML = "";
       contact.innerHTML = "";
@@ -436,6 +375,13 @@ nextButton.addEventListener("click", () => {
       sex.innerHTML = initialList[j].sex;
       contact.innerHTML = initialList[j].phone;
       bhyt.innerHTML = initialList[j].healthInsurance;
+
+      longTerm.innerHTML = `<td class="long-term-content">
+        <button id="${k+1}" class="treat-button${k+1}">Treat</button>
+        </td>`
+        info.innerHTML = `<td class="info-button-content">
+        <button id="${k+1}" class="info-button${k+1}">Info</button>
+        </td>`
     }
     j++;
     ++k;
@@ -513,30 +459,30 @@ nextButton.addEventListener("click", () => {
     });
   }
 
-  for (let l = 1; l <= 5; l++) {
-    let removeButton = document.querySelector(`.remove-button${l}`);
-    removeButton.addEventListener("click", () => {
-      let id_of_patient = `${removeButton.id}-${i}`;
-      const removePatient = document.querySelector(".remove-patient-button");
-      if (removePatient.classList.contains(removePatient.classList[1])) {
-        removePatient.classList.remove(removePatient.classList[1]);
-      }
-      removePatient.classList.add(id_of_patient);
+  // for (let l = 1; l <= 5; l++) {
+  //   let removeButton = document.querySelector(`.remove-button${l}`);
+  //   removeButton.addEventListener("click", () => {
+  //     let id_of_patient = `${removeButton.id}-${i}`;
+  //     const removePatient = document.querySelector(".remove-patient-button");
+  //     if (removePatient.classList.contains(removePatient.classList[1])) {
+  //       removePatient.classList.remove(removePatient.classList[1]);
+  //     }
+  //     removePatient.classList.add(id_of_patient);
 
-      const remove = document.querySelector(".remove-patient-container");
-      const layout = document.querySelector(".layout-browser");
-      const patientList = document.querySelector(".patients-list");
-      if (remove.classList.contains("active0")) {
-        remove.classList.remove("active0");
-      }
-      if (layout.classList.contains("active10")) {
-        layout.classList.remove("active10");
-      }
-      remove.classList.add("active");
-      layout.classList.add("active1");
-      patientList.classList.add("active2");
-    });
-  }
+  //     const remove = document.querySelector(".remove-patient-container");
+  //     const layout = document.querySelector(".layout-browser");
+  //     const patientList = document.querySelector(".patients-list");
+  //     if (remove.classList.contains("active0")) {
+  //       remove.classList.remove("active0");
+  //     }
+  //     if (layout.classList.contains("active10")) {
+  //       layout.classList.remove("active10");
+  //     }
+  //     remove.classList.add("active");
+  //     layout.classList.add("active1");
+  //     patientList.classList.add("active2");
+  //   });
+  // }
 });
 
 function treatButton(id_of_patient) {

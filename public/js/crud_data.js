@@ -31,29 +31,6 @@ import {
   get,
 } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js";
 
-// const db = getDatabase();
-// setTimeout(async function () {
-//   var id_doctor;
-//   var userName = document.getElementById("navbar-username").textContent;
-//   const dbRef = ref(db);
-//   userName = userName.split(", ")[1];
-//   var data = await get(child(dbRef, "Doctor")).then((snapshot) => {
-//     if (snapshot.exists()) {
-//       // console.log(snapshot.val());
-//       return snapshot.val().filter((item) => item !== null);
-//     } else {
-//       console.log("ID does not exist");
-//     }
-//   });
-//   console.log(data);
-//   for (var i = 0; i < data.length; i++) {
-//     console.log(data[i].username);
-//     if (data[i] && data[i].username === userName) {
-//       id_doctor = data[i].id;
-//       break;
-//     }
-//   }
-// }, 3000);
 
 async function insertData(id_of_patient) {
   var id_doctor;
@@ -68,7 +45,6 @@ async function insertData(id_of_patient) {
       console.log("ID does not exist");
     }
   });
-  console.log(data);
   for (var i = 0; i < data.length; i++) {
     console.log(data[i].username);
     if (data[i] && data[i].username === userName) {
@@ -91,7 +67,7 @@ async function insertData(id_of_patient) {
     .then(async (data) => {
       var idd = null;
       for (var i = 0; i < data.length; i++) {
-        if (data[i].name === fullname.textContent) {
+        if (data[i].name === fullname.innerHTML) {
           idd = data[i].idd;
           break;
         }
@@ -131,21 +107,6 @@ async function insertData(id_of_patient) {
         }
       );
     });
-
-  // if(td1 && td2 && td3 && td4){
-  //     set(ref(db, "Long-term-treatment/" + id_of_patient) ,{
-  //         name: td1.innerText,
-  //         sex: td2.innerText,
-  //         contact: td3.innerText,
-  //         bhyt: td4.innerText
-  //     })
-  //     .then(() => {
-  //         console.log('Add data successfully!')
-  //     })
-  //     .catch(err => {
-  //         console.log(err.message)
-  //     })
-  // }
 }
 function findData(id_of_patient) {
   const dbRef = ref(db);
@@ -186,11 +147,29 @@ function removeData(id_of_patient) {
   // })
 }
 
-function removeDataDoctorlist(id_of_patient) {
-  console.log(id_of_patient);
-  //chỗ này sai
-  let id_ = parseInt(id_of_patient[0]) + 1;
-  const fullname = document.querySelector(`.fullname${id_}`);
+async function removeDataDoctorlist(id_of_patient) {
+  //chỗ này sai  
+  var id_doctor;
+  var userName = document.getElementById("navbar-username").textContent;
+  const dbRef = ref(db);
+  userName = userName.split(", ")[1];
+  var data = await get(child(dbRef, "Doctor")).then((snapshot) => {
+    if (snapshot.exists()) {
+      // console.log(snapshot.val());
+      return snapshot.val().filter((item) => item !== null);
+    } else {
+      console.log("ID does not exist");
+    }
+  });
+  for (var i = 0; i < data.length; i++) {
+    console.log(data[i].username);
+    if (data[i] && data[i].username === userName) {
+      id_doctor = data[i].id;
+      break;
+    }
+  }
+  
+  
   fetch("/api/treatment")
     .then((response) => {
       if (!response.ok) {
@@ -199,17 +178,11 @@ function removeDataDoctorlist(id_of_patient) {
       return response.json();
     })
     .then((data) => {
-      var idd_del = null;
-      for (var i = 0; i < data.length; i++) {
-        if (data[i].name === fullname.textContent) {
-          idd_del = data[i].idd;
-          break;
-        }
-      }
+	   console.log(id_of_patient)           
       for (let k = 0; k < data.length; k++) {
         get(ref(db, "Doctor/" + id_doctor + "/patientList/" + k)).then(
           (snapshot) => {
-            if (snapshot.val() != null && snapshot.val().idd == idd_del) {
+            if (snapshot.val() != null && snapshot.val().idd == id_of_patient) {
               remove(ref(db, "Doctor/" + id_doctor + "/patientList/" + k))
                 .then(() => {
                   console.log("Remove successfully");
@@ -243,11 +216,10 @@ submitButton.addEventListener("click", () => {
 
 const removeButton = document.querySelector(".remove-patient-button");
 removeButton.addEventListener("click", () => {
-  console.log(removeButton.classList[1]);
   if (removeButton.classList.contains(removeButton.classList[1])) {
     removeDataDoctorlist(removeButton.classList[1]);
     removeButton.classList.remove(removeButton.classList[1]);
-    // location.reload()
+	alert("Remove successfully! Please close the pop up and reload the page")
   }
 });
 
